@@ -35,6 +35,7 @@
     --radius: 8px;
     --radius-lg: 12px;
     --max-w: 960px;
+    --nav-w: 200px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,61 +49,117 @@
     font-feature-settings: 'cv01', 'ss03';
   }
 
-  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+  /* ===== LAYOUT WRAPPER ===== */
+  .layout-wrap { display: flex; min-height: 100vh; }
 
-  /* ===== NAV ===== */
-  nav {
-    position: sticky;
+  /* ===== SIDEBAR NAV (desktop) ===== */
+  .sidebar {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: var(--nav-w);
+    height: 100vh;
     z-index: 100;
-    background: rgba(8,9,10,0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  nav .container {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-subtle);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
+    flex-direction: column;
+    padding: 32px 20px;
   }
-  nav .logo {
+  .sidebar .logo {
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 510;
     color: var(--text-primary);
     text-decoration: none;
     letter-spacing: -0.01em;
+    margin-bottom: 40px;
+    display: block;
   }
-  nav .nav-links {
-    display: flex;
-    gap: 24px;
+  .sidebar .nav-links {
     list-style: none;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
   }
-  nav .nav-links a {
-    font-size: 13px;
+  .sidebar .nav-links a {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
     font-weight: 510;
     color: var(--text-tertiary);
     text-decoration: none;
-    transition: color 0.15s;
+    border-radius: 6px;
+    transition: background 0.12s, color 0.12s;
   }
-  nav .nav-links a:hover { color: var(--text-primary); }
-  nav .nav-links .nav-cta {
+  .sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
+  .sidebar .nav-links a.active {
+    color: var(--accent);
+    background: rgba(113,112,255,0.06);
+  }
+  .sidebar .nav-cta {
     background: var(--accent-bg);
     color: #fff;
-    padding: 6px 14px;
+    text-align: center;
+    padding: 10px 14px;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
+    text-decoration: none;
+    display: block;
     transition: background 0.15s;
   }
-  nav .nav-links .nav-cta:hover { background: var(--accent-hover); }
-  .hamburger { display: none; background: none; border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; padding: 6px 10px; border-radius: 6px; font-size: 18px; }
+  .sidebar .nav-cta:hover { background: var(--accent-hover); }
 
-  @media (max-width: 720px) {
-    .hamburger { display: block; }
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 12px 24px 16px; gap: 12px; }
-    .nav-links.open { display: flex; }
+  /* ===== MAIN CONTENT ===== */
+  .main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  /* ===== BOTTOM NAV (mobile) ===== */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main-content { margin-left: 0; padding-bottom: 72px; }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 64px;
+      padding: 0 8px 8px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      text-decoration: none;
+      color: var(--text-quaternary);
+      font-size: 10px;
+      font-weight: 510;
+      padding: 6px 4px;
+      border-radius: 6px;
+      min-width: 48px;
+      transition: color 0.12s;
+    }
+    .bottom-nav a .nav-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .bottom-nav a:hover { color: var(--text-primary); }
+    .bottom-nav a.active { color: var(--accent); }
+  }
+  @media (min-width: 769px) {
+    .bottom-nav { display: none; }
   }
 
   /* ===== HERO ===== */
@@ -466,20 +523,46 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="container">
-    <a href="#" class="logo">Dustin Felderhoff</a>
-    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#lessons">Lessons</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#" class="nav-cta">Resume</a></li>
-    </ul>
+<div class="layout-wrap">
+
+<!-- SIDEBAR (desktop) -->
+<aside class="sidebar">
+  <a href="#" class="logo">Dustin Felderhoff</a>
+  <div class="nav-links">
+    <a href="#about" class="active">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#contact">Contact</a>
   </div>
+  <a href="#" class="nav-cta">Resume</a>
+</aside>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+  <a href="#about" class="active">
+    <span class="nav-icon">&#9883;</span>
+    About
+  </a>
+  <a href="#projects">
+    <span class="nav-icon">&#9881;</span>
+    Projects
+  </a>
+  <a href="#lessons">
+    <span class="nav-icon">&#9998;</span>
+    Lessons
+  </a>
+  <a href="#contact">
+    <span class="nav-icon">&#9993;</span>
+    Contact
+  </a>
+  <a href="#">
+    <span class="nav-icon">&#128196;</span>
+    Resume
+  </a>
 </nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -877,8 +960,11 @@
         <a href="https://linkedin.com/in/dustin-felderhoff" target="_blank" style="margin-left:12px;" class="btn-ghost">LinkedIn →</a>
       </div>
     </div>
-  </div>
-</section>
+  </div>  <!-- /closing .container -->
+</section>  <!-- /#contact -->
+
+</div>  <!-- /main-content -->
+</div>  <!-- /layout-wrap -->
 
 <footer>
   <div class="container">
@@ -888,13 +974,32 @@
 </footer>
 
 <script>
-  /* Hamburger close on link click */
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.remove('open');
+  /* Smooth scroll for anchor links + active link highlighting */
+  const sections = document.querySelectorAll('section[id]');
+  const sidebarLinks = document.querySelectorAll('.sidebar .nav-links a');
+  const bottomLinks = document.querySelectorAll('.bottom-nav a');
+
+  function setActiveLink(id) {
+    const selector = `a[href="#${id}"]`;
+    sidebarLinks.forEach(l => l.classList.remove('active'));
+    bottomLinks.forEach(l => l.classList.remove('active'));
+    const activeSidebar = document.querySelector(`.sidebar .nav-links ${selector}`);
+    const activeBottom = document.querySelector(`.bottom-nav ${selector}`);
+    if (activeSidebar) activeSidebar.classList.add('active');
+    if (activeBottom) activeBottom.classList.add('active');
+  }
+
+  /* Intersection Observer for active section */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActiveLink(entry.target.id);
+      }
     });
-  });
-  /* Smooth scroll for anchor links */
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  /* Smooth scroll on nav clicks */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
