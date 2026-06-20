@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dustin Felderhoff — Portfolio</title>
+<style>
+  :root {
+    --ink: #111;
+    --muted: #555;
+    --surface: #fafafa;
+    --border: #e0e0e0;
+    --accent: #2563eb;
+    --accent-subtle: #dbeafe;
+    --green: #16a34a;
+    --amber: #d97706;
+    --radius: 8px;
+    --max-w: 880px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #fff;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Layout */
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    padding: 80px 0 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  header .tagline {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+  header .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  header .meta a { color: var(--accent); text-decoration: none; }
+  header .meta a:hover { text-decoration: underline; }
+
+  /* Section */
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  h2 span { background: var(--accent-subtle); padding: 0 6px; border-radius: 4px; }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  p, li { color: var(--ink); }
+  p { margin-bottom: 16px; }
+
+  /* Philosophy block */
+  .philosophy {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-bottom: 32px;
+  }
+  .philosophy p:last-child { margin-bottom: 0; }
+
+  /* Project cards */
+  .project {
+    margin-bottom: 48px;
+  }
+  .project:last-child { margin-bottom: 0; }
+
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .project-header h3 { margin-bottom: 0; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .badge-ai { background: var(--accent-subtle); color: var(--accent); }
+  .badge-ship { background: #fef3c7; color: #92400e; }
+  .badge-fail { background: #fee2e2; color: #991b1b; }
+
+  .project-subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .result-item {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .result-item .num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .result-item .label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .lesson-box {
+    background: #f0fdf4;
+    border-left: 3px solid var(--green);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-top: 16px;
+  }
+  .lesson-box .lesson-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .lesson-box p { margin-bottom: 0; font-size: 0.92rem; }
+
+  .fail-box {
+    background: #fef2f2;
+    border-left: 3px solid #dc2626;
+    padding: 16px 20px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-top: 16px;
+  }
+  .fail-box .lesson-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #dc2626;
+    margin-bottom: 4px;
+  }
+  .fail-box p { margin-bottom: 0; font-size: 0.92rem; }
+
+  ul.tech-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0;
+  }
+  ul.tech-list li {
+    font-size: 0.78rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: var(--muted);
+  }
+
+  /* Lessons section at bottom */
+  .big-lesson {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .big-lesson:last-child { border-bottom: none; padding-bottom: 0; }
+  .big-lesson h3 { font-size: 1.05rem; }
+  .big-lesson .context { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
+
+  /* Theme toggle */
+  .theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: var(--muted);
+    z-index: 10;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e4e4e7;
+      --muted: #a1a1aa;
+      --surface: #1a1a2e;
+      --border: #27272a;
+      --accent: #60a5fa;
+      --accent-subtle: #1e3a5f;
+      --green: #4ade80;
+    }
+    body { background: #0f0f1a; }
+    .lesson-box { background: #052e16; }
+    .fail-box { background: #450a0a; }
+    .philosophy { background: #1a1a2e; }
+    .result-item { background: #1a1a2e; }
+    ul.tech-list li { background: #1a1a2e; }
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 48px 0 32px; }
+    header h1 { font-size: 1.8rem; }
+    section { padding: 40px 0; }
+    .results { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="document.documentElement.style.colorScheme=document.documentElement.style.colorScheme==='dark'?'light':'dark'" title="Toggle dark/light">🌓</button>
+
+<header>
+  <div class="container">
+    <h1>Dustin Felderhoff</h1>
+    <div class="tagline">
+      Building agentic AI systems, shipping products, and learning the hard lessons along the way.
+    </div>
+    <div class="meta">
+      <span>📍 Denver, CO</span>
+      <span>🔧 Sr PM — Charter Communications</span>
+      <a href="mailto:dustin.felderhoff@gmail.com">dustin.felderhoff@gmail.com</a>
+      <a href="https://linkedin.com/in/dustin-felderhoff" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <!-- Philosophy -->
+  <section>
+    <div class="philosophy">
+      <p><strong>I build tools that let people be successful.</strong> Started in manufacturing, where I loved designing production lines that made it easy for operators to do great work. That became the thread: product management is building the system that builds the output.</p>
+      <p>Now that system is increasingly agentic AI. I've been building with LLMs since ChatGPT was still unproven in enterprise workflows. The same question drives me: <em>how do I build something that makes the person using it more capable?</em></p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2><span>Agentic AI Projects</span></h2>
+
+    <!-- Project 1: Story Sundays -->
+    <div class="project">
+      <div class="project-header">
+        <h3>Story Sundays</h3>
+        <span class="badge badge-ai">Agentic AI</span>
+        <span class="badge badge-ship">Shipping</span>
+      </div>
+      <div class="project-subtitle">Local-first AI family storytelling platform · React + Vite + Cloudflare Workers + Supabase</div>
+      <p>
+        When my son was born, I realized there was no good way for his grandparents in Texas and Florida to share
+        stories and videos that felt personal, private, and permanent. Social media wasn't the answer. So I built one.
+      </p>
+      <p>
+        Story Sundays is a full-stack AI platform where family records stories and videos that stay inside a closed
+        AI "contacts window" — no data leakage, no social media, no algorithm. AI is the helper, not the replacement:
+        it transcribes, organizes, and surfaces memories without ever exposing them outside the family circle.
+      </p>
+      <ul class="tech-list">
+        <li>React 19 + Vite 8</li>
+        <li>TypeScript</li>
+        <li>Cloudflare Workers</li>
+        <li>Supabase / Postgres + RLS</li>
+        <li>R2 Storage</li>
+        <li>Playwright E2E</li>
+        <li>TDD Pipeline</li>
+      </ul>
+
+      <div class="results">
+        <div class="result-item">
+          <div class="num">100%</div>
+          <div class="label">Gated TDD pipeline</div>
+        </div>
+        <div class="result-item">
+          <div class="num">3</div>
+          <div class="label">Test layers (unit/hooks/integration/e2e)</div>
+        </div>
+        <div class="result-item">
+          <div class="num">Private</div>
+          <div class="label">Zero data leakage guarantee</div>
+        </div>
+      </div>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>A green test suite is not proof a bug is fixed.</strong> We shipped bugs that slipped right past a fully green mocked test suite (6 entries in the bug ledger prove it). That's why the project now enforces a multi-layer test pipeline (unit → hooks → integration → e2e:prod) with hard gates at every stage. A test that passes against mocks but fails in production is worse than no test at all — it gives false confidence.</p>
+      </div>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails, the protocol is: root cause first, research the exact error with real version numbers, evaluate each candidate solution for credibility and blast radius, then apply. Never retry the same error twice without research. This killed the thrash loop problem — the wasted pattern of "try X, fail, try Y, fail, try Z" that costs hours.</p>
+      </div>
+    </div>
+
+    <!-- Project 2: Autonomous Sub-Agent Orchestration -->
+    <div class="project">
+      <div class="project-header">
+        <h3>Autonomous Sub-Agent Orchestration System</h3>
+        <span class="badge badge-ai">Agentic AI</span>
+        <span class="badge badge-ship">System Design</span>
+      </div>
+      <div class="project-subtitle">Specialized agent personas with routing logic, handoff contracts, and fail-fast boundaries</div>
+      <p>
+        Built a production-grade multi-agent orchestration system inside Hermes Agent. Four specialized sub-agent
+        personas — researcher, implementer, architect, operator — each with strict tool boundaries, trigger conditions,
+        and iteration caps. The routing decision tree determines whether to handle a task natively, delegate to a
+        sub-agent, or orchestrate a mixed workflow across multiple specialists.
+      </p>
+      <p>
+        The key insight: an architect sub-agent can delegate to implementers, but a researcher can't touch the
+        filesystem and an implementer can't browse the web. Every boundary is enforced by the delegate_task schema,
+        not by trust. The handoff contract is explicit about what each child sends back (summary, errors, artifacts,
+        verification) and what the parent must verify independently.
+      </p>
+      <ul class="tech-list">
+        <li>Hermes Agent SDK</li>
+        <li>Delegation API</li>
+        <li>Sub-agent Personas</li>
+        <li>Routing Decision Tree</li>
+        <li>Handoff Contracts</li>
+      </ul>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file, ran a command, or made a network call, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification is not optional.</p>
+      </div>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>Tool boundaries are the architecture.</strong> The most important design decision wasn't what each agent <em>could</em> do — it was what each agent <em>couldn't</em> do. Blocking the wrong tools prevents entire classes of failure. A researcher with access to `write_file` will eventually overwrite something. An implementer with `web_search` will go down rabbit holes. The boundaries define the system.</p>
+      </div>
+    </div>
+
+    <!-- Project 3: The Invoice Revolution -->
+    <div class="project">
+      <div class="project-header">
+        <h3>Invoice Parser — Intelligent Audit</h3>
+        <span class="badge badge-ai">Agentic AI</span>
+        <span class="badge badge-ship">Zero-to-One</span>
+        <span class="badge badge-fail">Failure</span>
+      </div>
+      <div class="project-subtitle">ChatGPT-based PDF invoice parser · Python + Prompt Engineering · 2022</div>
+      <p>
+        In 2022, our audit operation still sent PDF invoices to India to be typed into Excel spreadsheets by hand.
+        The error rate was high, auditors spent 30 hours a week reconciling mistakes, and the customer feedback loop
+        was measured in days. ChatGPT had just launched — unproven in enterprise, especially on structured financial data.
+      </p>
+      <p>
+        I built a ChatGPT-based parser that knew the expected values for each invoice field and extracted them into
+        audit-ready data automatically. It was one of the earliest uses of LLMs in our enterprise workflow.
+      </p>
+
+      <div class="results">
+        <div class="result-item">
+          <div class="num">30 hrs/wk</div>
+          <div class="label">Audit time recovered</div>
+        </div>
+        <div class="result-item">
+          <div class="num">Days → Hours</div>
+          <div class="label">Customer feedback loop</div>
+        </div>
+        <div class="result-item">
+          <div class="num">Zero</div>
+          <div class="label">Manual data-entry errors</div>
+        </div>
+      </div>
+
+      <div class="fail-box">
+        <div class="lesson-label">Hard Lesson Learned</div>
+        <p><strong>Building the right tool isn't enough. The people using it have to trust it.</strong></p>
+        <p>I pushed the parser to production without training the India-based ops team on how to handle exceptions. Within two weeks, they were flagging every edge case manually — no trust in the AI output. The system was technically correct but operationally broken. I had to pull it back, run three hands-on training sessions, and redesign the exception workflow with their input. The second launch stuck.</p>
+      </div>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>Leading the tip of AI means being wrong first.</strong> No one had done this before. There was no playbook for bringing ChatGPT into an enterprise audit pipeline. The skepticism was warranted. What made it work wasn't the technology — it was iterating on the human workflow around it until trust caught up with capability.</p>
+      </div>
+    </div>
+
+    <!-- Project 4: System Architecture & Context Management -->
+    <div class="project">
+      <div class="project-header">
+        <h3>System Architecture Optimization & Context Lifecycle</h3>
+        <span class="badge badge-ai">Agentic AI</span>
+        <span class="badge badge-ship">Infrastructure</span>
+      </div>
+      <div class="project-subtitle">Four-pillar optimization of a production agent system</div>
+      <p>
+        Ran a comprehensive architecture audit of the Hermes Agent runtime — 65 tools across 26 toolsets — and
+        delivered an actionable optimization blueprint across four pillars: tool schema refactoring, autonomous
+        context compression and memory decay, pre-execution guardrails, and sub-agent orchestration.
+      </p>
+      <p>
+        The context compression protocol alone was critical: a retention-class system (CRITICAL / DURABLE / SESSION /
+        EPHEMERAL) that automatically decides what to keep, what to skill-ify, and what to GC. When the memory store
+        hits 85% capacity, it consolidates and compresses instead of failing. The pre-execution guardrails (shell
+        safety, file write safety, delegation integrity, sequence integrity) run silently before every tool call and
+        prevent the most common failure classes before they happen.
+      </p>
+      <ul class="tech-list">
+        <li>Tool Schema Design</li>
+        <li>Context Compression</li>
+        <li>Memory Decay Protocol</li>
+        <li>Pre-Execution Guardrails</li>
+        <li>Cron Health Pipeline</li>
+      </ul>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>Context management is the unsexy bottleneck of every agentic system.</strong> The difference between a tool that works reliably and one that drifts into loops is how well it manages its own context. The retention-class system taught me that most "memory" problems are classification problems — if you know what to keep, what to learn as a skill, and what to throw away, context collapse becomes rare instead of inevitable.</p>
+      </div>
+    </div>
+
+    <!-- Project 5: Job Application Engine -->
+    <div class="project">
+      <div class="project-header">
+        <h3>Autonomous Job Application Pipeline</h3>
+        <span class="badge badge-ai">Agentic AI</span>
+        <span class="badge badge-ship">Automation</span>
+      </div>
+      <div class="project-subtitle">End-to-end agentic pipeline: discovery → scoring → research → voice capture → submission</div>
+      <p>
+        Built a fully autonomous job application system: Tavily AI Search + SearXNG for discovery, a custom scoring
+        engine (time-decay factored, location penalties for blocker cities), per-job deep research via sub-agents,
+        voice-captured cover letter generation, and ATS-aware resume building. The pipeline processes 120+ job alerts
+        hourly, runs research workers on top candidates, and generates application-ready materials.
+      </p>
+      <p>
+        The key architecture decisions: a single SQLite `jobs.db` as the canonical source of truth, sub-agents for
+        parallel research, and a skill-based pipeline (voice-of-me → anti-ai-detection gate) that ensures every
+        output sounds like a human, not an LLM. The research worker discovers company-specific pain points and
+        competitive gaps — not just JD keywords — so every cover letter has genuine specificity.
+      </p>
+      <ul class="tech-list">
+        <li>Tavily AI Search</li>
+        <li>SearXNG</li>
+        <li>SQLite / jobs.db</li>
+        <li>Sub-agent Research Workers</li>
+        <li>Voice-of-Me Gate</li>
+        <li>Anti-AI Detection</li>
+        <li>Gmail API</li>
+      </ul>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>Voice is the hardest thing to automate, and it's the most important thing to get right.</strong> The pipeline can generate a technically perfect cover letter that still reads like AI. The voice-of-me skill (built from a canonical transcript of how I actually talk) plus the anti-ai-detection gate (catches structural tells like space-dash-space, balanced paragraphs, rule-of-three) turned out to be the most valuable components — not the scoring engine or the research workers. Every piece of copy must pass both gates, in order, or it doesn't ship.</p>
+      </div>
+
+      <div class="lesson-box">
+        <div class="lesson-label">Lesson Learned</div>
+        <p><strong>A pipeline with no feedback loop is a liability.</strong> The scoring engine had a location penalty that was supposed to downrank non-Remote jobs outside Denver. But it was only as good as the data it ran on — if the scraper didn't extract the real location from the JD, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring, and location_penalty() is enforced in two layers. One layer of validation is never enough.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lessons Learned -->
+  <section>
+    <h2><span>Lessons Learned Across Projects</span></h2>
+
+    <div class="big-lesson">
+      <h3>1. Trust is the bottleneck, not technology.</h3>
+      <div class="context">Applied in: Invoice Parser, Job Pipeline, Story Sundays</div>
+      <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated TDD pipeline because a green mocked suite gave false confidence. The job pipeline has a two-layer validation gate because one layer was never enough. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency — never just better code.</p>
+    </div>
+
+    <div class="big-lesson">
+      <h3>2. Boundaries define the system.</h3>
+      <div class="context">Applied in: Sub-Agent Orchestration, Context Management</div>
+      <p>The most impactful design decision in the orchestration system wasn't what each agent could do — it was what each agent couldn't do. A researcher with filesystem access will eventually overwrite something. An implementer with web search will rabbit-hole. The same rule applies to context management: the retention class system (CRITICAL / DURABLE / SESSION / EPHEMERAL) works because it explicitly defines what <em>not</em> to keep. In agentic systems, exclusion is architecture.</p>
+    </div>
+
+    <div class="big-lesson">
+      <h3>3. Never retry the same error twice without research.</h3>
+      <div class="context">Applied in: Story Sundays, System Architecture</div>
+      <p>The thrash loop — try X, fail, try Y, fail, try Z — is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers. Score each candidate solution for credibility (official docs > SO > AI slop). Only then apply. This killed the hours-lost-to-cycling problem cold.</p>
+    </div>
+
+    <div class="big-lesson">
+      <h3>4. AI adoption is a change management problem disguised as a tech problem.</h3>
+      <div class="context">Applied in: Invoice Parser, Charter (KIRO)</div>
+      <p>When I brought ChatGPT into an enterprise audit workflow in 2022, the technology was the easy part. The hard part was getting the team to trust the output, building workflows around exceptions, and training people who had been doing it one way for years. Every AI project since has confirmed this: <strong>the value of an AI system is multiplied by how well the humans around it can use it, not by how clever the model is.</strong></p>
+    </div>
+
+    <div class="big-lesson">
+      <h3>5. Ship before you're ready, then iterate with discipline.</h3>
+      <div class="context">Applied in: Invoice Parser, Story Sundays, System Architecture</div>
+      <p>The Invoice Parser shipped early and broke. Story Sundays ships through a gated pipeline with circuit breakers. The architecture optimization shipped as skills and cron jobs that could be applied incrementally. The pattern: <strong>ship fast enough to learn, but gate hard enough to protect the user.</strong> The gating mechanisms get more sophisticated with each project, but the first-mover advantage of being early with AI (2022 ChatGPT, early agentic orchestration, autonomous pipelines) has been consistently valuable.</p>
+    </div>
+
+    <div class="big-lesson">
+      <h3>6. Verification is not optional — not even for sub-agents.</h3>
+      <div class="context">Applied in: Sub-Agent Orchestration, Job Pipeline</div>
+      <p>When a sub-agent says "I wrote the file," the parent must stat it and read it back. When a research worker says "I found the data," the pipeline must verify the output format. This sounds obvious but it's the most commonly skipped step — because it's overhead, because trust is faster, because the child usually works. Until it doesn't. The handoff contract now explicitly requires artifact verification, and skipping it is a lint-level violation.</p>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section>
+    <h2><span>What I'm Building Toward</span></h2>
+    <p>
+      I want to work at the intersection of healthcare and agentic AI — helping people improve their lives through
+      products that <em>actually</em> ship and <em>actually</em> get used. The Nymbl Science memory (watching a
+      retirement facility resident who couldn't walk to the dining room alone make it on her own after using the
+      program) is still the most joy I've gotten from a job. That question stuck: <strong>"How many years did I
+      extend this patient's life? How many years did they improve upon?"</strong>
+    </p>
+    <p>
+      I don't want to inherit a roadmap. I want to help find where you're behind and close the gap.
+    </p>
+  </section>
+</div>
+
+<script>
+  /* Simple dark mode persistence */
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.documentElement.style.colorScheme = 'dark';
+  })();
+  document.querySelector('.theme-toggle')?.addEventListener('click', function() {
+    const current = document.documentElement.style.colorScheme;
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.style.colorScheme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
