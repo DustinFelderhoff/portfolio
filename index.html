@@ -188,6 +188,19 @@
     margin-bottom: 16px;
     position: relative;
   }
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--border);
+    margin: 0 auto 28px;
+  }
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .hero .subtitle {
     font-size: 18px;
     font-weight: 400;
@@ -290,15 +303,14 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--accent-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 600;
-    color: #fff;
+    overflow: hidden;
     border: 2px solid var(--border);
     flex-shrink: 0;
+  }
+  .about-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .about-content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
   .about-content p:last-child { margin-bottom: 0; }
@@ -567,6 +579,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container">
+    <div class="hero-avatar">
+      <img src="profile-photo.jpg" alt="Dustin Felderhoff" width="120" height="120">
+    </div>
     <h1>I build tools that let people be successful.</h1>
     <p class="subtitle">
       Started in manufacturing, now building agentic AI systems — from the first ChatGPT enterprise workflow in 2022 to autonomous multi-agent orchestration. The same question drives everything: <em style="color:var(--text-secondary)">how do I build something that makes the person using it more capable?</em>
@@ -590,7 +605,7 @@
     <h2>About Me</h2>
     <div class="section-desc">Not a bullet-point bio — the short version of what drives me.</div>
     <div class="about-grid">
-      <div class="about-avatar">DF</div>
+      <div class="about-avatar"><img src="profile-photo.jpg" alt="Dustin Felderhoff" width="80" height="80"></div>
       <div class="about-content">
         <p>
           I've been a product manager for 13 years — SaaS, AI, enterprise. The thread that connects everything is building tools that let other people do their best work. Started in manufacturing, designing production lines where operators could produce great output without fighting the system. That same instinct drives every product I've touched since.
