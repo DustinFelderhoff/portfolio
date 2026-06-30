@@ -3,534 +3,536 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dustin Felderhoff — Building Tools That Let People Be Successful</title>
+<title>Dustin Felderhoff – Building Tools That Let People Be Successful</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #08090a;
-    --bg-card: #0f1011;
-    --bg-elevated: #191a1b;
-    --bg-subtle: rgba(255,255,255,0.03);
-    --text-primary: #f7f8f8;
-    --text-secondary: #d0d6e0;
-    --text-tertiary: #8a8f98;
-    --text-quaternary: #62666d;
-    --border: rgba(255,255,255,0.08);
-    --border-subtle: rgba(255,255,255,0.05);
-    --accent: #7170ff;
-    --accent-bg: #5e6ad2;
-    --accent-hover: #828fff;
-    --green: #10b981;
-    --green-bg: rgba(16,185,129,0.1);
-    --amber: #f59e0b;
-    --amber-bg: rgba(245,158,11,0.1);
-    --rose: #fb7185;
-    --rose-bg: rgba(251,113,133,0.1);
-    --cyan: #22d3ee;
-    --cyan-bg: rgba(34,211,238,0.1);
-    --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-    --radius-sm: 4px;
-    --radius: 8px;
-    --radius-lg: 12px;
-    --max-w: 960px;
-    --nav-w: 200px;
-  }
+ :root {
+  --bg: #08090a;
+  --bg-card: #0f1011;
+  --bg-elevated: #191a1b;
+  --bg-subtle: rgba(255,255,255,0.03);
+  --text-primary: #f7f8f8;
+  --text-secondary: #d0d6e0;
+  --text-tertiary: #8a8f98;
+  --text-quaternary: #62666d;
+  --border: rgba(255,255,255,0.08);
+  --border-subtle: rgba(255,255,255,0.05);
+  --accent: #7170ff;
+  --accent-bg: #5e6ad2;
+  --accent-hover: #828fff;
+  --green: #10b981;
+  --green-bg: rgba(16,185,129,0.1);
+  --amber: #f59e0b;
+  --amber-bg: rgba(245,158,11,0.1);
+  --rose: #fb7185;
+  --rose-bg: rgba(251,113,133,0.1);
+  --cyan: #22d3ee;
+  --cyan-bg: rgba(34,211,238,0.1);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --max-w: 960px;
+  --nav-w: 200px;
+ }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    font-feature-settings: 'cv01', 'ss03';
-  }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv01', 'ss03';
+ }
 
-  /* ===== LAYOUT WRAPPER ===== */
-  .layout-wrap { display: flex; min-height: 100vh; }
+ /* ===== LAYOUT WRAPPER ===== */
+ .layout-wrap { display: flex; min-height: 100vh; }
 
-  /* ===== SIDEBAR NAV (desktop) ===== */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--nav-w);
-    height: 100vh;
-    z-index: 100;
-    background: var(--bg-card);
-    border-right: 1px solid var(--border-subtle);
-    display: flex;
-    flex-direction: column;
-    padding: 32px 20px;
-  }
-  .sidebar .logo {
-    font-size: 15px;
-    font-weight: 510;
-    color: var(--text-primary);
-    text-decoration: none;
-    letter-spacing: -0.01em;
-    margin-bottom: 40px;
-    display: block;
-  }
-  .sidebar .nav-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex: 1;
-  }
-  .sidebar .nav-links a {
-    display: block;
-    padding: 8px 12px;
-    font-size: 14px;
-    font-weight: 510;
-    color: var(--text-tertiary);
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.12s, color 0.12s;
-  }
-  .sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
-  .sidebar .nav-links a.active {
-    color: var(--accent);
-    background: rgba(113,112,255,0.06);
-  }
-  .sidebar .nav-cta {
-    background: var(--accent-bg);
-    color: #fff;
-    text-align: center;
-    padding: 10px 14px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    display: block;
-    transition: background 0.15s;
-  }
-  .sidebar .nav-cta:hover { background: var(--accent-hover); }
+ /* ===== SIDEBAR NAV (desktop) ===== */
+ .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav-w);
+  height: 100vh;
+  z-index: 100;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 20px;
+ }
+ .sidebar .logo {
+  font-size: 15px;
+  font-weight: 510;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+  display: block;
+ }
+ .sidebar .nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+ }
+ .sidebar .nav-links a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 510;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.12s, color 0.12s;
+ }
+ .sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
+ .sidebar .nav-links a.active {
+  color: var(--accent);
+  background: rgba(113,112,255,0.06);
+ }
+ .sidebar .nav-cta {
+  background: var(--accent-bg);
+  color: #fff;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  transition: background 0.15s;
+ }
+ .sidebar .nav-cta:hover { background: var(--accent-hover); }
 
-  /* ===== MAIN CONTENT ===== */
-  .main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
+ /* ===== MAIN CONTENT ===== */
+ .main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
 
-  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+ .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
-  /* ===== BOTTOM NAV (mobile) ===== */
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .main-content { margin-left: 0; padding-bottom: 72px; }
+ /* ===== BOTTOM NAV (mobile) ===== */
+ @media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; padding-bottom: 72px; }
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 64px;
-      padding: 0 8px 8px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .bottom-nav a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      text-decoration: none;
-      color: var(--text-quaternary);
-      font-size: 10px;
-      font-weight: 510;
-      padding: 6px 4px;
-      border-radius: 6px;
-      min-width: 48px;
-      transition: color 0.12s;
-    }
-    .bottom-nav a .nav-icon {
-      font-size: 20px;
-      line-height: 1;
-    }
-    .bottom-nav a:hover { color: var(--text-primary); }
-    .bottom-nav a.active { color: var(--accent); }
+  .bottom-nav {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   z-index: 100;
+   background: var(--bg-card);
+   border-top: 1px solid var(--border);
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 64px;
+   padding: 0 8px 8px;
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
   }
-  @media (min-width: 769px) {
-    .bottom-nav { display: none; }
+  .bottom-nav a {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2px;
+   text-decoration: none;
+   color: var(--text-quaternary);
+   font-size: 10px;
+   font-weight: 510;
+   padding: 6px 4px;
+   border-radius: 6px;
+   min-width: 48px;
+   transition: color 0.12s;
   }
+  .bottom-nav a .nav-icon {
+   font-size: 20px;
+   line-height: 1;
+  }
+  .bottom-nav a:hover { color: var(--text-primary); }
+  .bottom-nav a.active { color: var(--accent); }
+ }
+ @media (min-width: 769px) {
+  .bottom-nav { display: none; }
+ }
 
-  /* ===== HERO ===== */
-  .hero {
-    padding: 100px 0 72px;
-    text-align: center;
-    position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(113,112,255,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero h1 {
-    font-size: 48px;
-    font-weight: 510;
-    line-height: 1.08;
-    letter-spacing: -1.056px;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .hero-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--border);
-    margin: 0 auto 28px;
-  }
-  .hero-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .hero .subtitle {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--text-tertiary);
-    max-width: 640px;
-    margin: 0 auto 32px;
-    position: relative;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
-  .btn-primary {
-    background: var(--accent-bg);
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 500;
-    transition: background 0.15s;
-  }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-ghost {
-    background: rgba(255,255,255,0.02);
-    color: var(--text-secondary);
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 400;
-    border: 1px solid var(--border);
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); }
-  .hero-meta {
-    margin-top: 24px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 14px;
-    color: var(--text-quaternary);
-    flex-wrap: wrap;
-  }
-  .hero-meta a { color: var(--text-tertiary); text-decoration: none; transition: color 0.15s; }
-  .hero-meta a:hover { color: var(--accent); }
+ /* ===== HERO ===== */
+ .hero {
+  padding: 100px 0 72px;
+  text-align: center;
+  position: relative;
+ }
+ .hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(113,112,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+ }
+ .hero h1 {
+  font-size: 48px;
+  font-weight: 510;
+  line-height: 1.08;
+  letter-spacing: -1.056px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  position: relative;
+ }
+ .hero-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--border);
+  margin: 0 auto 28px;
+ }
+ .hero-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ }
+ .hero .subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-tertiary);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  position: relative;
+ }
+ .hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+ }
+ .btn-primary {
+  background: var(--accent-bg);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.15s;
+ }
+ .btn-primary:hover { background: var(--accent-hover); }
+ .btn-ghost {
+  background: rgba(255,255,255,0.02);
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 400;
+  border: 1px solid var(--border);
+  transition: background 0.15s, border-color 0.15s;
+ }
+ .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); }
+ .hero-meta {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--text-quaternary);
+  flex-wrap: wrap;
+ }
+ .hero-meta a { color: var(--text-tertiary); text-decoration: none; transition: color 0.15s; }
+ .hero-meta a:hover { color: var(--accent); }
 
-  /* ===== SECTION ===== */
-  section { padding: 72px 0; }
-  section + section { border-top: 1px solid var(--border-subtle); }
-  h2 {
-    font-size: 24px;
-    font-weight: 400;
-    letter-spacing: -0.288px;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-  .section-desc {
-    font-size: 15px;
-    color: var(--text-tertiary);
-    margin-bottom: 40px;
-    max-width: 600px;
-  }
+ /* ===== SECTION ===== */
+ section { padding: 72px 0; }
+ section + section { border-top: 1px solid var(--border-subtle); }
+ h2 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.288px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+ }
+ .section-desc {
+  font-size: 15px;
+  color: var(--text-tertiary);
+  margin-bottom: 40px;
+  max-width: 600px;
+ }
 
-  /* ===== PHILOSOPHY BLOCK ===== */
-  .philosophy-block {
-    background: rgba(113,112,255,0.04);
-    border: 1px solid rgba(113,112,255,0.12);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    margin-bottom: 48px;
-  }
-  .philosophy-block .pull {
-    font-size: 20px;
-    font-weight: 510;
-    color: var(--text-primary);
-    line-height: 1.4;
-    letter-spacing: -0.24px;
-    margin-bottom: 12px;
-  }
-  .philosophy-block p {
-    font-size: 15px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-  .philosophy-block p:last-child { margin-bottom: 0; }
+ /* ===== PHILOSOPHY BLOCK ===== */
+ .philosophy-block {
+  background: rgba(113,112,255,0.04);
+  border: 1px solid rgba(113,112,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 48px;
+ }
+ .philosophy-block .pull {
+  font-size: 20px;
+  font-weight: 510;
+  color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.24px;
+  margin-bottom: 12px;
+ }
+ .philosophy-block p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+ }
+ .philosophy-block p:last-child { margin-bottom: 0; }
 
-  /* ===== ABOUT SECTION ===== */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
-    align-items: start;
-  }
-  .about-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--border);
-    flex-shrink: 0;
-  }
-  .about-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .about-content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
-  .about-content p:last-child { margin-bottom: 0; }
-  .about-content .signature-line {
-    font-size: 16px;
-    font-weight: 510;
-    color: var(--text-primary);
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-subtle);
-  }
+ /* ===== ABOUT SECTION ===== */
+ .about-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
+ }
+ .about-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+ }
+ .about-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ }
+ .about-content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+ .about-content p:last-child { margin-bottom: 0; }
+ .about-content .signature-line {
+  font-size: 16px;
+  font-weight: 510;
+  color: var(--text-primary);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+ }
 
-  @media (max-width: 600px) {
-    .about-grid { grid-template-columns: 1fr; gap: 16px; }
-    .about-avatar { width: 60px; height: 60px; font-size: 22px; }
-  }
+ @media (max-width: 600px) {
+  .about-grid { grid-template-columns: 1fr; gap: 16px; }
+  .about-avatar { width: 60px; height: 60px; font-size: 22px; }
+ }
 
-  /* ===== PROJECT CARD ===== */
-  .project {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-  .project:last-child { margin-bottom: 0; }
-  .project-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 6px;
-  }
-  .project-header h3 {
-    font-size: 20px;
-    font-weight: 590;
-    letter-spacing: -0.24px;
-    color: var(--text-primary);
-  }
-  .project-subtitle {
-    font-size: 14px;
-    color: var(--text-quaternary);
-    margin-bottom: 16px;
-  }
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 510;
-    padding: 2px 8px;
-    border-radius: 9999px;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .badge-ai { background: var(--accent-bg); color: #fff; }
-  .badge-ship { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
-  .badge-fail { background: var(--rose-bg); color: var(--rose); border: 1px solid rgba(251,113,133,0.2); }
-  .badge-infra { background: var(--cyan-bg); color: var(--cyan); border: 1px solid rgba(34,211,238,0.2); }
+ /* ===== PROJECT CARD ===== */
+ .project {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+ }
+ .project:last-child { margin-bottom: 0; }
+ .project-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+ }
+ .project-header h3 {
+  font-size: 20px;
+  font-weight: 590;
+  letter-spacing: -0.24px;
+  color: var(--text-primary);
+ }
+ .project-subtitle {
+  font-size: 14px;
+  color: var(--text-quaternary);
+  margin-bottom: 16px;
+ }
+ .badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 510;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+ }
+ .badge-ai { background: var(--accent-bg); color: #fff; }
+ .badge-ship { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+ .badge-fail { background: var(--rose-bg); color: var(--rose); border: 1px solid rgba(251,113,133,0.2); }
+ .badge-infra { background: var(--cyan-bg); color: var(--cyan); border: 1px solid rgba(34,211,238,0.2); }
 
-  .project p, .project li {
-    font-size: 15px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 12px;
-  }
-  .project p:last-of-type { margin-bottom: 0; }
+ .project p, .project li {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+ }
+ .project p:last-of-type { margin-bottom: 0; }
 
-  .tech-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 16px 0;
-  }
-  .tech-list li {
-    font-size: 12px;
-    font-weight: 510;
-    color: var(--text-tertiary);
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border-subtle);
-    padding: 3px 10px;
-    border-radius: 9999px;
-  }
+ .tech-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0;
+ }
+ .tech-list li {
+  font-size: 12px;
+  font-weight: 510;
+  color: var(--text-tertiary);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 10px;
+  border-radius: 9999px;
+ }
 
-  /* Case study arc */
-  .case-problem, .case-process, .case-outcome { margin-top: 20px; }
-  .case-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-quaternary);
-    margin-bottom: 4px;
-  }
-  .case-label strong { color: var(--accent); }
+ /* ===== PROJECT CASE ===== */
+ .case-visual { margin: 16px 0; }
+ .case-visual svg { border-radius: var(--radius); background: var(--bg-subtle); padding: 8px; }
+ .case-problem, .case-process, .case-outcome { margin-top: 20px; }
+ .case-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-quaternary);
+  margin-bottom: 4px;
+ }
+ .case-label strong { color: var(--accent); }
 
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin: 20px 0;
-  }
-  .metric-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius);
-    padding: 16px;
-    text-align: center;
-  }
-  .metric-card .num {
-    font-size: 22px;
-    font-weight: 510;
-    color: var(--accent);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-  .metric-card .label {
-    font-size: 12px;
-    color: var(--text-quaternary);
-    margin-top: 2px;
-    font-weight: 400;
-  }
+ .metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+ }
+ .metric-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+ }
+ .metric-card .num {
+  font-size: 22px;
+  font-weight: 510;
+  color: var(--accent);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+ }
+ .metric-card .label {
+  font-size: 12px;
+  color: var(--text-quaternary);
+  margin-top: 2px;
+  font-weight: 400;
+ }
 
-  .lesson-box {
-    background: var(--green-bg);
-    border: 1px solid rgba(16,185,129,0.15);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin-top: 20px;
-  }
-  .lesson-box .lesson-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--green);
-    margin-bottom: 4px;
-  }
-  .lesson-box p { font-size: 14px; margin-bottom: 0; }
+ .lesson-box {
+  background: var(--green-bg);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-top: 20px;
+ }
+ .lesson-box .lesson-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  margin-bottom: 4px;
+ }
+ .lesson-box p { font-size: 14px; margin-bottom: 0; }
 
-  .fail-box {
-    background: var(--rose-bg);
-    border: 1px solid rgba(251,113,133,0.15);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin-top: 20px;
-  }
-  .fail-box .lesson-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--rose);
-    margin-bottom: 4px;
-  }
-  .fail-box p { font-size: 14px; margin-bottom: 0; }
+ .fail-box {
+  background: var(--rose-bg);
+  border: 1px solid rgba(251,113,133,0.15);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-top: 20px;
+ }
+ .fail-box .lesson-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rose);
+  margin-bottom: 4px;
+ }
+ .fail-box p { font-size: 14px; margin-bottom: 0; }
 
-  /* ===== LESSONS CROSS-CUTTING ===== */
-  .lesson-cross {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 28px;
-    margin-bottom: 16px;
-  }
-  .lesson-cross:last-child { margin-bottom: 0; }
-  .lesson-cross h3 {
-    font-size: 18px;
-    font-weight: 510;
-    letter-spacing: -0.16px;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-  }
-  .lesson-cross .applied-in {
-    font-size: 13px;
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .lesson-cross p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+ /* ===== LESSONS CROSS-CUTTING ===== */
+ .lesson-cross {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 16px;
+ }
+ .lesson-cross:last-child { margin-bottom: 0; }
+ .lesson-cross h3 {
+  font-size: 18px;
+  font-weight: 510;
+  letter-spacing: -0.16px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+ }
+ .lesson-cross .applied-in {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 500;
+ }
+ .lesson-cross p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
 
-  /* ===== CLOSING ===== */
-  .closing {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .closing h2 { margin-bottom: 16px; }
-  .closing p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
-  .closing .sticky-line {
-    font-size: 18px;
-    font-weight: 510;
-    color: var(--text-primary);
-    letter-spacing: -0.16px;
-    margin-top: 24px;
-    padding: 16px 24px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: rgba(255,255,255,0.01);
-  }
+ /* ===== CLOSING ===== */
+ .closing {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+ }
+ .closing h2 { margin-bottom: 16px; }
+ .closing p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+ .closing .sticky-line {
+  font-size: 18px;
+  font-weight: 510;
+  color: var(--text-primary);
+  letter-spacing: -0.16px;
+  margin-top: 24px;
+  padding: 16px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.01);
+ }
 
-  /* ===== FOOTER ===== */
-  footer {
-    text-align: center;
-    padding: 40px 0;
-    border-top: 1px solid var(--border-subtle);
-    font-size: 13px;
-    color: var(--text-quaternary);
-  }
-  footer a { color: var(--text-tertiary); text-decoration: none; }
-  footer a:hover { color: var(--accent); }
+ /* ===== FOOTER ===== */
+ footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-quaternary);
+ }
+ footer a { color: var(--text-tertiary); text-decoration: none; }
+ footer a:hover { color: var(--accent); }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 640px) {
-    .hero { padding: 64px 0 48px; }
-    .hero h1 { font-size: 32px; letter-spacing: -0.704px; }
-    section { padding: 48px 0; }
-    .project { padding: 24px; }
-    .metrics-grid { grid-template-columns: 1fr 1fr; }
-    .philosophy-block { padding: 24px; }
-  }
+ /* ===== RESPONSIVE ===== */
+ @media (max-width: 640px) {
+  .hero { padding: 64px 0 48px; }
+  .hero h1 { font-size: 32px; letter-spacing: -0.704px; }
+  section { padding: 48px 0; }
+  .project { padding: 24px; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .philosophy-block { padding: 24px; }
+ }
 </style>
 </head>
 <body>
@@ -539,43 +541,43 @@
 
 <!-- SIDEBAR (desktop) -->
 <aside class="sidebar">
-  <a href="#" class="logo">Dustin Felderhoff</a>
-  <div class="nav-links">
-    <a href="#about" class="active">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#lessons">Lessons</a>
-    <a href="#contact">Contact</a>
-    <a href="apply.html">Apply</a>
-  </div>
-  <a href="#" class="nav-cta">Resume</a>
+ <a href="#" class="logo">Dustin Felderhoff</a>
+ <div class="nav-links">
+  <a href="#about" class="active">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#lessons">Lessons</a>
+  <a href="#contact">Contact</a>
+  <a href="apply.html">Apply</a>
+ </div>
+ <a href="resume.pdf" class="nav-cta" download>Resume</a>
 </aside>
 
 <!-- BOTTOM NAV (mobile) -->
 <nav class="bottom-nav">
-  <a href="#about" class="active">
-    <span class="nav-icon">&#9883;</span>
-    About
-  </a>
-  <a href="#projects">
-    <span class="nav-icon">&#9881;</span>
-    Projects
-  </a>
-  <a href="#lessons">
-    <span class="nav-icon">&#9998;</span>
-    Lessons
-  </a>
-  <a href="#contact">
-    <span class="nav-icon">&#9993;</span>
-    Contact
-  </a>
-  <a href="#">
-    <span class="nav-icon">&#128196;</span>
-    Resume
-  </a>
-  <a href="apply.html">
-    <span class="nav-icon">&#128221;</span>
-    Apply
-  </a>
+ <a href="#about" class="active">
+  <span class="nav-icon">&#9883;</span>
+  About
+ </a>
+ <a href="#projects">
+  <span class="nav-icon">&#9881;</span>
+  Projects
+ </a>
+ <a href="#lessons">
+  <span class="nav-icon">&#9998;</span>
+  Lessons
+ </a>
+ <a href="#contact">
+  <span class="nav-icon">&#9993;</span>
+  Contact
+ </a>
+ <a href="resume.pdf" download>
+   <span class="nav-icon">&#128196;</span>
+   Resume
+ </a>
+ <a href="apply.html">
+  <span class="nav-icon">&#128221;</span>
+  Apply
+ </a>
 </nav>
 
 <!-- MAIN CONTENT -->
@@ -583,452 +585,529 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-avatar">
-      <img src="profile-photo.jpg" alt="Dustin Felderhoff" width="120" height="120">
-    </div>
-    <h1>I build tools that let people be successful.</h1>
-    <p class="subtitle">
-      Started in manufacturing, now building agentic AI systems — from the first ChatGPT enterprise workflow in 2022 to autonomous multi-agent orchestration. The same question drives everything: <em style="color:var(--text-secondary)">how do I build something that makes the person using it more capable?</em>
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">See the projects →</a>
-      <a href="mailto:dustin.felderhoff@gmail.com" class="btn-ghost">dustin.felderhoff@gmail.com</a>
-    </div>
-    <div class="hero-meta">
-      <span>📍 Denver, CO</span>
-      <span>🔧 Sr PM — Charter Communications</span>
-      <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank">LinkedIn →</a>
-      <a href="https://dustinfelderhoff.github.io/portfolio/" target="_blank">GitHub Pages</a>
-    </div>
+ <div class="container">
+  <div class="hero-avatar">
+   <img src="profile-photo.jpg" alt="Dustin Felderhoff" width="120" height="120">
   </div>
+  <h1>I build tools that let people be successful.</h1>
+  <p class="subtitle">
+   Started in manufacturing, now building agentic AI systems. From the first ChatGPT enterprise workflow in 2022 to autonomous multi-agent orchestration. The same question drives everything: <em style="color:var(--text-secondary)">how do I build something that makes the person using it more capable?</em>
+  </p>
+  <div class="hero-actions">
+   <a href="#projects" class="btn-primary">See the projects →</a>
+   <a href="mailto:dustin.felderhoff@gmail.com" class="btn-ghost">dustin.felderhoff@gmail.com</a>
+  </div>
+  <div class="hero-meta">
+   <span>📍 Denver, CO</span>
+   <span>🔧 Sr PM. Charter Communications</span>
+   <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank">LinkedIn →</a>
+   <a href="https://dustinfelderhoff.github.io/portfolio/" target="_blank">GitHub Pages</a>
+  </div>
+ </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <h2>About Me</h2>
-    <div class="section-desc">Not a bullet-point bio — the short version of what drives me.</div>
-    <div class="about-grid">
-      <div class="about-avatar"><img src="profile-photo.jpg" alt="Dustin Felderhoff" width="80" height="80"></div>
-      <div class="about-content">
-        <p>
-          I've been a product manager for 13 years — SaaS, AI, enterprise. The thread that connects everything is building tools that let other people do their best work. Started in manufacturing, designing production lines where operators could produce great output without fighting the system. That same instinct drives every product I've touched since.
-        </p>
-        <p>
-          Right now I'm deep in agentic AI. I built one of the first ChatGPT enterprise workflows in 2022, a full-stack AI storytelling platform on my own time, and a production-grade multi-agent orchestration system. The projects change, but the question stays the same.
-        </p>
-        <p>
-          Outside work: new dad. Midwestern family in Texas, wife's family in Florida. Story Sundays exists because I want my son to hear his grandmother's voice when he's older — the way she told a story, not just the words on a screen.
-        </p>
-        <div class="signature-line">
-          "I don't want to inherit your roadmap. I want to find where you're behind and close the gap."
-        </div>
-      </div>
+ <div class="container">
+  <h2>About Me</h2>
+  <div class="section-desc">Not a bullet-point bio. Here's Here's the short version.</div>
+  <div class="about-grid">
+   <div class="about-avatar"><img src="profile-photo.jpg" alt="Dustin Felderhoff" width="80" height="80"></div>
+   <div class="about-content">
+    <p>
+     I've been a product manager for 13 years across SaaS, AI, and enterprise. The thread that connects everything is building tools that let other people do their best work. Started in manufacturing, designing production lines where operators could produce great output without fighting the system. That same instinct drives every product I've touched since.
+    </p>
+    <p>
+     Right now I'm deep in agentic AI. I built one of the first ChatGPT enterprise workflows in 2022, a full-stack AI storytelling platform on my own time, and a multi-agent orchestration system. The projects change, but the question stays the same.
+    </p>
+    <p>
+     Outside work: new dad. Midwestern family in Texas, wife's family in Florida. Story Sundays exists because I want my son to hear his grandmother's voice when he's older. Not just the words on a screen, but how she told a story., not just the words on a screen.
+    </p>
+    <div class="signature-line">
+     "I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap."
     </div>
+   </div>
   </div>
+ </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <h2>Agentic AI Projects</h2>
-    <div class="section-desc">Real systems I've built, with the wins and the scars. Each one follows: the problem, what I did, what happened, and what I learned.</div>
+ <div class="container">
+  <h2>Agentic AI Projects</h2>
+  <div class="section-desc">Real systems I've built, including the ones that went sideways. Each one covers what I was trying to solve, what I built, and what I learned.</div>
 
-    <!-- PROJECT 1: Story Sundays -->
-    <div class="project">
-      <div class="project-header">
-        <h3>Story Sundays</h3>
-        <span class="badge badge-ai">Agentic AI</span>
-        <span class="badge badge-ship">Shipping</span>
-      </div>
-      <div class="project-subtitle">Local-first AI family storytelling platform · React 19 + Vite 8 + Cloudflare Workers + Supabase</div>
+  <!-- PROJECT 1: Story Sundays -->
+  <div class="project">
+   <div class="project-header">
+    <h3>Story Sundays</h3>
+    <span class="badge badge-ai">Agentic AI</span>
+    <span class="badge badge-ship">Shipping</span>
+   </div>
+   <div class="project-subtitle">A full-stack storytelling platform for my son and his grandparents. React 19, Cloudflare Workers, Supabase.</div>
 
-      <div class="case-problem">
-        <div class="case-label"><strong>Challenge</strong></div>
-        <p>My son was born. Grandparents in Texas and Florida had no way to share stories and videos that felt personal, safe, and permanent. Social media meant data leakage, algorithm feeds, and zero ownership. The gap: a private space where AI enhances family storytelling without exposing it outside a closed circle.</p>
-      </div>
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>My son was born. Grandparents in Texas and Florida had no way to share stories and videos that felt personal, safe, and permanent. Social media meant data leakage, algorithm feeds, and zero ownership. What I needed most: a private space where AI could enhance family storytelling without leaking anything outside the family circle.</p>
+   </div>
 
-      <div class="case-process">
-        <div class="case-label"><strong>Process</strong></div>
-        <p>Built a full-stack platform from scratch — React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for media storage. The architecture uses a gated TDD pipeline (unit → hooks → integration → e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
-      </div>
+   <div class="case-process">
+    <div class="case-label"><strong>Process</strong></div>
+    <p>Built a full-stack platform from scratch. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for media storage. The architecture uses a gated TDD pipeline (unit → hooks → integration → e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
+   </div>
 
-      <div class="case-outcome">
-        <div class="case-label"><strong>Outcome</strong></div>
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="num">100%</div>
-            <div class="label">Gated TDD pipeline adoption</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">3</div>
-            <div class="label">Test layers (unit → hooks → int → e2e)</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">Zero</div>
-            <div class="label">Data leakage — fully private</div>
-          </div>
-        </div>
-
-        <ul class="tech-list">
-          <li>React 19 + Vite 8</li>
-          <li>TypeScript</li>
-          <li>Cloudflare Workers</li>
-          <li>Supabase / Postgres + RLS</li>
-          <li>R2 Storage</li>
-          <li>Playwright E2E</li>
-          <li>TDD Pipeline</li>
-        </ul>
-
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>A green test suite is not proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite — 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
-        </div>
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails: root cause first, research the exact error with real version numbers, evaluate each candidate for credibility and blast radius, then apply. Never retry the same error twice without research. This killed the thrash loop problem — the wasted "try X, fail, try Y, fail, try Z" pattern that costs hours.</p>
-        </div>
-      </div>
+   <div class="case-outcome">
+    <div class="case-label"><strong>Outcome</strong></div>
+    <div class="metrics-grid">
+     <div class="metric-card">
+      <div class="num">100%</div>
+      <div class="label">Gated TDD pipeline adoption</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">3</div>
+      <div class="label">Test layers (unit → hooks → int → e2e)</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">Zero</div>
+      <div class="label">Data leakage, fully private</div>
+     </div>
     </div>
 
-    <!-- PROJECT 2: Sub-Agent Orchestration -->
-    <div class="project">
-      <div class="project-header">
-        <h3>Autonomous Sub-Agent Orchestration System</h3>
-        <span class="badge badge-ai">Agentic AI</span>
-        <span class="badge badge-infra">System Design</span>
-      </div>
-      <div class="project-subtitle">Production-grade multi-agent orchestration with 4 specialized personas, routing logic, and fail-fast boundaries</div>
+    <ul class="tech-list">
+     <li>React 19 + Vite 8</li>
+     <li>TypeScript</li>
+     <li>Cloudflare Workers</li>
+     <li>Supabase / Postgres + RLS</li>
+     <li>R2 Storage</li>
+     <li>Playwright E2E</li>
+     <li>TDD Pipeline</li>
+    </ul>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);">Private repo. Architecture documented in the gated TDD pipeline.</p>
 
-      <div class="case-problem">
-        <div class="case-label"><strong>Challenge</strong></div>
-        <p>Agent systems that let sub-agents do everything eventually break in unpredictable ways. A researcher with filesystem access overwrites config files. An implementer with web search goes down rabbit holes. The gap: a routing system where agents have strict boundaries, handoff contracts are enforced, and the parent verifies every artifact the child claims to have produced.</p>
-      </div>
-
-      <div class="case-process">
-        <div class="case-label"><strong>Process</strong></div>
-        <p>Designed four specialized sub-agent personas — researcher, implementer, architect, operator — each with its own toolset whitelist, max iterations, blocked actions, and trigger keywords. Built a routing decision tree that determines whether to handle a task natively, delegate to a single specialist, or orchestrate a mixed workflow. Every delegation boundary follows a handoff contract: the parent sends a self-contained goal + context + toolset, the child returns summary + errors + artifacts + verification, and the parent independently verifies every side effect.</p>
-      </div>
-
-      <div class="case-outcome">
-        <div class="case-label"><strong>Outcome</strong></div>
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="num">4</div>
-            <div class="label">Specialized agent personas</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">65</div>
-            <div class="label">Tools audited across 26 toolsets</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">Zero</div>
-            <div class="label">Unverified artifact incidents since shipping</div>
-          </div>
-        </div>
-
-        <ul class="tech-list">
-          <li>Hermes Agent SDK</li>
-          <li>Delegation API</li>
-          <li>Sub-agent Personas</li>
-          <li>Routing Decision Tree</li>
-          <li>Handoff Contracts</li>
-        </ul>
-
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file or ran a command, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification is not optional — it's the architecture.</p>
-        </div>
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>Tool boundaries are the architecture.</strong> The most important design decision wasn't what each agent <em>could</em> do — it was what each agent <em>couldn't</em> do. Blocking the wrong tools prevents entire failure classes. A researcher with filesystem access will eventually overwrite something. An implementer with web search will go down rabbit holes. The boundaries define the system.</p>
-        </div>
-      </div>
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>A green test suite is not proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite. 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
     </div>
-
-    <!-- PROJECT 3: Invoice Parser -->
-    <div class="project">
-      <div class="project-header">
-        <h3>Invoice Parser — Intelligent Audit</h3>
-        <span class="badge badge-ai">Agentic AI</span>
-        <span class="badge badge-ship">Zero-to-One</span>
-        <span class="badge badge-fail">Failure Story</span>
-      </div>
-      <div class="project-subtitle">First ChatGPT enterprise workflow in 2022 · Python + Prompt Engineering</div>
-
-      <div class="case-problem">
-        <div class="case-label"><strong>Challenge</strong></div>
-        <p>In 2022, our audit operation sent PDF invoices to India to be typed into Excel spreadsheets by hand. Error-prone. Auditors spent 30 hours a week reconciling mistakes. Customer feedback loop was measured in days. ChatGPT had just launched — unproven in enterprise, especially on structured financial data.</p>
-      </div>
-
-      <div class="case-process">
-        <div class="case-label"><strong>Process</strong></div>
-        <p>Built a ChatGPT-based parser that knew the expected values for each invoice field and extracted them into audit-ready data automatically. Designed prompt/skill system so the model understood expected value ranges and could flag anomalies. One of the earliest enterprise LLM deployments — no playbook existed.</p>
-        <p>Then I shipped it without training the ops team on the exception workflow. Within two weeks they were flagging every edge case manually. No trust in the AI output. The system was technically correct but operationally broken.</p>
-      </div>
-
-      <div class="case-outcome">
-        <div class="case-label"><strong>Outcome</strong></div>
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="num">30 hrs/wk</div>
-            <div class="label">Audit time recovered</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">Days → Hours</div>
-            <div class="label">Customer feedback loop</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">Zero</div>
-            <div class="label">Manual data-entry errors (post-fix)</div>
-          </div>
-        </div>
-
-        <ul class="tech-list">
-          <li>ChatGPT / GPT-3.5</li>
-          <li>Python</li>
-          <li>Prompt Engineering</li>
-          <li>PDF Data Extraction</li>
-          <li>Audit Automation</li>
-        </ul>
-
-        <div class="fail-box">
-          <div class="lesson-label">Hard Lesson — The Fix</div>
-          <p><strong>Building the right tool isn't enough. The people using it have to trust it.</strong> I had to pull the automation back, run three hands-on training sessions with the India team, and redesign the exception workflow with their input. The second launch stuck. Trust took longer to build than the software.</p>
-        </div>
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>Leading the tip of AI means being wrong first.</strong> No one had done this before. The skepticism was warranted. What made it work wasn't the technology — it was iterating on the human workflow around it until trust caught up with capability.</p>
-        </div>
-      </div>
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails: root cause first, research the exact error with real version numbers, evaluate each candidate for credibility and blast radius, then apply. Never retry the same error twice without research. This killed the thrash loop problem: the wasted "try X, fail, try Y, fail, try Z" pattern that costs hours.</p>
     </div>
-
-    <!-- PROJECT 4: System Architecture -->
-    <div class="project">
-      <div class="project-header">
-        <h3>System Architecture Optimization & Context Lifecycle</h3>
-        <span class="badge badge-ai">Agentic AI</span>
-        <span class="badge badge-infra">Infrastructure</span>
-      </div>
-      <div class="project-subtitle">Four-pillar optimization of a production agent runtime · 65 tools, 26 toolsets</div>
-
-      <div class="case-problem">
-        <div class="case-label"><strong>Challenge</strong></div>
-        <p>A production agent system with 65 tools across 26 toolsets. Context was ballooning, memory was hitting caps, and the system had no automated way to decide what to keep, what to learn, and what to throw away. Without a protocol, every session started fresh — repeating the same mistakes.</p>
-      </div>
-
-      <div class="case-process">
-        <div class="case-label"><strong>Process</strong></div>
-        <p>Ran a comprehensive architecture audit across four pillars: (1) tool schema refactoring — trimmed verbose descriptions to save token budget, proposed 4 new tool types; (2) context compression & memory decay — built a retention-class system (CRITICAL / DURABLE / SESSION / EPHEMERAL) that auto-decides what to keep and compress at 85% capacity; (3) pre-execution guardrails — 4 silent checks run before every tool call (shell safety, file safety, delegation integrity, sequence integrity); (4) sub-agent orchestration — the routing system described above.</p>
-      </div>
-
-      <div class="case-outcome">
-        <div class="case-label"><strong>Outcome</strong></div>
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="num">4</div>
-            <div class="label">Optimization pillars delivered</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">85%</div>
-            <div class="label">Memory cap auto-compression threshold</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">4</div>
-            <div class="label">Pre-execution guardrail checks</div>
-          </div>
-        </div>
-
-        <ul class="tech-list">
-          <li>Tool Schema Design</li>
-          <li>Context Compression</li>
-          <li>Memory Decay Protocol</li>
-          <li>Pre-Execution Guardrails</li>
-          <li>Retention Classification</li>
-        </ul>
-
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>Context management is the unsexy bottleneck of every agentic system.</strong> The difference between a tool that works reliably and one that drifts into loops is how well it manages its own context. The retention-class system taught me that most "memory" problems are classification problems — if you know what to keep, what to learn as a skill, and what to throw away, context collapse becomes rare instead of inevitable.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 5: Job Application Engine -->
-    <div class="project">
-      <div class="project-header">
-        <h3>Autonomous Job Application Pipeline</h3>
-        <span class="badge badge-ai">Agentic AI</span>
-        <span class="badge badge-ship">Automation</span>
-      </div>
-      <div class="project-subtitle">End-to-end agentic pipeline: discovery → scoring → deep research → voice-captured submission</div>
-
-      <div class="case-problem">
-        <div class="case-label"><strong>Challenge</strong></div>
-        <p>Job hunting is a data problem: hundreds of roles, scattered sources, variable quality, and every application needs to sound like a human. Generic applications don't work. The gap: a system that discovers roles, evaluates fit, researches each company's actual pain points, and generates materials that sound like one specific person.</p>
-      </div>
-
-      <div class="case-process">
-        <div class="case-label"><strong>Process</strong></div>
-        <p>Built a multi-stage pipeline: Tavily AI Search + SearXNG for discovery, a custom scoring engine with time-decay and location penalties, research sub-agents that investigate each company's competitive gaps, and a voice-of-me gate (canonical transcript → anti-ai-detection scan) that ensures every output sounds human. Single SQLite jobs.db as source of truth. Research workers discover what the company is behind on — not just JD keywords.</p>
-      </div>
-
-      <div class="case-outcome">
-        <div class="case-label"><strong>Outcome</strong></div>
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="num">120+</div>
-            <div class="label">Job alerts processed per hour</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">2</div>
-            <div class="label">Voice gates per application (voice + anti-AI)</div>
-          </div>
-          <div class="metric-card">
-            <div class="num">Real</div>
-            <div class="label">Per-company gap research, not JD mirrors</div>
-          </div>
-        </div>
-
-        <ul class="tech-list">
-          <li>Tavily AI Search</li>
-          <li>SearXNG</li>
-          <li>SQLite / jobs.db</li>
-          <li>Research Sub-agents</li>
-          <li>Voice-of-Me Gate</li>
-          <li>Anti-AI Detection</li>
-          <li>Gmail API</li>
-        </ul>
-
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>Voice is the hardest thing to automate, and it's the most important thing to get right.</strong> The pipeline can generate a technically perfect letter that still reads like AI. The voice-of-me skill (built from a canonical transcript of how I actually talk) plus anti-ai-detection (catches structural tells like space-dash-space, balanced paragraphs) turned out to be the most valuable components — not the scoring engine. Every piece of copy must pass both gates, in order, or it doesn't ship.</p>
-        </div>
-        <div class="lesson-box">
-          <div class="lesson-label">Lesson Learned</div>
-          <p><strong>A pipeline with no feedback loop is a liability.</strong> The location penalty was supposed to downrank non-Remote jobs outside Denver. But if the scraper didn't extract the real location from the JD, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring. One layer of validation is never enough.</p>
-        </div>
-      </div>
-    </div>
+   </div>
   </div>
+
+  <!-- PROJECT 2: Sub-Agent Orchestration -->
+  <div class="project">
+    <div class="project-header">
+      <h3>Autonomous Sub-Agent Orchestration System</h3>
+      <span class="badge badge-ai">Agentic AI</span>
+      <span class="badge badge-infra">System Design</span>
+    </div>
+    <div class="project-subtitle">Four agent personas, strict handoff contracts, and a routing system that enforces boundaries.</div>
+
+    <!-- Architecture diagram -->
+    <div class="case-visual">
+      <svg viewBox="0 0 680 120" style="width:100%;max-width:680px;display:block;margin:16px 0;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="#7170ff"/>
+          </marker>
+        </defs>
+        <!-- Orchestrator -->
+        <rect x="0" y="40" width="150" height="40" rx="8" fill="rgba(113,112,255,0.18)" stroke="#7170ff" stroke-width="2"/>
+        <text x="75" y="65" text-anchor="middle" fill="#f7f8f8" font-size="13" font-family="Inter,sans-serif" font-weight="600">Orchestrator</text>
+        <!-- Lines down to agents -->
+        <line x1="75" y1="80" x2="75" y2="100" stroke="#7170ff" stroke-width="1.5"/>
+        <line x1="75" y1="100" x2="200" y2="100" stroke="#7170ff" stroke-width="1.5"/>
+        <line x1="200" y1="100" x2="200" y2="115" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <line x1="75" y1="100" x2="340" y2="100" stroke="#7170ff" stroke-width="1.5"/>
+        <line x1="340" y1="100" x2="340" y2="115" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <line x1="75" y1="100" x2="480" y2="100" stroke="#7170ff" stroke-width="1.5"/>
+        <line x1="480" y1="100" x2="480" y2="115" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <line x1="75" y1="100" x2="620" y2="100" stroke="#7170ff" stroke-width="1.5"/>
+        <line x1="620" y1="100" x2="620" y2="115" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <!-- Agent boxes -->
+        <rect x="145" y="115" width="110" height="36" rx="6" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="1.5"/>
+        <text x="200" y="137" text-anchor="middle" fill="#d0d6e0" font-size="11" font-family="Inter,sans-serif">Researcher</text>
+        <rect x="285" y="115" width="110" height="36" rx="6" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="340" y="137" text-anchor="middle" fill="#d0d6e0" font-size="11" font-family="Inter,sans-serif">Implementer</text>
+        <rect x="425" y="115" width="110" height="36" rx="6" fill="rgba(34,211,238,0.12)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="480" y="137" text-anchor="middle" fill="#d0d6e0" font-size="11" font-family="Inter,sans-serif">Architect</text>
+        <rect x="565" y="115" width="110" height="36" rx="6" fill="rgba(251,113,133,0.12)" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="620" y="137" text-anchor="middle" fill="#d0d6e0" font-size="11" font-family="Inter,sans-serif">Operator</text>
+      </svg>
+    </div>
+
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>Agent systems that let sub-agents do everything eventually break in unpredictable ways. A researcher with filesystem access overwrites config files. An implementer with web search goes down rabbit holes. What I needed: a routing system where agents have strict boundaries, handoff contracts are enforced, and the parent verifies every artifact the child claims to have produced.</p>
+   </div>
+
+   <div class="case-process">
+    <div class="case-label"><strong>Process</strong></div>
+    <p>Designed four specialized sub-agent personas: researcher, implementer, architect, operator, each with its own toolset whitelist, max iterations, blocked actions, and trigger keywords. Built a routing decision tree that determines whether to handle a task natively, delegate to a single specialist, or orchestrate a mixed workflow. Every delegation boundary follows a handoff contract: the parent sends a self-contained goal + context + toolset, the child returns summary + errors + artifacts + verification, and the parent independently verifies every side effect.</p>
+   </div>
+
+   <div class="case-outcome">
+    <div class="case-label"><strong>Outcome</strong></div>
+    <div class="metrics-grid">
+     <div class="metric-card">
+      <div class="num">4</div>
+      <div class="label">Specialized agent personas</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">65</div>
+      <div class="label">Tools audited across 26 toolsets</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">Zero</div>
+      <div class="label">Unverified artifact incidents since shipping</div>
+     </div>
+    </div>
+
+    <ul class="tech-list">
+     <li>Hermes Agent SDK</li>
+     <li>Delegation API</li>
+     <li>Sub-agent Personas</li>
+     <li>Routing Decision Tree</li>
+     <li>Handoff Contracts</li>
+    </ul>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="https://hermes-agent.nousresearch.com/docs" target="_blank" style="color:var(--accent);">Hermes Agent documentation →</a></p>
+
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file or ran a command, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification is not optional. It's the architecture.</p>
+    </div>
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>Tool boundaries are the architecture.</strong> The most important design decision wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. Blocking the wrong tools prevents entire failure classes. A researcher with filesystem access will eventually overwrite something. An implementer with web search will go down rabbit holes. The boundaries define the system.</p>
+    </div>
+   </div>
+  </div>
+
+  <!-- PROJECT 3: Invoice Parser -->
+  <div class="project">
+   <div class="project-header">
+    <h3>Invoice Parser : Intelligent Audit</h3>
+    <span class="badge badge-ai">Agentic AI</span>
+    <span class="badge badge-ship">Zero-to-One</span>
+    <span class="badge badge-fail">Failure Story</span>
+   </div>
+   <div class="project-subtitle">The one that taught me trust matters more than technology. ChatGPT + Python in an enterprise audit in 2022.</div>
+
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>In 2022, our audit operation sent PDF invoices to India to be typed into Excel spreadsheets by hand. Error-prone. Auditors spent 30 hours a week reconciling mistakes. Customer feedback loop was measured in days. ChatGPT had just launched, unproven in enterprise, especially on structured financial data.</p>
+   </div>
+
+   <div class="case-process">
+    <div class="case-label"><strong>Process</strong></div>
+    <p>Built a ChatGPT-based parser that knew the expected values for each invoice field and extracted them into audit-ready data automatically. Designed prompt/skill system so the model understood expected value ranges and could flag anomalies. One of the earliest enterprise LLM deployments, and no playbook existed.</p>
+    <p>Then I shipped it without training the ops team on the exception workflow. Within two weeks they were flagging every edge case manually. No trust in the AI output. The system was technically correct but operationally broken.</p>
+   </div>
+
+   <div class="case-outcome">
+    <div class="case-label"><strong>Outcome</strong></div>
+    <div class="metrics-grid">
+     <div class="metric-card">
+      <div class="num">30 hrs/wk</div>
+      <div class="label">Audit time recovered</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">Days → Hours</div>
+      <div class="label">Customer feedback loop</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">Zero</div>
+      <div class="label">Manual data-entry errors (post-fix)</div>
+     </div>
+    </div>
+
+    <ul class="tech-list">
+     <li>ChatGPT / GPT-3.5</li>
+     <li>Python</li>
+     <li>Prompt Engineering</li>
+     <li>PDF Data Extraction</li>
+     <li>Audit Automation</li>
+    </ul>
+
+    <div class="fail-box">
+     <div class="lesson-label">Hard Lesson. The Fix</div>
+     <p><strong>Building the right tool isn't enough. The people using it have to trust it.</strong> I had to pull the automation back, run three hands-on training sessions with the India team, and redesign the exception workflow with their input. The second launch stuck. Trust took longer to build than the software.</p>
+    </div>
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>Leading the tip of AI means being wrong first.</strong> No one had done this before. The skepticism was warranted. What made it work wasn't the technology. It was iterating on the human workflow around it until trust caught up with capability.</p>
+    </div>
+   </div>
+  </div>
+
+  <!-- PROJECT 4: System Architecture -->
+  <div class="project">
+   <div class="project-header">
+    <h3>System Architecture Optimization & Context Lifecycle</h3>
+    <span class="badge badge-ai">Agentic AI</span>
+    <span class="badge badge-infra">Infrastructure</span>
+   </div>
+   <div class="project-subtitle">Tool schema refactoring, context compression, guardrails, and orchestration. A system-level audit.</div>
+
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>A production agent system with 65 tools across 26 toolsets. Context was ballooning, memory was hitting caps, and the system had no automated way to decide what to keep, what to learn, and what to throw away. Without a protocol, every session started fresh, repeating the same mistakes.</p>
+   </div>
+
+   <div class="case-process">
+    <div class="case-label"><strong>Process</strong></div>
+    <p>Ran a comprehensive architecture audit across four pillars: (1) tool schema refactoring that trimmed verbose descriptions to save token budget, proposed 4 new tool types; (2) context compression & memory decay, building a retention-class system (CRITICAL / DURABLE / SESSION / EPHEMERAL) that auto-decides what to keep and compress at 85% capacity; (3) pre-execution guardrails: 4 silent checks run before every tool call every tool call (shell safety, file safety, delegation integrity, sequence integrity); (4) sub-agent orchestration, which is the routing system described above.</p>
+   </div>
+
+   <div class="case-outcome">
+    <div class="case-label"><strong>Outcome</strong></div>
+    <div class="metrics-grid">
+     <div class="metric-card">
+      <div class="num">4</div>
+      <div class="label">Optimization pillars delivered</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">85%</div>
+      <div class="label">Memory cap auto-compression threshold</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">4</div>
+      <div class="label">Pre-execution guardrail checks</div>
+     </div>
+    </div>
+
+    <ul class="tech-list">
+     <li>Tool Schema Design</li>
+     <li>Context Compression</li>
+     <li>Memory Decay Protocol</li>
+     <li>Pre-Execution Guardrails</li>
+     <li>Retention Classification</li>
+    </ul>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="https://github.com/DustinFelderhoff/hermes-agent-self-evolution" target="_blank" style="color:var(--accent);">GitHub →</a></p>
+
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>Context management is the unsexy bottleneck of every agentic system.</strong> The difference between a tool that works reliably and one that drifts into loops is how well it manages its own context. The retention-class system taught me that most "memory" problems are classification problems. If you know what to keep, what to learn as a skill, and what to throw away, context collapse becomes rare instead of inevitable.</p>
+    </div>
+   </div>
+  </div>
+
+  <!-- PROJECT 5: Job Application Engine -->
+  <div class="project">
+    <div class="project-header">
+      <h3>Autonomous Job Application Pipeline</h3>
+      <span class="badge badge-ai">Agentic AI</span>
+      <span class="badge badge-ship">Automation</span>
+    </div>
+    <div class="project-subtitle">Discovery through voice-gated generation. 120+ jobs/hour, per-company research, zero AI tells.</div>
+
+    <!-- Pipeline flow diagram -->
+    <div class="case-visual">
+      <svg viewBox="0 0 720 80" style="width:100%;max-width:720px;display:block;margin:16px 0;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="#7170ff"/>
+          </marker>
+        </defs>
+        <!-- Stage 1: Discovery -->
+        <rect x="0" y="20" width="120" height="40" rx="6" fill="rgba(113,112,255,0.15)" stroke="#7170ff" stroke-width="1.5"/>
+        <text x="60" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Discovery</text>
+        <text x="60" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Tavily + SearXNG</text>
+        <!-- Arrow -->
+        <line x1="125" y1="40" x2="155" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Stage 2: Score -->
+        <rect x="160" y="20" width="110" height="40" rx="6" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="1.5"/>
+        <text x="215" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Score + Filter</text>
+        <text x="215" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Custom engine</text>
+        <!-- Arrow -->
+        <line x1="275" y1="40" x2="305" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Stage 3: Research -->
+        <rect x="310" y="20" width="120" height="40" rx="6" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="370" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Deep Research</text>
+        <text x="370" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Competitive gaps</text>
+        <!-- Arrow -->
+        <line x1="435" y1="40" x2="465" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Stage 4: Voice Gate -->
+        <rect x="470" y="12" width="120" height="56" rx="6" fill="rgba(251,113,133,0.12)" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="530" y="35" text-anchor="middle" fill="#f7f8f8" font-size="12" font-family="Inter,sans-serif" font-weight="600">Voice Gate</text>
+        <text x="530" y="48" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Voice → Humanizer</text>
+        <text x="530" y="60" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">2-pass check</text>
+        <!-- Arrow -->
+        <line x1="595" y1="40" x2="625" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <!-- Stage 5: Submit -->
+        <rect x="630" y="20" width="90" height="40" rx="6" fill="rgba(34,211,238,0.12)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="675" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Submit</text>
+        <text x="675" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Gmail + Ashby</text>
+      </svg>
+    </div>
+
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>Job hunting is a data problem: hundreds of roles, scattered sources, variable quality, and every application needs to sound like a human. Generic applications don't work. What I built: a system that discovers roles, evaluates fit, researches each company's actual pain points, and generates materials that sound like one specific person.</p>
+   </div>
+
+   <div class="case-process">
+    <div class="case-label"><strong>Process</strong></div>
+    <p>Built a multi-stage pipeline: Tavily AI Search + SearXNG for discovery, a custom scoring engine with time-decay and location penalties, research sub-agents that investigate each company's competitive gaps, and a voice-of-me gate (canonical transcript → anti-ai-detection scan) that ensures every output sounds human. Single SQLite jobs.db as source of truth. Research workers discover what the company is behind on, not just JD keywords.</p>
+   </div>
+
+   <div class="case-outcome">
+    <div class="case-label"><strong>Outcome</strong></div>
+    <div class="metrics-grid">
+     <div class="metric-card">
+      <div class="num">120+</div>
+      <div class="label">Job alerts processed per hour</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">2</div>
+      <div class="label">Voice gates per application (voice + anti-AI)</div>
+     </div>
+     <div class="metric-card">
+      <div class="num">Real</div>
+      <div class="label">Per-company gap research, not JD mirrors</div>
+     </div>
+    </div>
+
+    <ul class="tech-list">
+     <li>Tavily AI Search</li>
+     <li>SearXNG</li>
+     <li>SQLite / jobs.db</li>
+     <li>Research Sub-agents</li>
+     <li>Voice-of-Me Gate</li>
+     <li>Anti-AI Detection</li>
+     <li>Gmail API</li>
+    </ul>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="https://career-ops.org" target="_blank" style="color:var(--accent);">Live: career-ops.org →</a> · <a href="https://github.com/DustinFelderhoff/career-ops" target="_blank" style="color:var(--accent);">GitHub →</a></p>
+
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>Voice is the hardest thing to automate, and it's the most important thing to get right.</strong> The pipeline can generate a technically perfect letter that still reads like AI. The voice-of-me skill (built from a canonical transcript of how I actually talk) plus anti-ai-detection (catches structural tells like space-dash-space, balanced paragraphs) turned out to be the most valuable components, not the scoring engine. Every piece of copy must pass both gates, in order, or it doesn't ship.</p>
+    </div>
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>A pipeline with no feedback loop is a liability.</strong> The location penalty was supposed to downrank non-Remote jobs outside Denver. But if the scraper didn't extract the real location from the JD, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring. One layer of validation is never enough.</p>
+    </div>
+   </div>
+  </div>
+ </div>
 </section>
 
 <!-- LESSONS -->
 <section id="lessons">
-  <div class="container">
-    <h2>Lessons Learned Across Projects</h2>
-    <div class="section-desc">The patterns that repeat across every system I've built. These are the things I'd tell any PM moving into agentic AI.</div>
+ <div class="container">
+  <h2>Lessons Learned Across Projects</h2>
+  <div class="section-desc">Patterns I keep seeing across every system I build. Worth knowing if you're moving into agentic AI.</div>
 
-    <div class="lesson-cross">
-      <h3>1. Trust is the bottleneck, not technology.</h3>
-      <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
-      <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated TDD pipeline because a green mocked suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency — never just better code.</p>
-    </div>
-
-    <div class="lesson-cross">
-      <h3>2. Boundaries define the system.</h3>
-      <div class="applied-in">Sub-Agent Orchestration · Context Management</div>
-      <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do — it was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. In agentic systems, exclusion is architecture.</p>
-    </div>
-
-    <div class="lesson-cross">
-      <h3>3. Never retry the same error twice without research.</h3>
-      <div class="applied-in">Story Sundays · System Architecture</div>
-      <p>The thrash loop — try X, fail, try Y, fail, try Z — is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers. Score each candidate solution for credibility (official docs > SO > AI slop). Only then apply. This killed the hours-lost-to-cycling problem cold.</p>
-    </div>
-
-    <div class="lesson-cross">
-      <h3>4. AI adoption is a change management problem disguised as a tech problem.</h3>
-      <div class="applied-in">Invoice Parser · Charter (KIRO)</div>
-      <p>When I brought ChatGPT into an enterprise audit workflow in 2022, the technology was the easy part. The hard part was getting the team to trust the output, building workflows around exceptions, and training people who had been doing it one way for years. Every AI project since has confirmed this: <strong>the value of an AI system is multiplied by how well the humans around it can use it, not by how clever the model is.</strong></p>
-    </div>
-
-    <div class="lesson-cross">
-      <h3>5. Ship before you're ready, then iterate with discipline.</h3>
-      <div class="applied-in">Invoice Parser · Story Sundays · System Architecture</div>
-      <p>The Invoice Parser shipped early and broke. Story Sundays ships through a gated pipeline with circuit breakers. The architecture optimization shipped as incremental skills and cron jobs. The pattern: <strong>ship fast enough to learn, but gate hard enough to protect the user.</strong> The gating mechanisms get more sophisticated with each project, but the first-mover advantage of being early with AI has been consistently valuable.</p>
-    </div>
-
-    <div class="lesson-cross">
-      <h3>6. Verification is not optional — not even for sub-agents.</h3>
-      <div class="applied-in">Sub-Agent Orchestration · Job Pipeline</div>
-      <p>When a sub-agent says "I wrote the file," the parent must stat it and read it back. When a research worker says "I found the data," the pipeline must verify the output format. This sounds obvious but it's the most commonly skipped step — because it's overhead, because trust is faster, because the child usually works. Until it doesn't. Verification at every handoff boundary is now a hard rule in every system I build.</p>
-    </div>
+  <div class="lesson-cross">
+   <h3>1. Trust matters more than the tech stack.</h3>
+   <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
+   <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated TDD pipeline because a green mocked suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
   </div>
+
+  <div class="lesson-cross">
+   <h3>2. Boundaries define the system.</h3>
+   <div class="applied-in">Sub-Agent Orchestration · Context Management</div>
+   <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. In agentic systems, exclusion is architecture.</p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>3. Never retry the same error twice without research.</h3>
+   <div class="applied-in">Story Sundays · System Architecture</div>
+   <p>The thrash loop: try X, fail, try Y, fail, try Z. Is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers. Score each candidate solution for credibility (official docs > SO > AI slop). Only then apply. This killed the hours-lost-to-cycling problem.</p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>4. AI adoption is really a change management problem.</h3>
+   <div class="applied-in">Invoice Parser · Charter (KIRO)</div>
+   <p>When I brought ChatGPT into an enterprise audit workflow in 2022, the technology was the easy part. The hard part was getting the team to trust the output, building workflows around exceptions, and training people who had been doing it one way for years. Every AI project since has confirmed this: <strong>the value of an AI system is multiplied by how well the humans around it can use it, not by how clever the model is.</strong></p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>5. Ship before you're ready, then iterate hard.</h3>
+   <div class="applied-in">Invoice Parser · Story Sundays · System Architecture</div>
+   <p>The Invoice Parser shipped early and broke. Story Sundays ships through a gated pipeline with circuit breakers. The architecture optimization shipped as incremental skills and cron jobs. The pattern: <strong>ship fast enough to learn, but gate hard enough to protect the user.</strong> The gating mechanisms get more sophisticated with each project, but the first-mover advantage of being early with AI has been consistently valuable.</p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>6. Verify everything, including your own sub-agents.</h3>
+   <div class="applied-in">Sub-Agent Orchestration · Job Pipeline</div>
+   <p>When a sub-agent says "I wrote the file," the parent must stat it and read it back. When a research worker says "I found the data," the pipeline must verify the output format. This sounds obvious but it's the most commonly skipped step, because it's overhead, because trust is faster, because the child usually works. Until it doesn't. Verification at every handoff boundary is now a hard rule in every system I build.</p>
+  </div>
+ </div>
 </section>
 
 <!-- CLOSING -->
 <section id="contact">
-  <div class="container">
-    <div class="closing">
-      <h2>What I'm Building Toward</h2>
-      <p>
-        I want to work at the intersection of healthcare and agentic AI — helping people improve their lives through products that <em>actually</em> ship and <em>actually</em> get used.
-      </p>
-      <p>
-        The Nymbl Science memory (watching a retirement facility resident who couldn't walk to the dining room alone make it on her own after using the program) is still the most joy I've gotten from a job. That question stuck: <strong>"How many years did I extend this patient's life? How many years did they improve upon?"</strong>
-      </p>
-      <p>
-        That's the metric that matters. Everything else is a means to that end.
-      </p>
-      <div class="sticky-line">
-        I don't want to inherit your roadmap. I want to find where you're behind and close the gap.
-      </div>
-      <div style="margin-top: 32px;">
-        <a href="mailto:dustin.felderhoff@gmail.com" class="btn-primary">dustin.felderhoff@gmail.com</a>
-        <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank" style="margin-left:12px;" class="btn-ghost">LinkedIn →</a>
-      </div>
-    </div>
-  </div>  <!-- /closing .container -->
-</section>  <!-- /#contact -->
+ <div class="container">
+  <div class="closing">
+   <h2>What I'm Building Toward</h2>
+   <p>
+    I want to work at the intersection of healthcare and agentic AI, helping people improve their lives through products that <em>actually</em> ship and <em>actually</em> get used.
+   </p>
+   <p>
+    The Nymbl Science memory (watching a retirement facility resident who couldn't walk to the dining room alone make it on her own after using the program) is still the most joy I've gotten from a job. That question stuck: <strong>"How many years did I extend this patient's life? How many years did they improve upon?"</strong>
+   </p>
+   <p>
+    That's the metric that matters to me.
+   </p>
+   <div class="sticky-line">
+    I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap.
+   </div>
+   <div style="margin-top: 32px;">
+    <a href="mailto:dustin.felderhoff@gmail.com" class="btn-primary">dustin.felderhoff@gmail.com</a>
+    <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank" style="margin-left:12px;" class="btn-ghost">LinkedIn →</a>
+   </div>
+  </div>
+ </div> <!-- /closing .container -->
+</section> <!-- /#contact -->
 
-</div>  <!-- /main-content -->
-</div>  <!-- /layout-wrap -->
+</div> <!-- /main-content -->
+</div> <!-- /layout-wrap -->
 
 <footer>
-  <div class="container">
-    <p>Dustin Felderhoff — built with the same tools I write about.</p>
-    <p style="margin-top:4px;"><a href="https://dustinfelderhoff.github.io/portfolio/">https://dustinfelderhoff.github.io/portfolio/</a></p>
-  </div>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+  <p style="margin-top:4px;"><a href="https://dustinfelderhoff.github.io/portfolio/">https://dustinfelderhoff.github.io/portfolio/</a></p>
+ </div>
 </footer>
 
 <script>
-  /* Smooth scroll for anchor links + active link highlighting */
-  const sections = document.querySelectorAll('section[id]');
-  const sidebarLinks = document.querySelectorAll('.sidebar .nav-links a');
-  const bottomLinks = document.querySelectorAll('.bottom-nav a');
+ /* Smooth scroll for anchor links + active link highlighting */
+ const sections = document.querySelectorAll('section[id]');
+ const sidebarLinks = document.querySelectorAll('.sidebar .nav-links a');
+ const bottomLinks = document.querySelectorAll('.bottom-nav a');
 
-  function setActiveLink(id) {
-    const selector = `a[href="#${id}"]`;
-    sidebarLinks.forEach(l => l.classList.remove('active'));
-    bottomLinks.forEach(l => l.classList.remove('active'));
-    const activeSidebar = document.querySelector(`.sidebar .nav-links ${selector}`);
-    const activeBottom = document.querySelector(`.bottom-nav ${selector}`);
-    if (activeSidebar) activeSidebar.classList.add('active');
-    if (activeBottom) activeBottom.classList.add('active');
-  }
+ function setActiveLink(id) {
+  const selector = `a[href="#${id}"]`;
+  sidebarLinks.forEach(l => l.classList.remove('active'));
+  bottomLinks.forEach(l => l.classList.remove('active'));
+  const activeSidebar = document.querySelector(`.sidebar .nav-links ${selector}`);
+  const activeBottom = document.querySelector(`.bottom-nav ${selector}`);
+  if (activeSidebar) activeSidebar.classList.add('active');
+  if (activeBottom) activeBottom.classList.add('active');
+ }
 
-  /* Intersection Observer for active section */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setActiveLink(entry.target.id);
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => observer.observe(s));
-
-  /* Smooth scroll on nav clicks */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id && id.startsWith('#')) {
-        const el = document.querySelector(id);
-        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-      }
-    });
+ /* Intersection Observer for active section */
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) {
+    setActiveLink(entry.target.id);
+   }
   });
+ }, { rootMargin: '-40% 0px -55% 0px' });
+ sections.forEach(s => observer.observe(s));
+
+ /* Smooth scroll on nav clicks */
+ document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+   const id = a.getAttribute('href');
+   if (id && id.startsWith('#')) {
+    const el = document.querySelector(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+   }
+  });
+ });
 </script>
 
 </body>
