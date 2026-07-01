@@ -547,7 +547,7 @@
   <a href="#projects">Projects</a>
   <a href="#lessons">Lessons</a>
   <a href="#contact">Contact</a>
-  <a href="apply.html">Apply</a>
+  <a href="apply/">Apply</a>
  </div>
  <a href="resume.pdf" class="nav-cta" download>Resume</a>
 </aside>
@@ -574,7 +574,7 @@
    <span class="nav-icon">&#128196;</span>
    Resume
  </a>
- <a href="apply.html">
+ <a href="apply/">
   <span class="nav-icon">&#128221;</span>
   Apply
  </a>
@@ -601,7 +601,7 @@
    <span>📍 Denver, CO</span>
    <span>🔧 Sr PM. Charter Communications</span>
    <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank">LinkedIn →</a>
-   <a href="https://dustinfelderhoff.github.io/portfolio/" target="_blank">GitHub Pages</a>
+   <a href="https://github.com/dustinfelderhoff" target="_blank">GitHub</a>
   </div>
  </div>
 </section>
@@ -610,7 +610,7 @@
 <section id="about">
  <div class="container">
   <h2>About Me</h2>
-  <div class="section-desc">Not a bullet-point bio. Here's Here's the short version.</div>
+  <div class="section-desc">Not a bullet-point bio. Here's the short version.</div>
   <div class="about-grid">
    <div class="about-avatar"><img src="profile-photo.jpg" alt="Dustin Felderhoff" width="80" height="80"></div>
    <div class="about-content">
@@ -621,7 +621,7 @@
      Right now I'm deep in agentic AI. I built one of the first ChatGPT enterprise workflows in 2022, a full-stack AI storytelling platform on my own time, and a multi-agent orchestration system. The projects change, but the question stays the same.
     </p>
     <p>
-     Outside work: new dad. Midwestern family in Texas, wife's family in Florida. Story Sundays exists because I want my son to hear his grandmother's voice when he's older. Not just the words on a screen, but how she told a story., not just the words on a screen.
+     Outside work: new dad. Midwestern family in Texas, wife's family in Florida. Story Sundays exists because I want my son to hear his grandmother's voice when he's older. Not just the words on a screen, but how she told a story.
     </p>
     <div class="signature-line">
      "I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap."
@@ -650,7 +650,7 @@
     <div class="case-label"><strong>Challenge</strong></div>
     <p>It started with a podcast. Someone was talking about keeping Sunday sacred. Setting one day aside for the people who matter most. That idea stuck with me.</p>
     <p>I live in Denver. My family is in Texas. My wife's family is split between Florida and St. Louis. We love them, but our son is growing up with relatives he barely gets to see. So we started something small. Every Sunday, we call a family member and ask them to tell us a story. How they met. The trips they took. What made them who they are. It became the best part of our week.</p>
-    <p>But a phone call fades. I wanted these stories to last. The tools for keeping them meant social media. Algorithm feeds. Strangers. Data leaking out. Zero ownership of my own family's memories. What I actually needed didn't exist: a private space where our family's real stories could live permanently, and where AI could help organize and transcribe them without ever leaking a word outside the family circle.</p>
+    <p>But a phone call fades. I wanted these stories to last. The tools for keeping them meant social media. Algorithm feeds. Strangers. Data leaking out. Zero ownership of my own family's memories. I wanted a private space where our family's real stories could live permanently, where AI could help organize and transcribe them without ever leaking a word outside the family circle. Nothing like that existed.</p>
    </div>
 
    <div class="case-process">
@@ -742,7 +742,7 @@
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
-    <p>Agent systems that let sub-agents do everything eventually break in unpredictable ways. A researcher with filesystem access overwrites config files. An implementer with web search goes down rabbit holes. What I needed: a routing system where agents have strict boundaries, handoff contracts are enforced, and the parent verifies every artifact the child claims to have produced.</p>
+    <p>Agent systems that let sub-agents do everything eventually break in unpredictable ways. A researcher with filesystem access overwrites config files. An implementer with web search goes down rabbit holes. I wanted a routing system where agents have strict boundaries, handoff contracts are enforced, and the parent verifies every artifact the child claims to have produced.</p>
    </div>
 
    <div class="case-process">
@@ -780,11 +780,11 @@
 
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file or ran a command, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification is not optional. It's the architecture.</p>
+     <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file or ran a command, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification isn't optional here. It's how the whole thing holds together.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Tool boundaries are the architecture.</strong> The most important design decision wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. Blocking the wrong tools prevents entire failure classes. A researcher with filesystem access will eventually overwrite something. An implementer with web search will go down rabbit holes. The boundaries define the system.</p>
+     <p><strong>Decide what each agent can't touch before you decide what it can do.</strong> The most important design decision wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. Blocking the wrong tools prevents entire failure classes. A researcher with filesystem access will eventually overwrite something, and an implementer with web search will go down rabbit holes. Locking those doors early is what kept the system predictable.</p>
     </div>
    </div>
   </div>
@@ -862,7 +862,7 @@
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Ran a comprehensive architecture audit across four pillars: (1) tool schema refactoring that trimmed verbose descriptions to save token budget, proposed 4 new tool types; (2) context compression & memory decay, building a retention-class system (CRITICAL / DURABLE / SESSION / EPHEMERAL) that auto-decides what to keep and compress at 85% capacity; (3) pre-execution guardrails: 4 silent checks run before every tool call every tool call (shell safety, file safety, delegation integrity, sequence integrity); (4) sub-agent orchestration, which is the routing system described above.</p>
+    <p>Ran a full architecture audit across four pillars: (1) tool schema refactoring that trimmed verbose descriptions to save token budget, proposed 4 new tool types; (2) context compression & memory decay, building a retention-class system (CRITICAL / DURABLE / SESSION / EPHEMERAL) that auto-decides what to keep and compress at 85% capacity; (3) pre-execution guardrails: 4 silent checks run before every tool call (shell safety, file safety, delegation integrity, sequence integrity); (4) sub-agent orchestration, which is the routing system described above.</p>
    </div>
 
    <div class="case-outcome">
@@ -893,7 +893,7 @@
 
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Context management is the unsexy bottleneck of every agentic system.</strong> The difference between a tool that works reliably and one that drifts into loops is how well it manages its own context. The retention-class system taught me that most "memory" problems are classification problems. If you know what to keep, what to learn as a skill, and what to throw away, context collapse becomes rare instead of inevitable.</p>
+     <p><strong>Most "memory" problems are really classification problems in disguise.</strong> The difference between a tool that works reliably and one that drifts into loops is how well it manages its own context. The retention-class system taught me that once you can say what to keep, what to learn as a skill, and what to throw away, context collapse becomes rare instead of inevitable.</p>
     </div>
    </div>
   </div>
@@ -1003,15 +1003,15 @@
   </div>
 
   <div class="lesson-cross">
-   <h3>2. Boundaries define the system.</h3>
+   <h3>2. What you block matters more than what you allow.</h3>
    <div class="applied-in">Sub-Agent Orchestration · Context Management</div>
-   <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. In agentic systems, exclusion is architecture.</p>
+   <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. Deciding what to leave out did more for reliability than any feature I added.</p>
   </div>
 
   <div class="lesson-cross">
    <h3>3. Never retry the same error twice without research.</h3>
    <div class="applied-in">Story Sundays · System Architecture</div>
-   <p>The thrash loop: try X, fail, try Y, fail, try Z. Is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers. Score each candidate solution for credibility (official docs > SO > AI slop). Only then apply. This killed the hours-lost-to-cycling problem.</p>
+   <p>The thrash loop, try X, fail, try Y, fail, try Z, is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers, then score each candidate solution for credibility (official docs > SO > AI slop) before you apply it. This killed the hours-lost-to-cycling problem.</p>
   </div>
 
   <div class="lesson-cross">
@@ -1043,10 +1043,7 @@
     I want to work at the intersection of healthcare and agentic AI, helping people improve their lives through products that <em>actually</em> ship and <em>actually</em> get used.
    </p>
    <p>
-    The Nymbl Science memory (watching a retirement facility resident who couldn't walk to the dining room alone make it on her own after using the program) is still the most joy I've gotten from a job. That question stuck: <strong>"How many years did I extend this patient's life? How many years did they improve upon?"</strong>
-   </p>
-   <p>
-    That's the metric that matters to me.
+    At Nymbl Science I watched a retirement facility resident who couldn't walk to the dining room alone make it there on her own after using the program. It's still the most joy I've gotten from a job, and it left me with a question I keep coming back to: <strong>how many years did I add to this patient's life, and how many of those years did they actually get to enjoy?</strong> That's the metric that matters to me.
    </p>
    <div class="sticky-line">
     I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap.
@@ -1065,7 +1062,7 @@
 <footer>
  <div class="container">
   <p>Dustin Felderhoff, built with the same tools I write about.</p>
-  <p style="margin-top:4px;"><a href="https://dustinfelderhoff.github.io/portfolio/">https://dustinfelderhoff.github.io/portfolio/</a></p>
+      <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff" target="_blank">github.com/dustinfelderhoff</a></p>
  </div>
 </footer>
 
