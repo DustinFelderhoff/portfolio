@@ -536,7 +536,6 @@
 </style>
 </head>
 <body>
-
 </head>
 <body>
 
@@ -586,6 +585,29 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
+<section id="projects">
+ <div class="container">
+  <h2>Agentic AI Projects</h2>
+  <div class="section-desc">Real systems I've built, including the ones that went sideways. Each one covers what I was trying to solve, what I built, and what I learned.</div>
+
+  <!-- PROJECT 1: Story Sundays -->
+  <div class="project">
+   <div class="project-header">
+    <h3>Story Sundays</h3>
+    <span class="badge badge-ai">Agentic AI</span>
+    <span class="badge badge-ship">Shipping</span>
+   </div>
+   <div class="project-subtitle">A private storytelling platform so my son will always hear his grandparents' voices. Built full-stack: React 19, Cloudflare Workers, Supabase.</div>
+
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>It started with a podcast. Someone was talking about keeping Sunday sacred. Setting one day aside for the people who matter most. That idea stuck with me.</p>
+    <p>I live in Denver. My family is in Texas. My wife's family is split between Florida and St. Louis. We love them, but our son is growing up with relatives he barely gets to see. So we started something small. Every Sunday, we call a family member and ask them to tell us a story. How they met. The trips they took. What made them who they are. It became the best part of our week.</p>
+    <p>But a phone call fades. I wanted these stories to last. The tools for keeping them meant social media. Algorithm feeds. Strangers. Data leaking out. Zero ownership of my own family's memories. I wanted a private space where our family's real stories could live permanently, where AI could help organize and transcribe them without ever leaking a word outside the family circle. Nothing like that existed.</p>
+   </div>
+
+   <div class="case-process">
+    <div class="case-label"><strong>Process</strong></div>
     <p>I built the platform I couldn't find. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for audio storage. Every design decision answered to the same value the ritual is built on: permanence over engagement, privacy as sacred.</p>
     <p>AI transcribes and organizes each memory, but it's fenced inside the family's contacts window. Nothing it touches can surface outside that circle. Because these recordings are irreplaceable, I refused to trust a green checkmark. The app runs a gated TDD pipeline. Unit tests, hooks tests, integration tests, e2e tests against production. Circuit breakers: if the same error repeats twice, the system stops, researches the real root cause, and escalates instead of thrashing. Three test layers catch what mocks miss, because "it worked in the test" isn't the same as "grandpa's story is safe."</p>
    </div>
@@ -921,46 +943,15 @@
  </div>
 </section>
 
-<!-- LESSONS -->
-<section id="lessons">
- <div class="container">
-  <h2>Lessons Learned Across Projects</h2>
-  <div class="section-desc">Patterns I keep seeing across every system I build. Worth knowing if you're moving into agentic AI.</div>
-
-  <div class="lesson-cross">
-   <h3>1. Trust matters more than the tech stack.</h3>
-   <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
-   <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated TDD pipeline because a green mocked suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
-  </div>
-
-  <div class="lesson-cross">
-   <h3>2. What you block matters more than what you allow.</h3>
-   <div class="applied-in">Sub-Agent Orchestration · Context Management</div>
-   <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. Deciding what to leave out did more for reliability than any feature I added.</p>
-  </div>
-
-  <div class="lesson-cross">
-   <h3>3. Never retry the same error twice without research.</h3>
-   <div class="applied-in">Story Sundays · System Architecture</div>
-   <p>The thrash loop, try X, fail, try Y, fail, try Z, is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers, then score each candidate solution for credibility (official docs > SO > AI slop) before you apply it. This killed the hours-lost-to-cycling problem.</p>
-
 </div> <!-- /main-content -->
 </div> <!-- /layout-wrap -->
 
-
-
-<script>
-/* Smooth scroll for remaining anchor links */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
- a.addEventListener('click', e => {
-  const id = a.getAttribute('href');
-  if (id && id.startsWith('#')) {
-   const el = document.querySelector(id);
-   if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-  }
- });
-});
-</script>
+<footer>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+      <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff" target="_blank">github.com/dustinfelderhoff</a></p>
+ </div>
+</footer>
 
 </body>
 </html>

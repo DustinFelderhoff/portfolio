@@ -536,7 +536,6 @@
 </style>
 </head>
 <body>
-
 </head>
 <body>
 
@@ -586,47 +585,39 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
-
-<!-- main-content closing is below -->
-<section id="projects">
+<section id="about">
  <div class="container">
-  <h2>Agentic AI Projects</h2>
-  <div class="section-desc">Real systems I've built, including the ones that went sideways. Each one covers what I was trying to solve, what I built, and what I learned.</div>
-
-  <!-- PROJECT 1: Story Sundays -->
-  <div class="project">
-   <div class="project-header">
-    <h3>Story Sundays</h3>
-    <span class="badge badge-ai">Agentic AI</span>
-    <span class="badge badge-ship">Shipping</span>
+  <h2>About Me</h2>
+  <div class="section-desc">Not a bullet-point bio. Here's the short version.</div>
+  <div class="about-grid">
+   <div class="about-avatar"><img src="profile-photo.jpg" alt="Dustin Felderhoff" width="80" height="80"></div>
+   <div class="about-content">
+    <p>
+     I've been a product manager for 13 years across SaaS, AI, and enterprise. The thread that connects everything is building tools that let other people do their best work. Started in manufacturing, designing production lines where operators could produce great output without fighting the system. That same instinct drives every product I've touched since.
+    </p>
+    <p>
+     Right now I'm deep in agentic AI. I built one of the first ChatGPT enterprise workflows in 2022, a full-stack AI storytelling platform on my own time, and a multi-agent orchestration system. The projects change, but the question stays the same.
+    </p>
+    <p>
+     Outside work: new dad. Midwestern family in Texas, wife's family in Florida. Story Sundays exists because I want my son to hear his grandmother's voice when he's older. Not just the words on a screen, but how she told a story.
+    </p>
+    <div class="signature-line">
+     "I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap."
+    </div>
    </div>
-   <div class="project-subtitle">A private storytelling platform so my son will always hear his grandparents' voices. Built full-stack: React 19, Cloudflare Workers, Supabase.</div>
-
-   <div class="case-problem">
-    <div class="case-label"><strong>Challenge</strong></div>
-    <p>It started with a podcast. Someone was talking about keeping Sunday sacred. Setting one day aside for the people who matter most. That idea stuck with me.</p>
-    <p>I live in Denver. My family is in Texas. My wife's family is split between Florida and St. Louis. We love them, but our son is growing up with relatives he barely gets to see. So we started something small. Every Sunday, we call a family member and ask them to tell us a story. How they met. The trips they took. What made them who they are. It became the best part of our week.</p>
-    <p>But a phone call fades. I wanted these stories to last. The tools for keeping them meant social media. Algorithm feeds. Strangers. Data leaking out. Zero ownership of my own family's memories. I wanted a private space where our family's real stories could live permanently, where AI could help organize and transcribe them without ever leaking a word outside the family circle. Nothing like that existed.</p>
-   </div>
-
+  </div>
+ </div>
+</section>
 
 </div> <!-- /main-content -->
 </div> <!-- /layout-wrap -->
 
-
-
-<script>
-/* Smooth scroll for remaining anchor links */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
- a.addEventListener('click', e => {
-  const id = a.getAttribute('href');
-  if (id && id.startsWith('#')) {
-   const el = document.querySelector(id);
-   if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-  }
- });
-});
-</script>
+<footer>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+      <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff" target="_blank">github.com/dustinfelderhoff</a></p>
+ </div>
+</footer>
 
 </body>
 </html>

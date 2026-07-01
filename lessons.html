@@ -536,7 +536,6 @@
 </style>
 </head>
 <body>
-
 </head>
 <body>
 
@@ -586,6 +585,29 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
+<section id="lessons">
+ <div class="container">
+  <h2>Lessons Learned Across Projects</h2>
+  <div class="section-desc">Patterns I keep seeing across every system I build. Worth knowing if you're moving into agentic AI.</div>
+
+  <div class="lesson-cross">
+   <h3>1. Trust matters more than the tech stack.</h3>
+   <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
+   <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated TDD pipeline because a green mocked suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>2. What you block matters more than what you allow.</h3>
+   <div class="applied-in">Sub-Agent Orchestration · Context Management</div>
+   <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. Deciding what to leave out did more for reliability than any feature I added.</p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>3. Never retry the same error twice without research.</h3>
+   <div class="applied-in">Story Sundays · System Architecture</div>
+   <p>The thrash loop, try X, fail, try Y, fail, try Z, is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers, then score each candidate solution for credibility (official docs > SO > AI slop) before you apply it. This killed the hours-lost-to-cycling problem.</p>
+  </div>
+
   <div class="lesson-cross">
    <h3>4. AI adoption is really a change management problem.</h3>
    <div class="applied-in">Invoice Parser · Charter (KIRO)</div>
@@ -606,46 +628,15 @@
  </div>
 </section>
 
-<!-- CLOSING -->
-<section id="contact">
- <div class="container">
-  <div class="closing">
-   <h2>What I'm Building Toward</h2>
-   <p>
-    I want to work at the intersection of healthcare and agentic AI, helping people improve their lives through products that <em>actually</em> ship and <em>actually</em> get used.
-   </p>
-   <p>
-    At Nymbl Science I watched a retirement facility resident who couldn't walk to the dining room alone make it there on her own after using the program. It's still the most joy I've gotten from a job, and it left me with a question I keep coming back to: <strong>how many years did I add to this patient's life, and how many of those years did they actually get to enjoy?</strong> That's the metric that matters to me.
-   </p>
-   <div class="sticky-line">
-    I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap.
-   </div>
-   <div style="margin-top: 32px;">
-    <a href="mailto:dustin.felderhoff@gmail.com" class="btn-primary">dustin.felderhoff@gmail.com</a>
-    <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank" style="margin-left:12px;" class="btn-ghost">LinkedIn →</a>
-   </div>
-  </div>
- </div> <!-- /closing .container -->
-</section> <!-- /#contact -->
-
-
 </div> <!-- /main-content -->
 </div> <!-- /layout-wrap -->
 
-
-
-<script>
-/* Smooth scroll for remaining anchor links */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
- a.addEventListener('click', e => {
-  const id = a.getAttribute('href');
-  if (id && id.startsWith('#')) {
-   const el = document.querySelector(id);
-   if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-  }
- });
-});
-</script>
+<footer>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+      <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff" target="_blank">github.com/dustinfelderhoff</a></p>
+ </div>
+</footer>
 
 </body>
 </html>
