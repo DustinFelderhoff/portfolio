@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dustin Felderhoff – Building Tools That Let People Be Successful</title>
+<title>Contact — Dustin Felderhoff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -549,7 +549,7 @@
   <a href="about.html">About</a>
   <a href="projects.html">Projects</a>
   <a href="lessons.html">Lessons</a>
-  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="active">Contact</a>
   <a href="apply.html">Apply</a>
  </div>
  <a href="resume.pdf" class="nav-cta" download>Resume</a>
@@ -569,7 +569,7 @@
   <span class="nav-icon">&#9998;</span>
   Lessons
  </a>
- <a href="contact.html">
+ <a href="contact.html" class="active">
   <span class="nav-icon">&#9993;</span>
   Contact
  </a>
@@ -586,27 +586,28 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
-<div class="main-content">
+</div> <!-- /main-content -->
+</div> <!-- /layout-wrap -->
 
-<section class="hero">
+<footer>
  <div class="container">
-  <div class="hero-avatar">
-   <img src="profile-photo.jpg" alt="Dustin Felderhoff" width="120" height="120">
-  </div>
-  <h1>I build tools that let people be successful.</h1>
-  <p class="subtitle">
-   Started in manufacturing, now building agentic AI systems. From the first ChatGPT enterprise workflow in 2022 to autonomous multi-agent orchestration. The same question drives everything: <em style="color:var(--text-secondary)">how do I build something that makes the person using it more capable?</em>
-  </p>
-  <div class="hero-actions">
-   <a href="projects.html" class="btn-primary">See the projects →</a>
-   <a href="mailto:dustin.felderhoff@gmail.com" class="btn-ghost">dustin.felderhoff@gmail.com</a>
-  </div>
-  <div class="hero-meta">
-   <span>📍 Denver, CO</span>
-   <span>🔧 Sr PM. Charter Communications</span>
-   <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank">LinkedIn →</a>
-   <a href="https://github.com/dustinfelderhoff" target="_blank">GitHub</a>
-  </div>
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+      <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff" target="_blank">github.com/dustinfelderhoff</a></p>
+ </div>
+</footer>
+
+<script>
+/* Smooth scroll for remaining anchor links */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+ a.addEventListener('click', e => {
+  const id = a.getAttribute('href');
+  if (id && id.startsWith('#')) {
+   const el = document.querySelector(id);
+   if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+  }
+ });
+});
+</script>
 
 </div> <!-- /main-content -->
 </div> <!-- /layout-wrap -->

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dustin Felderhoff – Building Tools That Let People Be Successful</title>
+<title>Lessons Learned — Dustin Felderhoff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -548,7 +548,7 @@
  <div class="nav-links">
   <a href="about.html">About</a>
   <a href="projects.html">Projects</a>
-  <a href="lessons.html">Lessons</a>
+  <a href="lessons.html" class="active">Lessons</a>
   <a href="contact.html">Contact</a>
   <a href="apply.html">Apply</a>
  </div>
@@ -565,7 +565,7 @@
   <span class="nav-icon">&#9881;</span>
   Projects
  </a>
- <a href="lessons.html">
+ <a href="lessons.html" class="active">
   <span class="nav-icon">&#9998;</span>
   Lessons
  </a>
@@ -586,27 +586,48 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
-<div class="main-content">
+  <div class="lesson-cross">
+   <h3>4. AI adoption is really a change management problem.</h3>
+   <div class="applied-in">Invoice Parser · Charter (KIRO)</div>
+   <p>When I brought ChatGPT into an enterprise audit workflow in 2022, the technology was the easy part. The hard part was getting the team to trust the output, building workflows around exceptions, and training people who had been doing it one way for years. Every AI project since has confirmed this: <strong>the value of an AI system is multiplied by how well the humans around it can use it, not by how clever the model is.</strong></p>
+  </div>
 
-<section class="hero">
+  <div class="lesson-cross">
+   <h3>5. The tension between speed and safety never goes away.</h3>
+   <div class="applied-in">Invoice Parser · Story Sundays · System Architecture</div>
+   <p>The Invoice Parser shipped early without the right gating. It created distrust that took weeks to undo. Story Sundays swung too far the other way: a gated pipeline that slowed learning. The pattern that emerged across projects isn't about picking one side. It's that the gating mechanisms get smarter with each project, not stricter. The Invoice Parser had no gates. Story Sundays has a gated pipeline with circuit breakers. The architecture optimization has skills and cron jobs that ship incrementally. The thing I keep relearning: <strong>ship early enough to learn what actually matters, but protect the user hard enough that they keep trusting you after.</strong></p>
+  </div>
+
+  <div class="lesson-cross">
+   <h3>6. Verify everything, including your own sub-agents.</h3>
+   <div class="applied-in">Sub-Agent Orchestration · Job Pipeline</div>
+   <p>When a sub-agent says "I wrote the file," the parent must stat it and read it back. When a research worker says "I found the data," the pipeline must verify the output format. This sounds obvious but it's the most commonly skipped step, because it's overhead, because trust is faster, because the child usually works. Until it doesn't. Verification at every handoff boundary is now a hard rule in every system I build.</p>
+  </div>
+ </div>
+</section>
+
+<!-- CLOSING -->
+<section id="contact">
  <div class="container">
-  <div class="hero-avatar">
-   <img src="profile-photo.jpg" alt="Dustin Felderhoff" width="120" height="120">
+  <div class="closing">
+   <h2>What I'm Building Toward</h2>
+   <p>
+    I want to work at the intersection of healthcare and agentic AI, helping people improve their lives through products that <em>actually</em> ship and <em>actually</em> get used.
+   </p>
+   <p>
+    At Nymbl Science I watched a retirement facility resident who couldn't walk to the dining room alone make it there on her own after using the program. It's still the most joy I've gotten from a job, and it left me with a question I keep coming back to: <strong>how many years did I add to this patient's life, and how many of those years did they actually get to enjoy?</strong> That's the metric that matters to me.
+   </p>
+   <div class="sticky-line">
+    I'm less interested in inheriting a roadmap than in finding where a team is behind and closing that gap.
+   </div>
+   <div style="margin-top: 32px;">
+    <a href="mailto:dustin.felderhoff@gmail.com" class="btn-primary">dustin.felderhoff@gmail.com</a>
+    <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank" style="margin-left:12px;" class="btn-ghost">LinkedIn →</a>
+   </div>
   </div>
-  <h1>I build tools that let people be successful.</h1>
-  <p class="subtitle">
-   Started in manufacturing, now building agentic AI systems. From the first ChatGPT enterprise workflow in 2022 to autonomous multi-agent orchestration. The same question drives everything: <em style="color:var(--text-secondary)">how do I build something that makes the person using it more capable?</em>
-  </p>
-  <div class="hero-actions">
-   <a href="projects.html" class="btn-primary">See the projects →</a>
-   <a href="mailto:dustin.felderhoff@gmail.com" class="btn-ghost">dustin.felderhoff@gmail.com</a>
-  </div>
-  <div class="hero-meta">
-   <span>📍 Denver, CO</span>
-   <span>🔧 Sr PM. Charter Communications</span>
-   <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank">LinkedIn →</a>
-   <a href="https://github.com/dustinfelderhoff" target="_blank">GitHub</a>
-  </div>
+ </div> <!-- /closing .container -->
+</section> <!-- /#contact -->
+
 
 </div> <!-- /main-content -->
 </div> <!-- /layout-wrap -->

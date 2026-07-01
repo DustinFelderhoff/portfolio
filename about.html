@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dustin Felderhoff – Building Tools That Let People Be Successful</title>
+<title>About Me — Dustin Felderhoff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -546,7 +546,7 @@
 <aside class="sidebar">
  <a href="index.html" class="logo">Dustin Felderhoff</a>
  <div class="nav-links">
-  <a href="about.html">About</a>
+  <a href="about.html" class="active">About</a>
   <a href="projects.html">Projects</a>
   <a href="lessons.html">Lessons</a>
   <a href="contact.html">Contact</a>
@@ -557,7 +557,7 @@
 
 <!-- BOTTOM NAV (mobile) -->
 <nav class="bottom-nav">
- <a href="about.html">
+ <a href="about.html" class="active">
   <span class="nav-icon">&#9883;</span>
   About
  </a>
@@ -586,27 +586,29 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
-<div class="main-content">
 
-<section class="hero">
+<!-- main-content closing is below -->
+<section id="projects">
  <div class="container">
-  <div class="hero-avatar">
-   <img src="profile-photo.jpg" alt="Dustin Felderhoff" width="120" height="120">
-  </div>
-  <h1>I build tools that let people be successful.</h1>
-  <p class="subtitle">
-   Started in manufacturing, now building agentic AI systems. From the first ChatGPT enterprise workflow in 2022 to autonomous multi-agent orchestration. The same question drives everything: <em style="color:var(--text-secondary)">how do I build something that makes the person using it more capable?</em>
-  </p>
-  <div class="hero-actions">
-   <a href="projects.html" class="btn-primary">See the projects →</a>
-   <a href="mailto:dustin.felderhoff@gmail.com" class="btn-ghost">dustin.felderhoff@gmail.com</a>
-  </div>
-  <div class="hero-meta">
-   <span>📍 Denver, CO</span>
-   <span>🔧 Sr PM. Charter Communications</span>
-   <a href="https://linkedin.com/in/dustinfelderhoff" target="_blank">LinkedIn →</a>
-   <a href="https://github.com/dustinfelderhoff" target="_blank">GitHub</a>
-  </div>
+  <h2>Agentic AI Projects</h2>
+  <div class="section-desc">Real systems I've built, including the ones that went sideways. Each one covers what I was trying to solve, what I built, and what I learned.</div>
+
+  <!-- PROJECT 1: Story Sundays -->
+  <div class="project">
+   <div class="project-header">
+    <h3>Story Sundays</h3>
+    <span class="badge badge-ai">Agentic AI</span>
+    <span class="badge badge-ship">Shipping</span>
+   </div>
+   <div class="project-subtitle">A private storytelling platform so my son will always hear his grandparents' voices. Built full-stack: React 19, Cloudflare Workers, Supabase.</div>
+
+   <div class="case-problem">
+    <div class="case-label"><strong>Challenge</strong></div>
+    <p>It started with a podcast. Someone was talking about keeping Sunday sacred. Setting one day aside for the people who matter most. That idea stuck with me.</p>
+    <p>I live in Denver. My family is in Texas. My wife's family is split between Florida and St. Louis. We love them, but our son is growing up with relatives he barely gets to see. So we started something small. Every Sunday, we call a family member and ask them to tell us a story. How they met. The trips they took. What made them who they are. It became the best part of our week.</p>
+    <p>But a phone call fades. I wanted these stories to last. The tools for keeping them meant social media. Algorithm feeds. Strangers. Data leaking out. Zero ownership of my own family's memories. I wanted a private space where our family's real stories could live permanently, where AI could help organize and transcribe them without ever leaking a word outside the family circle. Nothing like that existed.</p>
+   </div>
+
 
 </div> <!-- /main-content -->
 </div> <!-- /layout-wrap -->
