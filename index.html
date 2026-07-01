@@ -898,14 +898,14 @@
    </div>
   </div>
 
-  <!-- PROJECT 5: Job Application Engine -->
+  <!-- PROJECT 5: Career Signal Engine -->
   <div class="project">
     <div class="project-header">
-      <h3>Autonomous Job Application Pipeline</h3>
+      <h3>Career Signal Engine</h3>
       <span class="badge badge-ai">Agentic AI</span>
-      <span class="badge badge-ship">Automation</span>
+      <span class="badge badge-ship">Research + Discovery</span>
     </div>
-    <div class="project-subtitle">Discovery through voice-gated generation. 120+ jobs/hour, per-company research, zero AI tells.</div>
+    <div class="project-subtitle">An agentic research system that surfaces the right opportunities, not by applying to everything, but by finding companies with a mission worth going after.</div>
 
     <!-- Pipeline flow diagram -->
     <div class="case-visual">
@@ -915,54 +915,46 @@
             <path d="M0,0 L10,5 L0,10" fill="#7170ff"/>
           </marker>
         </defs>
-        <!-- Stage 1: Discovery -->
         <rect x="0" y="20" width="120" height="40" rx="6" fill="rgba(113,112,255,0.15)" stroke="#7170ff" stroke-width="1.5"/>
-        <text x="60" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Discovery</text>
+        <text x="60" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Signal Scan</text>
         <text x="60" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Tavily + SearXNG</text>
-        <!-- Arrow -->
         <line x1="125" y1="40" x2="155" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 2: Score -->
         <rect x="160" y="20" width="110" height="40" rx="6" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="1.5"/>
-        <text x="215" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Score + Filter</text>
-        <text x="215" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Custom engine</text>
-        <!-- Arrow -->
+        <text x="215" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Fit Filter</text>
+        <text x="215" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Mission + salary + location</text>
         <line x1="275" y1="40" x2="305" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 3: Research -->
         <rect x="310" y="20" width="120" height="40" rx="6" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.5"/>
         <text x="370" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Deep Research</text>
-        <text x="370" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Competitive gaps</text>
-        <!-- Arrow -->
+        <text x="370" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Company gaps + mission</text>
         <line x1="435" y1="40" x2="465" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 4: Voice Gate -->
         <rect x="470" y="12" width="120" height="56" rx="6" fill="rgba(251,113,133,0.12)" stroke="#fb7185" stroke-width="1.5"/>
         <text x="530" y="35" text-anchor="middle" fill="#f7f8f8" font-size="12" font-family="Inter,sans-serif" font-weight="600">Voice Gate</text>
-        <text x="530" y="48" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Voice → Humanizer</text>
-        <text x="530" y="60" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">2-pass check</text>
-        <!-- Arrow -->
+        <text x="530" y="48" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Voice of Me + Humanizer</text>
+        <text x="530" y="60" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">2-pass quality check</text>
         <line x1="595" y1="40" x2="625" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 5: Submit -->
         <rect x="630" y="20" width="90" height="40" rx="6" fill="rgba(34,211,238,0.12)" stroke="#22d3ee" stroke-width="1.5"/>
-        <text x="675" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Submit</text>
+        <text x="675" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Apply</text>
         <text x="675" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Gmail + Ashby</text>
       </svg>
     </div>
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
-    <p>Job hunting is a data problem: hundreds of roles, scattered sources, variable quality, and every application needs to sound like a human. Generic applications don't work. What I built: a system that discovers roles, evaluates fit, researches each company's actual pain points, and generates materials that sound like one specific person.</p>
+    <p>I know what I want: a company working where healthcare and agentic AI meet, with a mission that matters and a team doing real work. Finding those companies shouldn't be the hard part. But it is. Job boards bury the signal under volume. Recruiter outreach misses what I actually care about. Generic application blasts waste everyone's time. The real problem wasn't applying faster. It was finding, among hundreds of openings, the few worth pursuing and knowing enough about each one to decide if it's actually the right fit.</p>
    </div>
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Built a multi-stage pipeline: Tavily AI Search + SearXNG for discovery, a custom scoring engine with time-decay and location penalties, research sub-agents that investigate each company's competitive gaps, and a voice-of-me gate (canonical transcript → anti-ai-detection scan) that ensures every output sounds human. Single SQLite jobs.db as source of truth. Research workers discover what the company is behind on, not just JD keywords.</p>
+    <p>I built a research-first system that starts with discovery, not applications. Tavily AI Search and SearXNG scan across sources and pull in every relevant role. A custom scoring engine filters by what actually matters: mission alignment, salary floor, location, and company stage. The roles that pass aren't automatically applied to. They trigger something more valuable: deep research.</p>
+    <p>Research sub-agents investigate each company beyond the job description. They look for competitive gaps, recent funding moves, product launches, cultural signals. What's this company behind on? What are they actually shipping? The output isn't an application. It's a fit assessment. Do I actually want to work here? For the companies that pass that test, a two-pass voice gate ensures every piece of copy sounds like one specific person. Canonical voice transcript first, anti-AI-detection scan second. It doesn't ship if it doesn't pass both.</p>
    </div>
 
    <div class="case-outcome">
     <div class="case-label"><strong>Outcome</strong></div>
     <div class="metrics-grid">
      <div class="metric-card">
-      <div class="num">120+</div>
-      <div class="label">Job alerts processed per hour</div>
+      <div class="num">Signal</div>
+      <div class="label">Over noise, every role researched before action</div>
      </div>
      <div class="metric-card">
       <div class="num">2</div>
@@ -977,21 +969,21 @@
     <ul class="tech-list">
      <li>Tavily AI Search</li>
      <li>SearXNG</li>
-     <li>SQLite / jobs.db</li>
+     <li>SQLite</li>
      <li>Research Sub-agents</li>
      <li>Voice-of-Me Gate</li>
      <li>Anti-AI Detection</li>
      <li>Gmail API</li>
     </ul>
-    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="https://career-ops.org" target="_blank" style="color:var(--accent);">Live: career-ops.org →</a> · <a href="https://github.com/DustinFelderhoff/career-ops" target="_blank" style="color:var(--accent);">GitHub →</a></p>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="https://career-ops.org" target="_blank" style="color:var(--accent);">Live: career-ops.org</a> - <a href="https://github.com/DustinFelderhoff/career-ops" target="_blank" style="color:var(--accent);">GitHub</a></p>
 
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Voice is the hardest thing to automate, and it's the most important thing to get right.</strong> The pipeline can generate a technically perfect letter that still reads like AI. The voice-of-me skill (built from a canonical transcript of how I actually talk) plus anti-ai-detection (catches structural tells like space-dash-space, balanced paragraphs) turned out to be the most valuable components, not the scoring engine. Every piece of copy must pass both gates, in order, or it doesn't ship.</p>
+     <p><strong>Voice is the hardest thing to get right, and it's the only thing that matters for standing out.</strong> The system can generate a technically perfect letter that still reads like AI. The voice-of-me skill (built from a canonical transcript of how I actually talk) plus anti-AI detection turned out to be the most valuable components. The scoring engine is table stakes. The voice gate is the differentiator. Every piece of copy must pass both gates, in order, or it doesn't ship.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>A pipeline with no feedback loop is a liability.</strong> The location penalty was supposed to downrank non-Remote jobs outside Denver. But if the scraper didn't extract the real location from the JD, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring. One layer of validation is never enough.</p>
+     <p><strong>If you're applying, you haven't done enough research.</strong> The original system was built to apply faster. The breakthrough was flipping the order: research first, fit assessment second, application only if both are positive. The location penalty was supposed to downrank non-remote jobs outside Denver. But if the scraper didn't extract the real location, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring. One layer of validation is never enough.</p>
     </div>
    </div>
   </div>
