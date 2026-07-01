@@ -644,16 +644,19 @@
     <span class="badge badge-ai">Agentic AI</span>
     <span class="badge badge-ship">Shipping</span>
    </div>
-   <div class="project-subtitle">A full-stack storytelling platform for my son and his grandparents. React 19, Cloudflare Workers, Supabase.</div>
+   <div class="project-subtitle">A private storytelling platform so my son will always hear his grandparents' voices. Built full-stack: React 19, Cloudflare Workers, Supabase.</div>
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
-    <p>My son was born. Grandparents in Texas and Florida had no way to share stories and videos that felt personal, safe, and permanent. Social media meant data leakage, algorithm feeds, and zero ownership. What I needed most: a private space where AI could enhance family storytelling without leaking anything outside the family circle.</p>
+    <p>It started with a podcast. Someone was talking about keeping Sunday sacred. Setting one day aside for the people who matter most. That idea stuck with me.</p>
+    <p>I live in Denver. My family is in Texas. My wife's family is split between Florida and St. Louis. We love them, but our son is growing up with relatives he barely gets to see. So we started something small. Every Sunday, we call a family member and ask them to tell us a story. How they met. The trips they took. What made them who they are. It became the best part of our week.</p>
+    <p>But a phone call fades. I wanted these stories to last. The tools for keeping them meant social media. Algorithm feeds. Strangers. Data leaking out. Zero ownership of my own family's memories. What I actually needed didn't exist: a private space where our family's real stories could live permanently, and where AI could help organize and transcribe them without ever leaking a word outside the family circle.</p>
    </div>
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Built a full-stack platform from scratch. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for media storage. The architecture uses a gated TDD pipeline (unit → hooks → integration → e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
+    <p>I built the platform I couldn't find. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for audio storage. Every design decision answered to the same value the ritual is built on: permanence over engagement, privacy as sacred.</p>
+    <p>AI transcribes and organizes each memory, but it's fenced inside the family's contacts window. Nothing it touches can surface outside that circle. Because these recordings are irreplaceable, I refused to trust a green checkmark. The app runs a gated TDD pipeline. Unit tests, hooks tests, integration tests, e2e tests against production. Circuit breakers: if the same error repeats twice, the system stops, researches the real root cause, and escalates instead of thrashing. Three test layers catch what mocks miss, because "it worked in the test" isn't the same as "grandpa's story is safe."</p>
    </div>
 
    <div class="case-outcome">
@@ -665,7 +668,7 @@
      </div>
      <div class="metric-card">
       <div class="num">3</div>
-      <div class="label">Test layers (unit → hooks → int → e2e)</div>
+      <div class="label">Test layers (unit, hooks, int, e2e)</div>
      </div>
      <div class="metric-card">
       <div class="num">Zero</div>
@@ -686,11 +689,11 @@
 
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>A green test suite is not proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite. 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
+     <p><strong>A green test suite isn't proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked suite. Six of them, logged in the bug ledger. When the data is your father-in-law's voice, a test that passes against mocks but fails in production is worse than having none at all. It hands you false confidence. That's why the project now enforces multi-layer testing behind hard gates.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails: root cause first, research the exact error with real version numbers, evaluate each candidate for credibility and blast radius, then apply. Never retry the same error twice without research. This killed the thrash loop problem: the wasted "try X, fail, try Y, fail, try Z" pattern that costs hours.</p>
+     <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails: root cause first. Research the exact error with real version numbers, weigh each candidate fix for credibility and blast radius, then apply. Never retry the same error twice without new information. This killed the thrash loop for good.</p>
     </div>
    </div>
   </div>
@@ -744,7 +747,9 @@
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Designed four specialized sub-agent personas: researcher, implementer, architect, operator, each with its own toolset whitelist, max iterations, blocked actions, and trigger keywords. Built a routing decision tree that determines whether to handle a task natively, delegate to a single specialist, or orchestrate a mixed workflow. Every delegation boundary follows a handoff contract: the parent sends a self-contained goal + context + toolset, the child returns summary + errors + artifacts + verification, and the parent independently verifies every side effect.</p>
+    <p>Early on, I reframed what looked like an engineering problem (make the agent do more things) into a system design problem: how do you scale agent autonomy without scaling risk? A single unbounded agent with access to all 65 tools across 26 toolsets could technically complete any task. But it was operationally unaccountable. Nobody clearly owned its decisions, its boundaries weren't verifiable, and its blast radius grew with every new capability. The real product question wasn't can it act, but should it act here, and how do we trust the result?</p>
+    <p>I approached the architecture like a product spec. I started with a full audit of the 65-tool, 26-toolset surface, then defined four specialized agent personas: researcher, implementer, architect, operator. Each one got an explicit scope: a whitelisted toolset, iteration ceilings, blocked actions, and trigger conditions. This was a deliberate autonomy-versus-safety tradeoff. I chose bounded specialists over free-roaming generalists, accepting some routing overhead in exchange for predictability and a failure surface I could actually contain.</p>
+    <p>To govern how work moves through the system, I designed a routing decision tree that classifies each task as handle natively, delegate to a single specialist, or orchestrate a mixed workflow. Every handoff runs on a contract I designed after watching real failures where agents reported success on work that hadn't actually completed. The parent passes a self-contained goal, context, and toolset. The child returns a summary, errors, artifacts, and verification. Here's the critical part: the parent independently re-verifies every side effect rather than trusting the child's self-report. That parent-verifies-child pattern is the risk management backbone of the system. It assumes delegated work is unverified until proven otherwise.</p>
    </div>
 
    <div class="case-outcome">
