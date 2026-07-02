@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News - July 02, 2026 - Dustin Felderhoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08090a;
+  --bg-card: #0f1011;
+  --bg-elevated: #191a1b;
+  --bg-subtle: rgba(255,255,255,0.03);
+  --text-primary: #f7f8f8;
+  --text-secondary: #d0d6e0;
+  --text-tertiary: #8a8f98;
+  --text-quaternary: #62666d;
+  --border: rgba(255,255,255,0.08);
+  --border-subtle: rgba(255,255,255,0.05);
+  --accent: #7170ff;
+  --accent-bg: #5e6ad2;
+  --accent-hover: #828fff;
+  --green: #10b981;
+  --green-bg: rgba(16,185,129,0.1);
+  --amber: #f59e0b;
+  --amber-bg: rgba(245,158,11,0.1);
+  --rose: #fb7185;
+  --rose-bg: rgba(251,113,133,0.1);
+  --cyan: #22d3ee;
+  --cyan-bg: rgba(34,211,238,0.1);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --max-w: 960px;
+  --nav-w: 200px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv01', 'ss03';
+}
+.layout-wrap { display: flex; min-height: 100vh; }
+.sidebar {
+  position: fixed; top: 0; left: 0; width: var(--nav-w); height: 100vh;
+  z-index: 100; background: var(--bg-card);
+  border-right: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; padding: 32px 20px;
+}
+.sidebar .logo {
+  font-size: 15px; font-weight: 510; color: var(--text-primary);
+  text-decoration: none; letter-spacing: -0.01em;
+  margin-bottom: 40px; display: block;
+}
+.sidebar .nav-links { list-style: none; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.sidebar .nav-links a {
+  display: block; padding: 8px 12px; font-size: 14px; font-weight: 510;
+  color: var(--text-tertiary); text-decoration: none; border-radius: 6px;
+  transition: background 0.12s, color 0.12s;
+}
+.sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
+.sidebar .nav-links a.active { color: var(--accent); background: rgba(113,112,255,0.06); }
+.sidebar .nav-cta {
+  background: var(--accent-bg); color: #fff; text-align: center;
+  padding: 10px 14px; border-radius: 6px; font-size: 14px;
+  font-weight: 500; text-decoration: none; display: block; transition: background 0.15s;
+}
+.sidebar .nav-cta:hover { background: var(--accent-hover); }
+.main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; padding-bottom: 72px; }
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: var(--bg-card); border-top: 1px solid var(--border);
+    display: flex; justify-content: space-around; align-items: center;
+    height: 64px; padding: 0 8px 8px; backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .bottom-nav a {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    text-decoration: none; color: var(--text-quaternary); font-size: 10px;
+    font-weight: 510; padding: 6px 4px; border-radius: 6px; min-width: 48px;
+    transition: color 0.12s;
+  }
+  .bottom-nav a .nav-icon { font-size: 20px; line-height: 1; }
+  .bottom-nav a:hover { color: var(--text-primary); }
+  .bottom-nav a.active { color: var(--accent); }
+}
+@media (min-width: 769px) { .bottom-nav { display: none; } }
+
+.hero {
+  padding: 80px 0 48px; text-align: center; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; left: 50%;
+  transform: translateX(-50%); width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(113,112,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: 38px; font-weight: 510; line-height: 1.08;
+  letter-spacing: -0.836px; color: var(--text-primary);
+  margin-bottom: 12px; position: relative;
+}
+.hero .subtitle {
+  font-size: 15px; font-weight: 400; line-height: 1.6;
+  color: var(--text-tertiary); max-width: 640px;
+  margin: 0 auto; position: relative;
+}
+
+section { padding: 40px 0; }
+section + section { border-top: 1px solid var(--border-subtle); }
+
+.news-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px;
+}
+.news-section:last-child { margin-bottom: 0; }
+.news-section h3 {
+  font-size: 18px; font-weight: 590; letter-spacing: -0.2px;
+  color: var(--text-primary); margin-bottom: 6px;
+}
+.news-section .meta {
+  font-size: 12px; color: var(--text-quaternary); margin-bottom: 12px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.news-section .meta .bias {
+  display: inline-block; padding: 1px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 500;
+}
+.news-section .meta .bias-left { background: rgba(59,130,246,0.15); color: #93bbfc; }
+.news-section .meta .bias-center { background: rgba(107,114,128,0.15); color: #9ca3af; }
+.news-section .meta .bias-right { background: rgba(239,68,68,0.15); color: #fca5a5; }
+.news-section .meta .badge {
+  background: rgba(16,185,129,0.1); color: #34d399; padding: 1px 6px;
+  border-radius: 3px; font-size: 11px;
+}
+.news-section .meta .blindspot {
+  background: rgba(245,158,11,0.12); color: #fbbf24; padding: 1px 6px;
+  border-radius: 3px; font-size: 11px;
+}
+.news-section .summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px;
+}
+.news-section .why-it-matters {
+  font-size: 13px; color: var(--text-tertiary); line-height: 1.6;
+  border-left: 2px solid var(--accent); padding-left: 14px; margin-top: 8px;
+}
+.news-section .why-label {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;
+}
+
+.section-title {
+  font-size: 24px; font-weight: 590; letter-spacing: -0.36px;
+  color: var(--text-primary); margin-bottom: 20px;
+}
+
+.archive-list {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.archive-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color 0.12s;
+}
+.archive-item:hover { border-color: var(--accent); }
+.archive-item .date {
+  font-size: 13px; font-weight: 500; color: var(--text-quaternary);
+  min-width: 90px; font-family: var(--font-mono);
+}
+.archive-item .title {
+  font-size: 14px; color: var(--text-secondary); text-decoration: none;
+  flex: 1;
+}
+.archive-item .title:hover { color: var(--accent); }
+.archive-item .label {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 8px; border-radius: 3px;
+}
+.archive-item .label.weekly { background: rgba(16,185,129,0.1); color: #34d399; }
+.archive-item .label.daily { background: rgba(113,112,255,0.08); color: #828fff; }
+
+.closing {
+  text-align: center; max-width: 640px; margin: 0 auto; padding: 48px 0;
+}
+.closing p { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; }
+
+footer {
+  text-align: center; padding: 32px 0;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px; color: var(--text-quaternary);
+}
+footer a { color: var(--text-tertiary); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 32px; }
+  .hero h1 { font-size: 26px; letter-spacing: -0.572px; }
+  section { padding: 28px 0; }
+  .news-section { padding: 20px; }
+  .archive-item { flex-wrap: wrap; gap: 6px; }
+  .archive-item .date { min-width: 0; }
+}
+</style>
+</head>
+<body>
+<div class="layout-wrap">
+<aside class="sidebar">
+  <a href="index.html" class="logo">Dustin Felderhoff</a>
+  <div class="nav-links">
+   <a href="../about.html">About</a>
+   <a href="../projects.html">Projects</a>
+   <a href="../pm-ai-field-notes.html">PM + AI Field Notes</a>
+   <a href="../ai-news.html" class="active">AI News</a>
+   <a href="../lessons.html">Lessons</a>
+   <a href="../contact.html">Contact</a>
+   <a href="../apply.html">Apply</a>
+  </div>
+  <a href="../resume.pdf" class="nav-cta" download>Resume</a>
+</aside>
+<nav class="bottom-nav">
+  <a href="../about.html"><span class="nav-icon">&#9883;</span>About</a>
+  <a href="../projects.html"><span class="nav-icon">&#9881;</span>Projects</a>
+  <a href="../ai-news.html" class="active"><span class="nav-icon">&#128240;</span>AI News</a>
+  <a href="../contact.html"><span class="nav-icon">&#9993;</span>Contact</a>
+  <a href="../resume.pdf" download><span class="nav-icon">&#128196;</span>Resume</a>
+</nav>
+<div class="main-content"><section class="hero">
+<div class="container">
+<h1>Daily AI News</h1>
+<p class="subtitle">July 02, 2026</p>
+</div>
+</section>
+<section>
+<div class="container">
+<p style="font-size: 14px; color: var(--text-tertiary); margin-bottom: 24px; line-height: 1.7;"># ☕ Morning News Briefing — July 2, 2026
+
+A quick skim of today's biggest stories with bias context, followed by the AI/PM news you need to know.</p>
+<div class="news-section">
+  <h3>Supreme Court Upholds Birthright Citizenship, Blocks Trump Order</h3>
+  <div class="summary">408 sources | 42% Center What happened: The Supreme Court issued a major ruling upholding birthright citizenship under the 14th Amendment, blocking Trump's executive order that sought to end the practice. Why it matters: This is one of the most consequential rulings of the term, affirming that anyone born on US soil is automatically a citizen regardless of parents' immigration status — settling a constitutional question that had been at the center of immigration policy debates.</div>
+</div>
+<div class="news-section">
+  <h3>Supreme Court Strikes Down Campaign Finance Restrictions</h3>
+  <div class="summary">98 sources | 58% Center What happened: The Court struck down long-standing limits on coordinated campaign spending between parties and candidates, ruling in a New York case that the restrictions violated free speech. Why it matters: This significantly changes how parties and candidates can coordinate spending, potentially reshaping campaign finance in upcoming elections.</div>
+</div>
+<div class="news-section">
+  <h3>Republican Tom Kean Jr. Breaks Silence on 3-Month Absence</h3>
+  <div class="summary">127 sources | 53% Center What happened: The New Jersey congressman revealed he was being treated for depression during his mysterious four-month absence from Congress, prompting international coverage from The Independent, BBC, and Fox News. Why it matters: Mental health disclosures from elected officials remain rare — the bipartisan support for Kean's statement may signal a shift in how political figures handle mental health.</div>
+</div>
+<div class="news-section">
+  <h3>CERN Shuts Down Large Hadron Collider for $1.5B Upgrade</h3>
+  <div class="meta"><span class="blindspot">Blindspot: Low coverage from Right sources</span></div>
+  <div class="summary">27 sources | 59% Center What happened: CERN shut down the LHC yesterday for a four-year overhaul to become the High-Luminosity LHC. Workers will replace 1.2km of components and install next-gen superconducting magnets. Why it matters: The upgraded collider will produce 380 million Higgs bosons vs 55M so far, enabling dark matter searches and potential discovery of new particles.</div>
+</div>
+<div class="news-section">
+  <h3>Newsom Signs Record $352B California Budget</h3>
+  <div class="summary">38 sources | 42% Center / 42% Left What happened: Gov. Newsom signed a $351.7B budget that delays most Medi-Cal cuts until 2027, adds 22,770 childcare slots, and increases K-12 funding by $2.2B. Why it matters: Preserves healthcare for 14.5M Medi-Cal enrollees, though 2M undocumented immigrants lose housing assistance by Jan 2027. Seniors must have under $21K in assets to qualify for Medi-Cal starting July 2027.</div>
+</div>
+<div class="news-section">
+  <h3>Iraq Sets Sept 30 Deadline for Pro-Iran Militias to Disarm</h3>
+  <div class="summary">22 sources | 46% Left / 46% Right What happened: Iraq's government ordered pro-Iran armed groups to disarm by Sept. 30, coinciding with the end of the US-led anti-ISIS coalition mission. Why it matters: Could fundamentally reshape Iraq's security landscape by limiting weapons to state control and reducing militia influence.</div>
+</div>
+<div class="news-section">
+  <h3>Miles Guo Sentenced to 30 Years for $1B Fraud</h3>
+  <div class="summary">127 sources | 43% Left / 35% Center What happened: Chinese billionaire Guo Wengui was sentenced to 30 years for defrauding 235 victims of over $1B through fake investments including crypto and club memberships. Why it matters: Victims lost life savings. Seized assets (mansions, $4.4M Bugatti) to be liquidated for restitution.</div>
+</div>
+<div class="news-section">
+  <h3>Screen Time for Under-2s Poses Long-Term Risks</h3>
+  <div class="summary">17 sources | 46% Center What happened: UK researchers found over 70% of babies/toddlers under 2 use screens regularly. Study links early exposure to sleep problems, language delays, behavioral issues, and obesity. Why it matters: "iPad kid" phenomenon starts earlier than families realize — screens used as digital pacifiers may displace critical developmental experiences.</div>
+</div>
+<div class="news-section">
+  <h3>AP Investigation: US Tech Powering Global Scam Industry</h3>
+  <div class="summary">10 sources | 40% Left / 40% Center What happened: An AP investigation reveals US technology products and services are key enablers of global scam operations. Why it matters: Could prompt regulatory scrutiny of US tech firms and spark calls for policy changes.</div>
+  <div class="summary">---</div>
+  <div class="summary">## Part 2 — AI + Product Management News</div>
+</div>
+<div class="news-section">
+  <h3>OpenAI Builds First Custom AI Chip "Jalapeño"</h3>
+  <div class="summary">OpenAI designed and built its first in-house AI training/serving chip, codenamed Jalapeño. This represents a strategic move to reduce dependence on NVIDIA hardware and optimize for their specific workloads. The chip is designed for both training and inference.</div>
+</div>
+<div class="news-section">
+  <h3>Meet Your New Slack Coworker — Claude</h3>
+  <div class="summary">Anthropic launched deep Slack integration for Claude, making it a full team member that can read channels, respond to @mentions, and access shared context. This is a direct play against Microsoft Copilot in the enterprise collaboration space.</div>
+</div>
+<div class="news-section">
+  <h3>Google's Nobel Winner Jumps to Anthropic</h3>
+  <div class="summary">A Nobel laureate from Google's DeepMind has moved to Anthropic, signaling a major talent shift in the AI research landscape. This follows a pattern of top researchers moving from big tech to pure-play AI labs.</div>
+</div>
+<div class="news-section">
+  <h3>Sakana's "Fugu" Takes Aim at the Frontier</h3>
+  <div class="summary">Tokyo-based Sakana AI released "Fugu," their latest model aiming to compete with frontier models. Continuing their evolution-inspired approach to AI architecture, Fugu targets strong performance with more efficient compute requirements.</div>
+</div>
+<div class="news-section">
+  <h3>Midjourney Pivots to Medicine</h3>
+  <div class="summary">Midjourney, known for AI image generation, is pivoting toward medical imaging applications. They're exploring how their diffusion models can assist in medical diagnosis and imaging analysis — a significant shift from consumer creative tools to regulated healthcare AI.</div>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<h2 class="section-title">Previous Briefings</h2>
+<div class="archive-list">
+<a href="2026-07-01.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-07-01</span>
+  <span class="title">July 01, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-06-30.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-06-30</span>
+  <span class="title">June 30, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-06-29.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-06-29</span>
+  <span class="title">June 29, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-06-28.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-06-28</span>
+  <span class="title">June 28, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-06-27.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-06-27</span>
+  <span class="title">June 27, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-06-26.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-06-26</span>
+  <span class="title">June 26, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-06-25.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-06-25</span>
+  <span class="title">June 25, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+</div>
+</div>
+</section>
+
+</div> <!-- /main-content -->
+</div> <!-- /layout-wrap -->
+<footer>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+  <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff/portfolio" target="_blank">github.com/dustinfelderhoff/portfolio</a></p>
+ </div>
+</footer>
+</body>
+</html>
