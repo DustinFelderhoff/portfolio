@@ -229,27 +229,6 @@ section + section { border-top: 1px solid var(--border-subtle); }
 }
 .entry p:last-of-type { margin-bottom: 0; }
 
-.reddit-quote {
-  background: rgba(113,112,255,0.04);
-  border-left: 3px solid var(--accent);
-  padding: 12px 16px;
-  margin: 16px 0;
-  border-radius: 4px;
-}
-.reddit-quote p {
-  font-size: 14px;
-  font-style: italic;
-  color: var(--text-secondary);
-  margin-bottom: 4px;
-}
-.reddit-quote .source {
-  font-size: 12px;
-  color: var(--text-quaternary);
-  font-style: normal;
-}
-.reddit-quote .source a { color: var(--accent); text-decoration: none; }
-.reddit-quote .source a:hover { text-decoration: underline; }
-
 .skill-badge {
   display: inline-block;
   font-size: 11px;
@@ -428,7 +407,7 @@ footer a:hover { color: var(--accent); }
 <section class="hero">
  <div class="container">
   <h1>PM + AI Field Notes</h1>
-  <p class="subtitle">Weekly notes on what I'm learning about using AI in product management. Real threads from the community, patterns from my own builds, and the mistakes that taught me something.</p>
+  <p class="subtitle">Weekly field notes from the frontlines of AI product work. Curated patterns, proven practices, and hard-won lessons for PMs building with AI.</p>
  </div>
 </section>
 
@@ -438,47 +417,38 @@ footer a:hover { color: var(--accent); }
   <!-- ENTRY 1: Week of June 29, 2026 -->
   <div class="entry" id="entry-2026-06-29">
    <div class="entry-header">
-    <h3>What PMs Actually Want to Know About AI</h3>
+    <h3>Three AI Literacy Gaps Every PM Should Address</h3>
     <span class="skill-badge pm">PM Practice</span>
     <span class="skill-badge ai">Agentic AI</span>
    </div>
    <div class="entry-date">Week of June 29, 2026</div>
 
-   <p>I spent some time this week reading through the r/ProductManagement threads where PMs talk about AI. The question that keeps coming up is not "what tool should I use." It is "how do I understand AI well enough to know what to build with it." That's a fundamentally different question, and it maps directly to something I've been working through with Story Sundays.</p>
+   <p>PMs working with AI face a recurring problem. The team knows the tools but not the terrain. Here are three gaps I keep seeing, along with what works for closing them.</p>
 
-   <p>One thread called <a href="https://old.reddit.com/r/ProductManagement/comments/17ap079/how_are_you_learning_about_ai_for_product/" target="_blank" style="color:var(--accent);">"How are you learning about AI for product management?"</a> had a lot of noise around courses and certifications. But the top comment thread was different. Someone said if you have technical curiosity, the best use of your time is Andrej Karpathy's neural networks series. Not because you need to train models. Because understanding what the tech can and cannot do is the only way to evaluate product opportunities without relying on vendor claims. I've been recommending the same thing to PMs I mentor. The gap is not capability. It is <em>literacy</em>.</p>
+   <p><strong>Gap 1: Tool proficiency over technical literacy.</strong> Most AI training for PMs focuses on which tool to use. That is the wrong starting point. The real skill is understanding what AI can and cannot do, well enough to evaluate product opportunities without relying on vendor claims. The best resource I have found for building that foundation is Andrej Karpathy's neural networks series. Not because every PM needs to train a model, but because knowing the mechanics of how these systems work is the only way to develop an honest sense of their strengths and limits. Literacy beats tool lists every time.</p>
 
-   <p>Another thread, <a href="https://old.reddit.com/r/ProductManagement/comments/1bv7jvo/hey_product_managers_any_cool_ai_tools_in_your_kit/" target="_blank" style="color:var(--accent);">"Hey Product Managers, Any Cool AI Tools in Your Kit?"</a>, was more practical. Tools like Supernormal.ai for meeting notes, VersionLens for turning Slack feedback into Jira tickets, and Inari for PM workflows. What I noticed: almost everyone is using AI as a writing or note-taking assistant. Almost no one is using it to model user behavior, test assumptions, or simulate market responses. There is room there.</p>
+   <p><strong>Gap 2: AI as a writing assistant only.</strong> Most teams using AI in their workflow are doing the same thing: generating copy, summarizing meetings, taking notes. Tools like Supernormal.ai and Inari handle this well. But that is a small slice of what AI can do for PMs. The bigger opportunities are in modeling user behavior, testing assumptions before building, and simulating market responses to feature changes. These are harder to set up than a ChatGPT prompt, but they produce insights that copy generation never will. If your AI usage stops at the writing layer, you are leaving most of the value on the table.</p>
 
-   <div class="reddit-quote">
-    <p>"I just use ChatGPT when I'm brain blocked on brief or copy. There are so many tools out there so I'm excited to see what people use."</p>
-    <p class="source">- u/[anonymous] on r/ProductManagement</p>
-   </div>
-
-   <p>The third thread worth calling out is <a href="https://old.reddit.com/r/ProductManagement/comments/1bqvz37/ai_for_product_managers_what_does_it_really_mean/" target="_blank" style="color:var(--accent);">"AI for product managers... what does it really mean?"</a>. A commenter said something I keep thinking about: "I am one of those who actually feel AI product management is overhyped unless your customers are data scientists themselves." That is a fair take. Our job as PMs is the why and what and when. AI doesn't change that. What changes is <em>how fast you can iterate</em> when you can prototype ideas in hours instead of weeks. The job is the same. The leverage is different.</p>
+   <p><strong>Gap 3: Speed without direction.</strong> AI lets you prototype in hours instead of weeks. That changes the iteration cycle, but it does not change the PM job. The product manager still owns the why and the what. The when just got faster. Teams that confuse speed with clarity end up building the wrong thing faster. The ones that use the speed to test more hypotheses, fail faster, and converge on the right solution are the ones that win. The leverage is not the tool. It is the discipline to ask better questions before you build.</p>
 
    <div class="takeaway">
-    <div class="label">My Take</div>
-    <p>What these threads tell me is that PMs are hungry for practical AI knowledge, not theory. The most upvoted advice in every thread was about learning just enough to evaluate honestly. I think the real opportunity is in showing PMs <em>how other PMs</em> are using AI on real products, not tool reviews from people who do not ship. That is what I want to do here every week.</p>
+    <div class="label">Field Note</div>
+    <p>The common thread across all three gaps is the same: AI tools are getting easier to use, but the hard part was never the tool. It was knowing what to ask, how to evaluate the answer, and when to trust the output. That kind of judgment is not something a tool can give you. It comes from building enough foundational knowledge to separate signal from noise.</p>
    </div>
   </div>
 
   <!-- ENTRY 2: Week of June 22, 2026 -->
   <div class="entry" id="entry-2026-06-22">
    <div class="entry-header">
-    <h3>What Building Story Sundays Taught Me About AI PM Work</h3>
+    <h3>Five Patterns for Building AI Products Where Being Wrong Has Consequences</h3>
     <span class="skill-badge pm">PM Practice</span>
     <span class="skill-badge ai">Skill Pattern</span>
    </div>
    <div class="entry-date">Week of June 22, 2026</div>
 
-   <p>Some context for anyone new here: I have been building <a href="https://www.storysundays.com" target="_blank" style="color:var(--accent);">Story Sundays</a>, a private family storytelling platform, for about a year. It started as a side project and turned into my most instructive product work. Not because of the tech stack (React 19, Cloudflare Workers, Supabase). Because building it forced me to answer the same questions I ask about any AI product: <em>what does the AI do, what does it not do, and how do I know when it is wrong?</em></p>
+   <p><a href="https://www.storysundays.com" target="_blank" style="color:var(--accent);">Story Sundays</a> is a private family storytelling platform I built from scratch. The data is irreplaceable. My son's grandmother's voice, recorded today, will be listened to years from now. If a bug corrupts that recording, there is no second take.</p>
 
-   <p>The project ships through a gated TDD pipeline. Unit tests, hooks tests, integration tests with real Supabase, browser-level E2E tests. Four layers. The reason is simple: the data is my son hearing his grandmother's voice. A test that passes against mocks but fails in production is worse than having no test at all, because it hands you false confidence. That lesson came from shipping bugs through a green suite six times before I admitted the test layer itself was wrong.</p>
-
-   <p>I talk to PMs who think AI testing means "ask the model if it looks right." It doesn't. AI product testing means knowing exactly which layer each risk lives at. Is this a prompt problem? A data problem? A model capability gap? A user expectation mismatch? Each one needs a different testing strategy, and most of them can't be solved with a unit test.</p>
-
-   <p>The skill patterns I built for Story Sundays map directly to how I think about AI product management:</p>
+   <p>That constraint forced a set of patterns that apply to any AI product where errors carry real cost. Here are the five that matter most.</p>
 
    <p><span class="skill-badge">TDD Pipeline</span> <span class="skill-badge">Circuit Breakers</span> <span class="skill-badge">Agent Orchestration</span> <span class="skill-badge">Context Retention</span> <span class="skill-badge">Handoff Contracts</span></p>
 
@@ -489,7 +459,7 @@ footer a:hover { color: var(--accent); }
    <p><strong>The parent verifies every artifact.</strong> Every handoff between agents includes a verification step where the parent reads back what the child claims to have produced. Verified or it did not happen. This caught multiple instances where a child reported success but the artifact was empty or broken. For AI products, assume the output is wrong until the system proves otherwise. That assumption is not pessimism. It is the only safe default.</p>
 
    <div class="takeaway">
-    <div class="label">My Take</div>
+    <div class="label">Field Note</div>
     <p>The tools and skills I built for Story Sundays aren't specific to that app. They're a set of patterns for building any product where the cost of being wrong is high. Private family data, medical records, financial systems. If you're building in a space where errors have real consequences, the same questions apply: what can go wrong, where would we catch it, and how do we verify without trusting the system's own report? I'm publishing these patterns as reusable skills so other builders do not have to learn the same lessons the hard way.</p>
    </div>
   </div>
@@ -503,20 +473,20 @@ footer a:hover { color: var(--accent); }
   <h2>Past Weeks</h2>
   <div class="archive-item">
    <span class="date">2026-06-29</span>
-   <span class="title"><a href="#entry-2026-06-29">What PMs Actually Want to Know About AI</a></span>
+   <span class="title"><a href="#entry-2026-06-29">Three AI Literacy Gaps Every PM Should Address</a></span>
   </div>
   <div class="archive-item">
    <span class="date">2026-06-22</span>
-   <span class="title"><a href="#">What Building Story Sundays Taught Me About AI PM Work</a></span>
+   <span class="title"><a href="#entry-2026-06-22">Five Patterns for Building AI Products Where Being Wrong Has Consequences</a></span>
   </div>
-  <p style="font-size: 14px; color: var(--text-quaternary); margin-top: 16px;">New entries every week. Follow along, or send me threads and questions you want explored.</p>
+  <p style="font-size: 14px; color: var(--text-quaternary); margin-top: 16px;">New entries every week. Follow along, or send me patterns worth sharing.</p>
  </div>
 </section>
 
 <section class="closing">
  <div class="container">
   <p>I believe the best AI product work happens when PMs share what they are actually building and breaking. Not tool reviews, not vendor pitches. Real patterns from real products.</p>
-  <p>If you are working through something similar or found a thread I should read, <a href="mailto:dustin.felderhoff@gmail.com" style="color:var(--accent);">send it to me</a>. I will include the best ones here.</p>
+  <p>If you are working through something similar or have a pattern worth sharing, <a href="mailto:dustin.felderhoff@gmail.com" style="color:var(--accent);">send it to me</a>. I will include the best ones here.</p>
   <div class="sticky-line">Build the thing that builds the output.</div>
  </div>
 </section>
