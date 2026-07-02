@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM + AI Field Notes - Dustin Felderhoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08090a;
+  --bg-card: #0f1011;
+  --bg-elevated: #191a1b;
+  --bg-subtle: rgba(255,255,255,0.03);
+  --text-primary: #f7f8f8;
+  --text-secondary: #d0d6e0;
+  --text-tertiary: #8a8f98;
+  --text-quaternary: #62666d;
+  --border: rgba(255,255,255,0.08);
+  --border-subtle: rgba(255,255,255,0.05);
+  --accent: #7170ff;
+  --accent-bg: #5e6ad2;
+  --accent-hover: #828fff;
+  --green: #10b981;
+  --green-bg: rgba(16,185,129,0.1);
+  --amber: #f59e0b;
+  --amber-bg: rgba(245,158,11,0.1);
+  --rose: #fb7185;
+  --rose-bg: rgba(251,113,133,0.1);
+  --cyan: #22d3ee;
+  --cyan-bg: rgba(34,211,238,0.1);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --max-w: 960px;
+  --nav-w: 200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv01', 'ss03';
+}
+
+.layout-wrap { display: flex; min-height: 100vh; }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav-w);
+  height: 100vh;
+  z-index: 100;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 20px;
+}
+.sidebar .logo {
+  font-size: 15px;
+  font-weight: 510;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+  display: block;
+}
+.sidebar .nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.sidebar .nav-links a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 510;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.12s, color 0.12s;
+}
+.sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
+.sidebar .nav-links a.active {
+  color: var(--accent);
+  background: rgba(113,112,255,0.06);
+}
+.sidebar .nav-cta {
+  background: var(--accent-bg);
+  color: #fff;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  transition: background 0.15s;
+}
+.sidebar .nav-cta:hover { background: var(--accent-hover); }
+
+.main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; padding-bottom: 72px; }
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 64px;
+    padding: 0 8px 8px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-decoration: none;
+    color: var(--text-quaternary);
+    font-size: 10px;
+    font-weight: 510;
+    padding: 6px 4px;
+    border-radius: 6px;
+    min-width: 48px;
+    transition: color 0.12s;
+  }
+  .bottom-nav a .nav-icon { font-size: 20px; line-height: 1; }
+  .bottom-nav a:hover { color: var(--text-primary); }
+  .bottom-nav a.active { color: var(--accent); }
+}
+@media (min-width: 769px) {
+  .bottom-nav { display: none; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 100px 0 56px;
+  text-align: center;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(113,112,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: 44px;
+  font-weight: 510;
+  line-height: 1.08;
+  letter-spacing: -0.968px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  position: relative;
+}
+.hero .subtitle {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-tertiary);
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero .subtitle em { color: var(--text-secondary); }
+
+section { padding: 56px 0; }
+section + section { border-top: 1px solid var(--border-subtle); }
+
+/* ===== FIELD NOTE ENTRY ===== */
+.entry {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+.entry:last-child { margin-bottom: 0; }
+.entry-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.entry-header h3 {
+  font-size: 20px;
+  font-weight: 590;
+  letter-spacing: -0.24px;
+  color: var(--text-primary);
+}
+.entry-date {
+  font-size: 13px;
+  color: var(--text-quaternary);
+  font-family: var(--font-mono);
+  margin-bottom: 16px;
+}
+.entry p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.entry p:last-of-type { margin-bottom: 0; }
+
+.reddit-quote {
+  background: rgba(113,112,255,0.04);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+.reddit-quote p {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+.reddit-quote .source {
+  font-size: 12px;
+  color: var(--text-quaternary);
+  font-style: normal;
+}
+.reddit-quote .source a { color: var(--accent); text-decoration: none; }
+.reddit-quote .source a:hover { text-decoration: underline; }
+
+.skill-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 510;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(16,185,129,0.2);
+  margin: 2px 4px 2px 0;
+}
+.skill-badge.ai { background: var(--accent-bg); color: #fff; border: none; }
+.skill-badge.pm { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+
+.entry .takeaway {
+  background: rgba(16,185,129,0.06);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.entry .takeaway .label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.entry .takeaway p { font-size: 14px; margin-bottom: 0; }
+
+.entry .fail-box {
+  background: var(--rose-bg);
+  border: 1px solid rgba(251,113,133,0.15);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.entry .fail-box .label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rose);
+  margin-bottom: 4px;
+}
+.entry .fail-box p { font-size: 14px; margin-bottom: 0; }
+
+/* ===== ARCHIVE ===== */
+.archive-section { margin-top: 40px; }
+.archive-section h2 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.24px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+.archive-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.archive-item:last-child { border-bottom: none; }
+.archive-item .date {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-quaternary);
+  min-width: 80px;
+}
+.archive-item .title {
+  font-size: 15px;
+  color: var(--text-tertiary);
+}
+.archive-item .title a { color: var(--text-secondary); text-decoration: none; }
+.archive-item .title a:hover { color: var(--accent); }
+
+/* ===== CLOSING ===== */
+.closing {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 0;
+}
+.closing p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.closing .sticky-line {
+  font-size: 17px;
+  font-weight: 510;
+  color: var(--text-primary);
+  letter-spacing: -0.16px;
+  margin-top: 20px;
+  padding: 16px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.01);
+  display: inline-block;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-quaternary);
+}
+footer a { color: var(--text-tertiary); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .hero { padding: 64px 0 40px; }
+  .hero h1 { font-size: 28px; letter-spacing: -0.616px; }
+  section { padding: 40px 0; }
+  .entry { padding: 24px; }
+  .archive-item { flex-direction: column; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<div class="layout-wrap">
+
+<!-- SIDEBAR (desktop) -->
+<aside class="sidebar">
+ <a href="index.html" class="logo">Dustin Felderhoff</a>
+ <div class="nav-links">
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="pm-ai-field-notes.html" class="active">PM + AI Field Notes</a>
+  <a href="lessons.html">Lessons</a>
+  <a href="contact.html">Contact</a>
+  <a href="apply.html">Apply</a>
+ </div>
+ <a href="resume.pdf" class="nav-cta" download>Resume</a>
+</aside>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+ <a href="about.html">
+  <span class="nav-icon">&#9883;</span>
+  About
+ </a>
+ <a href="projects.html">
+  <span class="nav-icon">&#9881;</span>
+  Projects
+ </a>
+ <a href="pm-ai-field-notes.html" class="active">
+  <span class="nav-icon">&#9997;</span>
+  Field Notes
+ </a>
+ <a href="lessons.html">
+  <span class="nav-icon">&#9998;</span>
+  Lessons
+ </a>
+ <a href="contact.html">
+  <span class="nav-icon">&#9993;</span>
+  Contact
+ </a>
+ <a href="resume.pdf" download>
+  <span class="nav-icon">&#128196;</span>
+  Resume
+ </a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<section class="hero">
+ <div class="container">
+  <h1>PM + AI Field Notes</h1>
+  <p class="subtitle">Weekly notes on what I'm learning about using AI in product management. Real threads from the community, patterns from my own builds, and the mistakes that taught me something.</p>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+
+  <!-- ENTRY 1: Week of June 29, 2026 -->
+  <div class="entry" id="entry-2026-06-29">
+   <div class="entry-header">
+    <h3>What PMs Actually Want to Know About AI</h3>
+    <span class="skill-badge pm">PM Practice</span>
+    <span class="skill-badge ai">Agentic AI</span>
+   </div>
+   <div class="entry-date">Week of June 29, 2026</div>
+
+   <p>I spent some time this week reading through the r/ProductManagement threads where PMs talk about AI. The question that keeps coming up is not "what tool should I use." It is "how do I understand AI well enough to know what to build with it." That's a fundamentally different question, and it maps directly to something I've been working through with Story Sundays.</p>
+
+   <p>One thread called <a href="https://old.reddit.com/r/ProductManagement/comments/17ap079/how_are_you_learning_about_ai_for_product/" target="_blank" style="color:var(--accent);">"How are you learning about AI for product management?"</a> had a lot of noise around courses and certifications. But the top comment thread was different. Someone said if you have technical curiosity, the best use of your time is Andrej Karpathy's neural networks series. Not because you need to train models. Because understanding what the tech can and cannot do is the only way to evaluate product opportunities without relying on vendor claims. I've been recommending the same thing to PMs I mentor. The gap is not capability. It is <em>literacy</em>.</p>
+
+   <p>Another thread, <a href="https://old.reddit.com/r/ProductManagement/comments/1bv7jvo/hey_product_managers_any_cool_ai_tools_in_your_kit/" target="_blank" style="color:var(--accent);">"Hey Product Managers, Any Cool AI Tools in Your Kit?"</a>, was more practical. Tools like Supernormal.ai for meeting notes, VersionLens for turning Slack feedback into Jira tickets, and Inari for PM workflows. What I noticed: almost everyone is using AI as a writing or note-taking assistant. Almost no one is using it to model user behavior, test assumptions, or simulate market responses. There is room there.</p>
+
+   <div class="reddit-quote">
+    <p>"I just use ChatGPT when I'm brain blocked on brief or copy. There are so many tools out there so I'm excited to see what people use."</p>
+    <p class="source">- u/[anonymous] on r/ProductManagement</p>
+   </div>
+
+   <p>The third thread worth calling out is <a href="https://old.reddit.com/r/ProductManagement/comments/1bqvz37/ai_for_product_managers_what_does_it_really_mean/" target="_blank" style="color:var(--accent);">"AI for product managers... what does it really mean?"</a>. A commenter said something I keep thinking about: "I am one of those who actually feel AI product management is overhyped unless your customers are data scientists themselves." That is a fair take. Our job as PMs is the why and what and when. AI doesn't change that. What changes is <em>how fast you can iterate</em> when you can prototype ideas in hours instead of weeks. The job is the same. The leverage is different.</p>
+
+   <div class="takeaway">
+    <div class="label">My Take</div>
+    <p>What these threads tell me is that PMs are hungry for practical AI knowledge, not theory. The most upvoted advice in every thread was about learning just enough to evaluate honestly. I think the real opportunity is in showing PMs <em>how other PMs</em> are using AI on real products, not tool reviews from people who do not ship. That is what I want to do here every week.</p>
+   </div>
+  </div>
+
+  <!-- ENTRY 2: Week of June 22, 2026 -->
+  <div class="entry" id="entry-2026-06-22">
+   <div class="entry-header">
+    <h3>What Building Story Sundays Taught Me About AI PM Work</h3>
+    <span class="skill-badge pm">PM Practice</span>
+    <span class="skill-badge ai">Skill Pattern</span>
+   </div>
+   <div class="entry-date">Week of June 22, 2026</div>
+
+   <p>Some context for anyone new here: I have been building <a href="https://www.storysundays.com" target="_blank" style="color:var(--accent);">Story Sundays</a>, a private family storytelling platform, for about a year. It started as a side project and turned into my most instructive product work. Not because of the tech stack (React 19, Cloudflare Workers, Supabase). Because building it forced me to answer the same questions I ask about any AI product: <em>what does the AI do, what does it not do, and how do I know when it is wrong?</em></p>
+
+   <p>The project ships through a gated TDD pipeline. Unit tests, hooks tests, integration tests with real Supabase, browser-level E2E tests. Four layers. The reason is simple: the data is my son hearing his grandmother's voice. A test that passes against mocks but fails in production is worse than having no test at all, because it hands you false confidence. That lesson came from shipping bugs through a green suite six times before I admitted the test layer itself was wrong.</p>
+
+   <p>I talk to PMs who think AI testing means "ask the model if it looks right." It doesn't. AI product testing means knowing exactly which layer each risk lives at. Is this a prompt problem? A data problem? A model capability gap? A user expectation mismatch? Each one needs a different testing strategy, and most of them can't be solved with a unit test.</p>
+
+   <p>The skill patterns I built for Story Sundays map directly to how I think about AI product management:</p>
+
+   <p><span class="skill-badge">TDD Pipeline</span> <span class="skill-badge">Circuit Breakers</span> <span class="skill-badge">Agent Orchestration</span> <span class="skill-badge">Context Retention</span> <span class="skill-badge">Handoff Contracts</span></p>
+
+   <p><strong>Circuit breakers, not retries.</strong> When a step fails in the pipeline, the system stops and researches the root cause before retrying. It never retries the same error twice without new information. This killed the thrash loop for good. I use the same thinking in product discovery: do not re-run the same experiment with the same setup and expect different results. Find out why it failed first.</p>
+
+   <p><strong>Boundaries before capabilities.</strong> The most important design decision in the orchestration system was not what each agent could do. It was what each agent could not do. A researcher with filesystem access will eventually overwrite something. An implementer with web search will go down rabbit holes. Locking those doors early kept the system predictable. Same applies to AI features: decide what the model cannot influence before you decide what it can generate.</p>
+
+   <p><strong>The parent verifies every artifact.</strong> Every handoff between agents includes a verification step where the parent reads back what the child claims to have produced. Verified or it did not happen. This caught multiple instances where a child reported success but the artifact was empty or broken. For AI products, assume the output is wrong until the system proves otherwise. That assumption is not pessimism. It is the only safe default.</p>
+
+   <div class="takeaway">
+    <div class="label">My Take</div>
+    <p>The tools and skills I built for Story Sundays aren't specific to that app. They're a set of patterns for building any product where the cost of being wrong is high. Private family data, medical records, financial systems. If you're building in a space where errors have real consequences, the same questions apply: what can go wrong, where would we catch it, and how do we verify without trusting the system's own report? I'm publishing these patterns as reusable skills so other builders do not have to learn the same lessons the hard way.</p>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- ARCHIVE SECTION -->
+<section class="archive-section">
+ <div class="container">
+  <h2>Past Weeks</h2>
+  <div class="archive-item">
+   <span class="date">2026-06-29</span>
+   <span class="title"><a href="#entry-2026-06-29">What PMs Actually Want to Know About AI</a></span>
+  </div>
+  <div class="archive-item">
+   <span class="date">2026-06-22</span>
+   <span class="title"><a href="#">What Building Story Sundays Taught Me About AI PM Work</a></span>
+  </div>
+  <p style="font-size: 14px; color: var(--text-quaternary); margin-top: 16px;">New entries every week. Follow along, or send me threads and questions you want explored.</p>
+ </div>
+</section>
+
+<section class="closing">
+ <div class="container">
+  <p>I believe the best AI product work happens when PMs share what they are actually building and breaking. Not tool reviews, not vendor pitches. Real patterns from real products.</p>
+  <p>If you are working through something similar or found a thread I should read, <a href="mailto:dustin.felderhoff@gmail.com" style="color:var(--accent);">send it to me</a>. I will include the best ones here.</p>
+  <div class="sticky-line">Build the thing that builds the output.</div>
+ </div>
+</section>
+
+</div> <!-- /main-content -->
+</div> <!-- /layout-wrap -->
+
+<footer>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+  <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff" target="_blank">github.com/dustinfelderhoff</a></p>
+ </div>
+</footer>
+
+</body>
+</html>
