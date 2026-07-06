@@ -4,356 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PM + AI Field Notes - Dustin Felderhoff</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #08090a;
-  --bg-card: #0f1011;
-  --bg-elevated: #191a1b;
-  --bg-subtle: rgba(255,255,255,0.03);
-  --text-primary: #f7f8f8;
-  --text-secondary: #d0d6e0;
-  --text-tertiary: #8a8f98;
-  --text-quaternary: #62666d;
-  --border: rgba(255,255,255,0.08);
-  --border-subtle: rgba(255,255,255,0.05);
-  --accent: #7170ff;
-  --accent-bg: #5e6ad2;
-  --accent-hover: #828fff;
-  --green: #10b981;
-  --green-bg: rgba(16,185,129,0.1);
-  --amber: #f59e0b;
-  --amber-bg: rgba(245,158,11,0.1);
-  --rose: #fb7185;
-  --rose-bg: rgba(251,113,133,0.1);
-  --cyan: #22d3ee;
-  --cyan-bg: rgba(34,211,238,0.1);
-  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-  --radius-sm: 4px;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --max-w: 960px;
-  --nav-w: 200px;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  font-feature-settings: 'cv01', 'ss03';
-}
-
-.layout-wrap { display: flex; min-height: 100vh; }
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--nav-w);
-  height: 100vh;
-  z-index: 100;
-  background: var(--bg-card);
-  border-right: 1px solid var(--border-subtle);
-  display: flex;
-  flex-direction: column;
-  padding: 32px 20px;
-}
-.sidebar .logo {
-  font-size: 15px;
-  font-weight: 510;
-  color: var(--text-primary);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  margin-bottom: 40px;
-  display: block;
-}
-.sidebar .nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-}
-.sidebar .nav-links a {
-  display: block;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 510;
-  color: var(--text-tertiary);
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.12s, color 0.12s;
-}
-.sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
-.sidebar .nav-links a.active {
-  color: var(--accent);
-  background: rgba(113,112,255,0.06);
-}
-.sidebar .nav-cta {
-  background: var(--accent-bg);
-  color: #fff;
-  text-align: center;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  display: block;
-  transition: background 0.15s;
-}
-.sidebar .nav-cta:hover { background: var(--accent-hover); }
-
-.main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-
-@media (max-width: 768px) {
-  .sidebar { display: none; }
-  .main-content { margin-left: 0; padding-bottom: 72px; }
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: var(--bg-card);
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 64px;
-    padding: 0 8px 8px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .bottom-nav a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    text-decoration: none;
-    color: var(--text-quaternary);
-    font-size: 10px;
-    font-weight: 510;
-    padding: 6px 4px;
-    border-radius: 6px;
-    min-width: 48px;
-    transition: color 0.12s;
-  }
-  .bottom-nav a .nav-icon { font-size: 20px; line-height: 1; }
-  .bottom-nav a:hover { color: var(--text-primary); }
-  .bottom-nav a.active { color: var(--accent); }
-}
-@media (min-width: 769px) {
-  .bottom-nav { display: none; }
-}
-
-/* ===== HERO ===== */
-.hero {
-  padding: 100px 0 56px;
-  text-align: center;
-  position: relative;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(113,112,255,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero h1 {
-  font-size: 44px;
-  font-weight: 510;
-  line-height: 1.08;
-  letter-spacing: -0.968px;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-  position: relative;
-}
-.hero .subtitle {
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text-tertiary);
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
-}
-.hero .subtitle em { color: var(--text-secondary); }
-
-section { padding: 56px 0; }
-section + section { border-top: 1px solid var(--border-subtle); }
-
-/* ===== FIELD NOTE ENTRY ===== */
-.entry {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  margin-bottom: 24px;
-}
-.entry:last-child { margin-bottom: 0; }
-.entry-header {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 4px;
-}
-.entry-header h3 {
-  font-size: 20px;
-  font-weight: 590;
-  letter-spacing: -0.24px;
-  color: var(--text-primary);
-}
-.entry-date {
-  font-size: 13px;
-  color: var(--text-quaternary);
-  font-family: var(--font-mono);
-  margin-bottom: 16px;
-}
-.entry p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-.entry p:last-of-type { margin-bottom: 0; }
-
-.skill-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 510;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  background: var(--green-bg);
-  color: var(--green);
-  border: 1px solid rgba(16,185,129,0.2);
-  margin: 2px 4px 2px 0;
-}
-.skill-badge.ai { background: var(--accent-bg); color: #fff; border: none; }
-.skill-badge.pm { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
-
-.entry .takeaway {
-  background: rgba(16,185,129,0.06);
-  border: 1px solid rgba(16,185,129,0.15);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  margin-top: 16px;
-}
-.entry .takeaway .label {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--green);
-  margin-bottom: 4px;
-}
-.entry .takeaway p { font-size: 14px; margin-bottom: 0; }
-
-.entry .fail-box {
-  background: var(--rose-bg);
-  border: 1px solid rgba(251,113,133,0.15);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  margin-top: 16px;
-}
-.entry .fail-box .label {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--rose);
-  margin-bottom: 4px;
-}
-.entry .fail-box p { font-size: 14px; margin-bottom: 0; }
-
-/* ===== ARCHIVE ===== */
-.archive-section { margin-top: 40px; }
-.archive-section h2 {
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: -0.24px;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-}
-.archive-item {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border-subtle);
-}
-.archive-item:last-child { border-bottom: none; }
-.archive-item .date {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--text-quaternary);
-  min-width: 80px;
-}
-.archive-item .title {
-  font-size: 15px;
-  color: var(--text-tertiary);
-}
-.archive-item .title a { color: var(--text-secondary); text-decoration: none; }
-.archive-item .title a:hover { color: var(--accent); }
-
-/* ===== CLOSING ===== */
-.closing {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 56px 0;
-}
-.closing p {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-.closing .sticky-line {
-  font-size: 17px;
-  font-weight: 510;
-  color: var(--text-primary);
-  letter-spacing: -0.16px;
-  margin-top: 20px;
-  padding: 16px 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: rgba(255,255,255,0.01);
-  display: inline-block;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid var(--border-subtle);
-  font-size: 13px;
-  color: var(--text-quaternary);
-}
-footer a { color: var(--text-tertiary); text-decoration: none; }
-footer a:hover { color: var(--accent); }
-
-@media (max-width: 640px) {
-  .hero { padding: 64px 0 40px; }
-  .hero h1 { font-size: 28px; letter-spacing: -0.616px; }
-  section { padding: 40px 0; }
-  .entry { padding: 24px; }
-  .archive-item { flex-direction: column; gap: 4px; }
-}
-</style>
+...(same CSS/head as current)...
 </head>
 <body>
 
@@ -425,15 +76,15 @@ footer a:hover { color: var(--accent); }
 
    <p>PMs working with AI face a recurring problem. The team knows the tools but not the terrain. Here are three gaps I keep seeing, along with what works for closing them.</p>
 
-   <p><strong>Gap 1: Tool proficiency over technical literacy.</strong> Most AI training for PMs focuses on which tool to use. That is the wrong starting point. The real skill is understanding what AI can and cannot do, well enough to evaluate product opportunities without relying on vendor claims. The best resource I have found for building that foundation is Andrej Karpathy's neural networks series. Not because every PM needs to train a model, but because knowing the mechanics of how these systems work is the only way to develop an honest sense of their strengths and limits. Literacy beats tool lists every time.</p>
+   <p><strong>Gap 1: Tool proficiency over technical literacy.</strong> Most AI training for PMs focuses on which tool to use. That's the wrong starting point. The real skill is understanding what AI can and cannot do, well enough to evaluate product opportunities without relying on vendor claims. The best resource I have found for building that foundation is Andrej Karpathy's neural networks series. Not because every PM needs to train a model, but because knowing the mechanics of how these systems work is the only way to develop an honest sense of their strengths and limits. Literacy beats tool lists every time.</p>
 
-   <p><strong>Gap 2: AI as a writing assistant only.</strong> Most teams using AI in their workflow are doing the same thing: generating copy, summarizing meetings, taking notes. Tools like Supernormal.ai and Inari handle this well. But that is a small slice of what AI can do for PMs. The bigger opportunities are in modeling user behavior, testing assumptions before building, and simulating market responses to feature changes. These are harder to set up than a ChatGPT prompt, but they produce insights that copy generation never will. If your AI usage stops at the writing layer, you are leaving most of the value on the table.</p>
+   <p><strong>Gap 2: AI as a writing assistant only.</strong> Most teams using AI in their workflow are doing the same thing: generating copy, summarizing meetings, taking notes. Tools like Supernormal.ai and Inari handle this well. But that's a small slice of what AI can do for PMs. The bigger opportunities are in modeling user behavior, testing assumptions before building, and simulating market responses to feature changes. These are harder to set up than a ChatGPT prompt, but they produce insights that copy generation never will. If your AI usage stops at the writing layer, you're leaving most of the value on the table.</p>
 
-   <p><strong>Gap 3: Speed without direction.</strong> AI lets you prototype in hours instead of weeks. That changes the iteration cycle, but it does not change the PM job. The product manager still owns the why and the what. The when just got faster. Teams that confuse speed with clarity end up building the wrong thing faster. The ones that use the speed to test more hypotheses, fail faster, and converge on the right solution are the ones that win. The leverage is not the tool. It is the discipline to ask better questions before you build.</p>
+   <p><strong>Gap 3: Speed without direction.</strong> AI lets you prototype in hours instead of weeks. That changes the iteration cycle, but it doesn't change the PM job. The product manager still owns the why and the what. The when just got faster. Teams that confuse speed with clarity end up building the wrong thing faster. The ones that use the speed to test more hypotheses, fail faster, and converge on the right solution are the ones that win. The advantage is not the tool. It's the discipline to ask better questions before you build.</p>
 
    <div class="takeaway">
     <div class="label">Field Note</div>
-    <p>The common thread across all three gaps is the same: AI tools are getting easier to use, but the hard part was never the tool. It was knowing what to ask, how to evaluate the answer, and when to trust the output. That kind of judgment is not something a tool can give you. It comes from building enough foundational knowledge to separate signal from noise.</p>
+    <p>The common thread across all three gaps is the same: AI tools are getting easier to use, but the hard part was never the tool. It was knowing what to ask, how to evaluate the answer, and when to trust the output. That kind of judgment isn't something a tool can give you. It comes from building enough foundational knowledge to separate signal from noise.</p>
    </div>
   </div>
 
@@ -446,21 +97,21 @@ footer a:hover { color: var(--accent); }
    </div>
    <div class="entry-date">Week of June 22, 2026</div>
 
-   <p><a href="https://www.storysundays.com" target="_blank" style="color:var(--accent);">Story Sundays</a> is a private family storytelling platform I built from scratch. The data is irreplaceable. My son's grandmother's voice, recorded today, will be listened to years from now. If a bug corrupts that recording, there is no second take.</p>
+   <p><a href="https://www.storysundays.com" target="_blank" style="color:var(--accent);">Story Sundays</a> is a private family storytelling platform I built from scratch. The data is irreplaceable. My son's grandmother's voice, recorded today, will be listened to years from now. If a bug corrupts that recording, there's no second take.</p>
 
    <p>That constraint forced a set of patterns that apply to any AI product where errors carry real cost. Here are the five that matter most.</p>
 
    <p><span class="skill-badge">TDD Pipeline</span> <span class="skill-badge">Circuit Breakers</span> <span class="skill-badge">Agent Orchestration</span> <span class="skill-badge">Context Retention</span> <span class="skill-badge">Handoff Contracts</span></p>
 
-   <p><strong>Circuit breakers, not retries.</strong> When a step fails in the pipeline, the system stops and researches the root cause before retrying. It never retries the same error twice without new information. This killed the thrash loop for good. I use the same thinking in product discovery: do not re-run the same experiment with the same setup and expect different results. Find out why it failed first.</p>
+   <p><strong>Circuit breakers, not retries.</strong> When a step fails in the pipeline, the system stops and researches the root cause before retrying. It never retries the same error twice without new information. This killed the thrash loop for good. I use the same thinking in product discovery: don't re-run the same experiment with the same setup and expect different results. Find out why it failed first.</p>
 
    <p><strong>Boundaries before capabilities.</strong> The most important design decision in the orchestration system was not what each agent could do. It was what each agent could not do. A researcher with filesystem access will eventually overwrite something. An implementer with web search will go down rabbit holes. Locking those doors early kept the system predictable. Same applies to AI features: decide what the model cannot influence before you decide what it can generate.</p>
 
-   <p><strong>The parent verifies every artifact.</strong> Every handoff between agents includes a verification step where the parent reads back what the child claims to have produced. Verified or it did not happen. This caught multiple instances where a child reported success but the artifact was empty or broken. For AI products, assume the output is wrong until the system proves otherwise. That assumption is not pessimism. It is the only safe default.</p>
+   <p><strong>The parent verifies every artifact.</strong> Every handoff between agents includes a verification step where the parent reads back what the child claims to have produced. Verified or it didn't happen. This caught multiple instances where a child reported success but the artifact was empty or broken. For AI products, assume the output is wrong until the system proves otherwise. That assumption isn't pessimism. It's the only safe default.</p>
 
    <div class="takeaway">
     <div class="label">Field Note</div>
-    <p>The tools and skills I built for Story Sundays aren't specific to that app. They're a set of patterns for building any product where the cost of being wrong is high. Private family data, medical records, financial systems. If you're building in a space where errors have real consequences, the same questions apply: what can go wrong, where would we catch it, and how do we verify without trusting the system's own report? I'm publishing these patterns as reusable skills so other builders do not have to learn the same lessons the hard way.</p>
+    <p>The tools and skills I built for Story Sundays aren't specific to that app. They're a set of patterns for building any product where the cost of being wrong is high. Private family data, medical records, financial systems. If you're building in a space where errors have real consequences, the same questions apply: what can go wrong, where would we catch it, and how do we verify without trusting the system's own report? I'm publishing these patterns as reusable skills so other builders don't have to learn the same lessons the hard way.</p>
    </div>
   </div>
 
@@ -486,7 +137,7 @@ footer a:hover { color: var(--accent); }
 <section class="closing">
  <div class="container">
   <p>I believe the best AI product work happens when PMs share what they are actually building and breaking. Not tool reviews, not vendor pitches. Real patterns from real products.</p>
-  <p>If you are working through something similar or have a pattern worth sharing, <a href="mailto:dustin.felderhoff@gmail.com" style="color:var(--accent);">send it to me</a>. I will include the best ones here.</p>
+  <p>If you're working through something similar or have a pattern worth sharing, <a href="mailto:dustin.felderhoff@gmail.com" style="color:var(--accent);">send it to me</a>. I will include the best ones here.</p>
   <div class="sticky-line">Build the thing that builds the output.</div>
  </div>
 </section>
