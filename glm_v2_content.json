@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Story Sundays",
+    "response": "{\n  \"decision\": \"I chose to build a custom full-stack platform from scratch instead of relying on social media. Total data privacy for my family was non-negotiable. I also took a hard line on quality by enforcing a multi-layer testing pipeline after we realized a green mocked test suite still let real bugs slip into production.\",\n  \"improved_metrics\": [\n    {\n      \"num\": \"0\",\n      \"label\": \"data leakage events\"\n    },\n    {\n      \"num\": \"3\",\n      \"label\": \"enforced test layers\"\n    }\n  ],\n  \"tighter_problem\": \"Social apps leaked personal data and gave us zero ownership over our family memories. I needed a completely private platform where grandparents could safely share AI-enhanced stories with my son.\"\n}"
+  },
+  {
+    "title": "Autonomous Sub-Agent Orchestration System",
+    "response": "{\"decision\":\"I restricted the four agent personas to strict toolset whitelists instead of letting them do whatever they wanted. It traded raw flexibility for predictable safety. I didn't let the parent trust the child's work and forced independent verification on every side effect.\",\"improved_metrics\":[{\"num\":\"4\",\"label\":\"specialized agent personas\"},{\"num\":\"0\",\"label\":\"unverified artifacts\"},{\"num\":\"65\",\"label\":\"tools audited\"}],\"tighter_problem\":\"AI systems break in unpredictable ways when sub-agents get too much access. I had to lock down their permissions and force strict verification on every action.\"}"
+  },
+  {
+    "title": "Invoice Parser : Intelligent Audit",
+    "response": "{\n  \"decision\": \"I pushed a bleeding edge LLM tool live before building trust with the ops team. I traded user confidence for speed. Shipping a working tool doesn't matter if the people using it don't trust the output.\",\n  \"improved_metrics\": [\n    {\n      \"num\": \"30 hrs/wk\",\n      \"label\": \"Audit time recovered\"\n    },\n    {\n      \"num\": \"Days to Hours\",\n      \"label\": \"Customer feedback loop\"\n    },\n    {\n      \"num\": \"Zero\",\n      \"label\": \"Manual data-entry errors\"\n    }\n  ],\n  \"tighter_problem\": \"Auditors spent 30 hours a week manually typing PDF data into Excel. It was slow and full of mistakes.\"\n}"
+  },
+  {
+    "title": "System Architecture Optimization & Context Lifecycle",
+    "response": "{\n  \"decision\": \"The hard call wasn't just buying more compute to fix the memory caps. We forced the system to auto-compress its own context at an 85% threshold using four strict retention classes. We risked dropping useful old data, but we had to stop the agent from drifting into loops.\",\n  \"improved_metrics\": [\n    {\n      \"num\": \"65\",\n      \"label\": \"tools optimized across 26 toolsets\"\n    },\n    {\n      \"num\": \"85%\",\n      \"label\": \"memory cap auto-compression threshold\"\n    },\n    {\n      \"num\": \"4\",\n      \"label\": \"silent pre-execution guardrail checks\"\n    },\n    {\n      \"num\": \"zero\",\n      \"label\": \"unverified artifacts allowed\"\n    }\n  ],\n  \"tighter_problem\": \"The agent had 65 tools and no automated way to manage its own memory. Context kept ballooning and hitting caps, which meant every session started fresh.\"\n}"
+  },
+  {
+    "title": "Autonomous Job Application Pipeline",
+    "response": "{\n  \"decision\": \"The hardest call was slowing down the pipeline to prioritize a voice gate over raw volume. I risked speed to guarantee every application actually sounded human and bypassed AI detectors. Sending out thousands of generic resumes that just get auto rejected is a waste of time.\",\n  \"improved_metrics\": [\n    {\n      \"num\": \"120+\",\n      \"label\": \"jobs/hr processed\"\n    },\n    {\n      \"num\": \"0\",\n      \"label\": \"unverified artifacts\"\n    }\n  ],\n  \"tighter_problem\": \"Job hunting is a data problem where generic applications get ignored. You need to apply at scale but every single app must sound like a specific person wrote it.\"\n}"
+  }
+]

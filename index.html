@@ -620,7 +620,7 @@
 <section id="about">
  <div class="container">
   <h2>About Me</h2>
-  <div class="section-desc">Not a bullet-point bio. Here's Here's the short version.</div>
+  <div class="section-desc">Not a bullet-point bio. Here's the short version.</div>
   <div class="about-grid">
    <div class="about-avatar"><img src="profile-photo.jpg" alt="Dustin Felderhoff" width="80" height="80"></div>
    <div class="about-content">
@@ -655,6 +655,8 @@
     <span class="badge badge-ship">Shipping</span>
    </div>
    <div class="project-subtitle">A full-stack storytelling platform for my son and his grandparents. React 19, Cloudflare Workers, Supabase.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I chose to build a custom full-stack platform from scratch instead of relying on social media. Total data privacy for my family was non-negotiable. I also took a hard line on quality by enforcing a multi-layer testing pipeline after we realized a green mocked test suite still let real bugs slip into production.</p></div>
+
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
@@ -696,7 +698,7 @@
 
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>A green test suite is not proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite. 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
+     <p><strong>A green test suite isn't proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite. 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
@@ -713,6 +715,8 @@
       <span class="badge badge-infra">System Design</span>
     </div>
     <div class="project-subtitle">Four agent personas, strict handoff contracts, and a routing system that enforces boundaries.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I restricted the four agent personas to strict toolset whitelists instead of letting them do whatever they wanted. It traded raw flexibility for predictable safety. I didn't let the parent trust the child's work and forced independent verification on every side effect.</p></div>
+
 
     <!-- Architecture diagram -->
     <div class="case-visual">
@@ -785,7 +789,7 @@
 
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file or ran a command, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification is not optional. It's the architecture.</p>
+     <p><strong>Never trust a sub-agent's self-report on side-effectful operations.</strong> The handoff contract says "the parent verifies." When a child claims it wrote a file or ran a command, the parent reads the file back or stats it. This caught multiple instances where a child "succeeded" but the artifact was empty or misnamed. Verification isn't optional. It's the architecture.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
@@ -803,6 +807,8 @@
     <span class="badge badge-fail">Failure Story</span>
    </div>
    <div class="project-subtitle">The one that taught me trust matters more than technology. ChatGPT + Python in an enterprise audit in 2022.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I pushed a bleeding edge LLM tool live before building trust with the ops team. I traded user confidence for speed. Shipping a working tool doesn't matter if the people using it don't trust the output.</p></div>
+
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
@@ -859,6 +865,8 @@
     <span class="badge badge-infra">Infrastructure</span>
    </div>
    <div class="project-subtitle">Tool schema refactoring, context compression, guardrails, and orchestration. A system-level audit.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>The hard call wasn't just buying more compute to fix the memory caps. We forced the system to auto-compress its own context at an 85% threshold using four strict retention classes. We risked dropping useful old data, but we had to stop the agent from drifting into loops.</p></div>
+
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
@@ -911,6 +919,8 @@
       <span class="badge badge-ship">Automation</span>
     </div>
     <div class="project-subtitle">Discovery through voice-gated generation. 120+ jobs/hour, per-company research, zero AI tells.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>The hardest call was slowing down the pipeline to prioritize a voice gate over raw volume. I risked speed to guarantee every application actually sounded human and bypassed AI detectors. Sending out thousands of generic resumes that just get auto rejected is a waste of time.</p></div>
+
 
     <!-- Pipeline flow diagram -->
     <div class="case-visual">
