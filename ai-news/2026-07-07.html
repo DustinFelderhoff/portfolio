@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News - July 07, 2026 - Dustin Felderhoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08090a;
+  --bg-card: #0f1011;
+  --bg-elevated: #191a1b;
+  --bg-subtle: rgba(255,255,255,0.03);
+  --text-primary: #f7f8f8;
+  --text-secondary: #d0d6e0;
+  --text-tertiary: #8a8f98;
+  --text-quaternary: #62666d;
+  --border: rgba(255,255,255,0.08);
+  --border-subtle: rgba(255,255,255,0.05);
+  --accent: #7170ff;
+  --accent-bg: #5e6ad2;
+  --accent-hover: #828fff;
+  --green: #10b981;
+  --green-bg: rgba(16,185,129,0.1);
+  --amber: #f59e0b;
+  --amber-bg: rgba(245,158,11,0.1);
+  --rose: #fb7185;
+  --rose-bg: rgba(251,113,133,0.1);
+  --cyan: #22d3ee;
+  --cyan-bg: rgba(34,211,238,0.1);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --max-w: 960px;
+  --nav-w: 200px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv01', 'ss03';
+}
+.layout-wrap { display: flex; min-height: 100vh; }
+.sidebar {
+  position: fixed; top: 0; left: 0; width: var(--nav-w); height: 100vh;
+  z-index: 100; background: var(--bg-card);
+  border-right: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; padding: 32px 20px;
+}
+.sidebar .logo {
+  font-size: 15px; font-weight: 510; color: var(--text-primary);
+  text-decoration: none; letter-spacing: -0.01em;
+  margin-bottom: 40px; display: block;
+}
+.sidebar .nav-links { list-style: none; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.sidebar .nav-links a {
+  display: block; padding: 8px 12px; font-size: 14px; font-weight: 510;
+  color: var(--text-tertiary); text-decoration: none; border-radius: 6px;
+  transition: background 0.12s, color 0.12s;
+}
+.sidebar .nav-links a:hover { background: var(--bg-subtle); color: var(--text-primary); }
+.sidebar .nav-links a.active { color: var(--accent); background: rgba(113,112,255,0.06); }
+.sidebar .nav-cta {
+  background: var(--accent-bg); color: #fff; text-align: center;
+  padding: 10px 14px; border-radius: 6px; font-size: 14px;
+  font-weight: 500; text-decoration: none; display: block; transition: background 0.15s;
+}
+.sidebar .nav-cta:hover { background: var(--accent-hover); }
+.main-content { margin-left: var(--nav-w); flex: 1; min-width: 0; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; padding-bottom: 72px; }
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: var(--bg-card); border-top: 1px solid var(--border);
+    display: flex; justify-content: space-around; align-items: center;
+    height: 64px; padding: 0 8px 8px; backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .bottom-nav a {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    text-decoration: none; color: var(--text-quaternary); font-size: 10px;
+    font-weight: 510; padding: 6px 4px; border-radius: 6px; min-width: 48px;
+    transition: color 0.12s;
+  }
+  .bottom-nav a .nav-icon { font-size: 20px; line-height: 1; }
+  .bottom-nav a:hover { color: var(--text-primary); }
+  .bottom-nav a.active { color: var(--accent); }
+}
+@media (min-width: 769px) { .bottom-nav { display: none; } }
+
+.hero {
+  padding: 80px 0 48px; text-align: center; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; left: 50%;
+  transform: translateX(-50%); width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(113,112,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: 38px; font-weight: 510; line-height: 1.08;
+  letter-spacing: -0.836px; color: var(--text-primary);
+  margin-bottom: 12px; position: relative;
+}
+.hero .subtitle {
+  font-size: 15px; font-weight: 400; line-height: 1.6;
+  color: var(--text-tertiary); max-width: 640px;
+  margin: 0 auto; position: relative;
+}
+
+section { padding: 40px 0; }
+section + section { border-top: 1px solid var(--border-subtle); }
+
+.news-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px;
+}
+.news-section:last-child { margin-bottom: 0; }
+.news-section h3 {
+  font-size: 18px; font-weight: 590; letter-spacing: -0.2px;
+  color: var(--text-primary); margin-bottom: 6px;
+}
+.news-section .meta {
+  font-size: 12px; color: var(--text-quaternary); margin-bottom: 12px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.news-section .meta .bias {
+  display: inline-block; padding: 1px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 500;
+}
+.news-section .meta .bias-left { background: rgba(59,130,246,0.15); color: #93bbfc; }
+.news-section .meta .bias-center { background: rgba(107,114,128,0.15); color: #9ca3af; }
+.news-section .meta .bias-right { background: rgba(239,68,68,0.15); color: #fca5a5; }
+.news-section .meta .badge {
+  background: rgba(16,185,129,0.1); color: #34d399; padding: 1px 6px;
+  border-radius: 3px; font-size: 11px;
+}
+.news-section .meta .blindspot {
+  background: rgba(245,158,11,0.12); color: #fbbf24; padding: 1px 6px;
+  border-radius: 3px; font-size: 11px;
+}
+.news-section .summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px;
+}
+.news-section .why-it-matters {
+  font-size: 13px; color: var(--text-tertiary); line-height: 1.6;
+  border-left: 2px solid var(--accent); padding-left: 14px; margin-top: 8px;
+}
+.news-section .why-label {
+  font-size: 11px; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;
+}
+
+.section-title {
+  font-size: 24px; font-weight: 590; letter-spacing: -0.36px;
+  color: var(--text-primary); margin-bottom: 20px;
+}
+
+.archive-list {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.archive-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color 0.12s;
+}
+.archive-item:hover { border-color: var(--accent); }
+.archive-item .date {
+  font-size: 13px; font-weight: 500; color: var(--text-quaternary);
+  min-width: 90px; font-family: var(--font-mono);
+}
+.archive-item .title {
+  font-size: 14px; color: var(--text-secondary); text-decoration: none;
+  flex: 1;
+}
+.archive-item .title:hover { color: var(--accent); }
+.archive-item .label {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 8px; border-radius: 3px;
+}
+.archive-item .label.weekly { background: rgba(16,185,129,0.1); color: #34d399; }
+.archive-item .label.daily { background: rgba(113,112,255,0.08); color: #828fff; }
+
+.closing {
+  text-align: center; max-width: 640px; margin: 0 auto; padding: 48px 0;
+}
+.closing p { font-size: 14px; color: var(--text-tertiary); line-height: 1.7; }
+
+footer {
+  text-align: center; padding: 32px 0;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px; color: var(--text-quaternary);
+}
+footer a { color: var(--text-tertiary); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 32px; }
+  .hero h1 { font-size: 26px; letter-spacing: -0.572px; }
+  section { padding: 28px 0; }
+  .news-section { padding: 20px; }
+  .archive-item { flex-wrap: wrap; gap: 6px; }
+  .archive-item .date { min-width: 0; }
+}
+</style>
+</head>
+<body>
+<div class="layout-wrap">
+<aside class="sidebar">
+  <a href="index.html" class="logo">Dustin Felderhoff</a>
+  <div class="nav-links">
+   <a href="../about.html">About</a>
+   <a href="../projects.html">Projects</a>
+   <a href="../pm_ai_field_notes.html">PM + AI Field Notes</a>
+   <a href="../ai-news/" class="active">AI News</a>
+   <a href="../lessons.html">Lessons</a>
+   <a href="../contact.html">Contact</a>
+   <a href="../apply.html">Apply</a>
+  </div>
+  <a href="../resume.pdf" class="nav-cta" download>Resume</a>
+</aside>
+<nav class="bottom-nav">
+  <a href="../about.html"><span class="nav-icon">&#9883;</span>About</a>
+  <a href="../projects.html"><span class="nav-icon">&#9881;</span>Projects</a>
+  <a href="../ai-news.html" class="active"><span class="nav-icon">&#128240;</span>AI News</a>
+  <a href="../contact.html"><span class="nav-icon">&#9993;</span>Contact</a>
+  <a href="../resume.pdf" download><span class="nav-icon">&#128196;</span>Resume</a>
+</nav>
+<div class="main-content"><section class="hero">
+<div class="container">
+<h1>Daily AI News</h1>
+<p class="subtitle">July 07, 2026</p>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="news-section">
+  <h3>OpenAI</h3>
+  <div class="summary">**OpenAI prepares a rapid GPT-5.6 drop to steal Anthropic users** GPT-5.6 could launch as early as July 7 with higher usage limits and stronger safeguards aimed at competing with Anthropic's Fable 5 models. Sam Altman compared GPT-5.6's math breakthroughs to watching a child form words for the first time. However, Polymarket gives OpenAI only 3% odds of owning the leading LLM by end of July — Anthropic still holds the lead. Greg Brockman outlined a vision where AI agents handle tasks quietly in the background without users clicking through apps, admitting 2023's ChatGPT Plugins failed because models weren't reliable enough. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**White House reins in OpenAI's GPT-5.6** The White House has intervened to slow GPT-5.6's rollout, reportedly over safety and alignment concerns. OpenAI is navigating regulatory pressure while trying to maintain competitive momentum against Anthropic. Source: The Rundown AI</div>
+  <div class="summary">**OpenAI's most powerful AI is here — but not for everyone** OpenAI's most capable model (likely GPT-5.6 Pro) has been released to select testers but remains gated from general public access. Testers report it built a 3D simulation game in a single shot. Source: The Rundown AI / AI Breakfast</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>Anthropic / Claude</h3>
+  <div class="summary">**The part of Claude's brain nobody built** The Rundown's lead story explores emerging capabilities in Claude that weren't explicitly engineered — emergent behaviors in Anthropic's latest models. Source: The Rundown AI</div>
+  <div class="summary">**Anthropic's Fable returns worldwide** Anthropic's Fable model (possibly Fable 5) is now available globally after a period of restricted access. Sonnet 5 also shipped as regulatory pressure on Fable eased. Source: The Rundown AI</div>
+  <div class="summary">**US cyber agency is using Anthropic's Mythos to audit government code** Reuters reports the US cybersecurity agency is leveraging Anthropic's Mythos model for government code auditing — a significant government adoption signal. Source: Ground News (46% Center coverage, 13 sources)</div>
+  <div class="summary">**Anthropic launches internal drug discovery programs** Through its Claude Science platform, Anthropic is running real-world lab experiments to train smarter models. Claude Science spotted viral contamination that went unnoticed by humans for a year and screened 100 rare genetic diseases in under an hour. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Anthropic developer: prompting is about managing your blind spots** Thariq Shihipar says the biggest bottleneck isn't AI capability — it's our own blind spots. The emerging skill is "contextual orchestration" rather than command writing. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Anthropic publishes research on global workspace in language models** A new paper from Anthropic explores how language models can maintain a "global workspace" — a shared representation layer that could improve reasoning and coherence. Source: Hacker News (387 points)</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>Meta / Google / Microsoft</h3>
+  <div class="summary">**Meta sizes up GPT-5.5 with 'Watermelon'** Meta is developing a model codenamed "Watermelon" aimed at matching GPT-5.5-class capabilities. Continues the trend of Meta investing heavily in frontier LLM research. Source: The Rundown AI</div>
+  <div class="summary">**Meta's brain-reading AI leaves letters behind** Meta is making progress on brain-computer interface AI that reads neural signals — though the technology is moving past literal "letter-by-letter" decoding toward more sophisticated interpretation. Source: The Rundown AI</div>
+  <div class="summary">**Microsoft merges consumer and enterprise Copilot to build an AI super app** Microsoft is consolidating its Copilot offerings into a unified "super app" combining consumer and enterprise features. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Google DeepMind and A24 announce research partnership** DeepMind is partnering with A24 studios for AI-powered creative tools and film research. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>Open Source / Tools</h3>
+  <div class="summary">**Mistral drops Leanstral 1.5 — an open model that proves math and catches real bugs** Leanstral 1.5 scored 100% on miniF2F math benchmark, solved 587/672 Putnam problems, handled reasoning over 2.7M tokens, and found 11 real bugs (5 previously unknown) in Rust repositories. Mistral CEO argues open models give companies more control than proprietary AI. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**GLM 5.2 and the coming AI margin collapse** Analysis suggesting that as open models like GLM 5.2 approach frontier capability, the economics of proprietary AI may face margin compression. Source: Hacker News (475 points)</div>
+  <div class="summary">**Small AI models gain traction in places with unreliable networks** IEEE Spectrum reports a growing trend toward small language models optimized for low-connectivity environments, expanding AI access globally. Source: Hacker News (166 points)</div>
+  <div class="summary">**Ternlight — 7 MB embedding model that runs in browser (WASM)** A tiny embedding model that runs entirely client-side via WebAssembly, enabling offline semantic search in the browser. Source: Hacker News (252 points)</div>
+  <div class="summary">**LongCat-2.0 goes fully open source with a million-token context window** A new open-source LLM with 1M+ token context, pushing the boundary on long-context capabilities outside proprietary APIs. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>AI Hardware / Chips</h3>
+  <div class="summary">**OpenAI builds first in-house custom AI chip 'Jalapeño'** OpenAI's first proprietary AI chip, codenamed "Jalapeño," was developed as the White House delayed GPT-5.6 launch. Signals OpenAI's push for silicon independence. Source: AI Breakfast (Jun 26)</div>
+  <div class="summary">**AMD Ryzen AI Halo — $4k AI Dev Kit** AMD launched a high-end AI development kit based on Ryzen AI Halo silicon, targeting local AI inference and development. Source: Hacker News (342 points)</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>AI Agents & Tools</h3>
+  <div class="summary">**CapCut lands ByteDance's Seedance 2.5 for 30-second AI scenes** ByteDance's video generation model Seedance 2.5 is now available in CapCut for creating AI-generated video scenes up to 30 seconds. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**New Alibaba AI framework drops token use from 884,000 to just 1,160** A dramatic efficiency improvement in Alibaba's agent framework, reducing token consumption by ~99.8%. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Condense launches proxy to cut AI coding agent bills by up to 72%** A new proxy-based optimization layer for AI coding agents that dramatically reduces API costs. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Alibaba's Elements Claw AI agent unearths four new superconductors** AI-driven materials discovery — Alibaba's agent identified four new superconductor candidates, demonstrating AI's growing role in scientific research. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**OfficeCLI: Office suite for AI agents** A new open-source CLI tool giving AI agents the ability to read and edit Microsoft Office files programmatically. Source: Hacker News (187 points)</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>Policy & Business</h3>
+  <div class="summary">**Trump administration and Anthropic have not discussed government stake** Contrary to speculation, no talks have occurred about the US government taking a stake in Anthropic. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Alibaba reportedly bans employees from using Claude Code** Alibaba has restricted internal use of Anthropic's Claude Code tool, citing competitive concerns. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Perplexity co-founder warns AI safety claims hide a massive power grab** A critical take from Perplexity's leadership arguing that safety-focused regulation may be a pretext for centralizing AI control. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Hollywood tries to ban ByteDance's Seedance video tool while quietly using it** The entertainment industry's complex relationship with AI video generation — publicly opposing while privately adopting. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">**Security vulnerability reports hit record high as LLMs search for bugs** AI-powered vulnerability discovery is driving a surge in security reports as LLMs audit codebases at scale. Source: AI Breakfast (Jul 6)</div>
+  <div class="summary">---</div>
+</div>
+<div class="news-section">
+  <h3>Hacker News Highlights</h3>
+  <div class="summary">1. **OpenWrt One — Open Hardware Router** — 671 pts — Open-source router hardware project 2. **Resetting Xbox** — 648 pts — Microsoft's vision for Xbox's next generation 3. **Fable turned reMarkable into Tom Riddle's diary** — 492 pts — Creative e-ink project 4. **GLM 5.2 and the coming AI margin collapse** — 475 pts — Economic analysis of open vs closed AI 5. **A global workspace in language models (Anthropic)** — 387 pts — Anthropic research on shared representation 6. **AMD Ryzen AI Halo $4k Dev Kit** — 342 pts — Local AI development hardware 7. **Small AI models gain traction in unreliable networks** — 166 pts — IEEE Spectrum on SLMs offline 8. **OfficeCLI: Office suite for AI agents** — 187 pts — Open-source Office file manipulation for agents 9. **NSA and IETF: Fairness** — 121 pts — Cryptography policy debate 10. **Learning to code is still worthwhile** — 230 pts — Defense of coding skills in the AI era</div>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<h2 class="section-title">Previous Briefings</h2>
+<div class="archive-list">
+<a href="2026-07-06.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-07-06</span>
+  <span class="title">July 06, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-07-05.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-07-05</span>
+  <span class="title">July 05, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-07-04.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-07-04</span>
+  <span class="title">July 04, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-07-03.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-07-03</span>
+  <span class="title">July 03, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+<a href="2026-07-02.html" class="archive-item" style="text-decoration:none;">
+  <span class="date">2026-07-02</span>
+  <span class="title">July 02, 2026</span>
+  <span class="label daily">Daily</span>
+</a>
+</div>
+</div>
+</section>
+
+</div> <!-- /main-content -->
+</div> <!-- /layout-wrap -->
+<footer>
+ <div class="container">
+  <p>Dustin Felderhoff, built with the same tools I write about.</p>
+  <p style="margin-top:4px;"><a href="https://github.com/dustinfelderhoff/portfolio" target="_blank">github.com/dustinfelderhoff/portfolio</a></p>
+ </div>
+</footer>
+</body>
+</html>
