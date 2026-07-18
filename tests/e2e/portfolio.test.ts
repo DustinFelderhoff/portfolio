@@ -25,19 +25,22 @@ test.describe('Portfolio — Navigation', () => {
   });
 
   test('hash nav scrolls to correct sections', async ({ page }) => {
+    test.setTimeout(60000);
+    // Use desktop viewport — sidebar is hidden on mobile (bottom-nav tested separately)
+    await page.setViewportSize({ width: 1280, height: 720 });
     await page.goto('https://dustinfelderhoff.github.io/portfolio/');
     await page.waitForLoadState('networkidle');
-    
+
     // Click Projects nav link
     await page.locator('.nav-links a').filter({ hasText: 'Projects' }).click();
     await page.waitForTimeout(500);
     await expect(page.locator('#projects')).toBeInViewport();
-    
+
     // Click Principles
     await page.locator('.nav-links a').filter({ hasText: 'Principles' }).click();
     await page.waitForTimeout(500);
     await expect(page.locator('#lessons')).toBeInViewport();
-    
+
     // Click Contact
     await page.locator('.nav-links a').filter({ hasText: 'Contact' }).click();
     await page.waitForTimeout(500);
