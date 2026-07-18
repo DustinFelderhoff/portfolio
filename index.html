@@ -547,7 +547,7 @@
    <a href="#projects">Projects</a>
    <a href="pm_ai_field_notes.html">PM + AI Field Notes</a>
    <a href="ai-news/">AI News</a>
-   <a href="#lessons">Lessons</a>
+   <a href="#lessons">Principles</a>
    <a href="#contact">Contact</a>
    <a href="apply/">Apply</a>
  </div>
@@ -573,9 +573,9 @@
    AI News
   </a>
   <a href="#lessons">
-  <span class="nav-icon">&#9998;</span>
-  Lessons
- </a>
+   <span class="nav-icon">&#9998;</span>
+   Principles
+  </a>
  <a href="#contact">
   <span class="nav-icon">&#9993;</span>
   Contact
@@ -644,65 +644,64 @@
 <!-- PROJECTS -->
 <section id="projects">
  <div class="container">
-  <h2>Agentic AI Projects</h2>
-  <div class="section-desc">Real systems I've built, including the ones that went sideways. Each one covers what I was trying to solve, what I built, and what I learned.</div>
+  <h2>Projects</h2>
+  <div class="section-desc">Real systems I've shipped, including the ones that went sideways. Each one covers what I was trying to solve, what I built, and what I learned.</div>
 
-  <!-- PROJECT 1: Story Sundays -->
+  <!-- PROJECT 1: Invoice Parser (Enterprise AI — strongest PM narrative) -->
   <div class="project">
    <div class="project-header">
-    <h3>Story Sundays</h3>
-    <span class="badge badge-ai">Agentic AI</span>
-    <span class="badge badge-ship">Shipping</span>
+    <h3>Enterprise AI Invoice Parser</h3>
+    <span class="badge badge-ai">AI</span>
+    <span class="badge badge-ship">Zero-to-One</span>
+    <span class="badge badge-fail">Failure Story</span>
    </div>
-   <div class="project-subtitle">A full-stack storytelling platform for my son and his grandparents. React 19, Cloudflare Workers, Supabase.</div>
-<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I chose to build a custom full-stack platform from scratch instead of relying on social media. Total data privacy for my family was non-negotiable. I also took a hard line on quality by enforcing a multi-layer testing pipeline after we realized a green mocked test suite still let real bugs slip into production.</p></div>
+   <div class="project-subtitle">One of the first enterprise ChatGPT deployments. Built trust from zero, watched it break, then rebuilt it with the team that had to use it.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I pushed a bleeding-edge LLM tool live before building trust with the ops team. I traded user confidence for speed. Shipping a working tool doesn't matter if the people using it don't trust the output.</p></div>
 
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
-    <p>My son was born. Grandparents in Texas and Florida had no way to share stories and videos that felt personal, safe, and permanent. Social media meant data leakage, algorithm feeds, and zero ownership. What I needed most: a private space where AI could enhance family storytelling without leaking anything outside the family circle.</p>
+    <p>In 2022, our audit operation sent PDF invoices to India to be typed into Excel by hand. Error-prone. Auditors spent 30 hours a week reconciling data-entry mistakes. Customer feedback loop was measured in days. ChatGPT had just launched, unproven in enterprise, especially on structured financial data. No playbook existed.</p>
    </div>
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Built a full-stack platform from scratch. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for media storage. The architecture uses a gated TDD pipeline (unit → hooks → integration → e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
+    <p>Built a ChatGPT-based parser that understood expected value ranges for each invoice field and extracted them into audit-ready data. Designed a prompt/skill system so the model could flag anomalies when a number fell outside its expected range. One of the earliest enterprise LLM deployments, and I had to make it up as I went.</p>
+    <p>Then I shipped it without training the India ops team on the exception workflow. The model would occasionally hallucinate a line item amount or swap vendor names on low-resolution scans. Not often, but the team didn't know which outputs were reliable and which weren't. Within two weeks they were flagging every edge case manually. No trust in the AI output. The system was technically correct but operationally broken.</p>
    </div>
 
    <div class="case-outcome">
     <div class="case-label"><strong>Outcome</strong></div>
     <div class="metrics-grid">
      <div class="metric-card">
-      <div class="num">100%</div>
-      <div class="label">Gated TDD pipeline adoption</div>
+      <div class="num">30 hrs/wk</div>
+      <div class="label">Audit time recovered</div>
      </div>
      <div class="metric-card">
-      <div class="num">3</div>
-      <div class="label">Test layers (unit → hooks → int → e2e)</div>
+      <div class="num">Days → Hours</div>
+      <div class="label">Customer feedback loop</div>
      </div>
      <div class="metric-card">
       <div class="num">Zero</div>
-      <div class="label">Data leakage, fully private</div>
+      <div class="label">Manual data-entry errors (post-fix)</div>
      </div>
     </div>
 
     <ul class="tech-list">
-     <li>React 19 + Vite 8</li>
-     <li>TypeScript</li>
-     <li>Cloudflare Workers</li>
-     <li>Supabase / Postgres + RLS</li>
-     <li>R2 Storage</li>
-     <li>Playwright E2E</li>
-     <li>TDD Pipeline</li>
+     <li>ChatGPT / GPT-3.5</li>
+     <li>Python</li>
+     <li>Prompt Engineering</li>
+     <li>PDF Data Extraction</li>
+     <li>Audit Automation</li>
     </ul>
-    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);">Private repo. Architecture documented in the gated TDD pipeline.</p>
 
-    <div class="lesson-box">
-     <div class="lesson-label">Lesson Learned</div>
-     <p><strong>A green test suite isn't proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite. 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
+    <div class="fail-box">
+     <div class="lesson-label">Hard Lesson. The Fix</div>
+     <p><strong>Building the right tool isn't enough. The people using it have to trust it.</strong> I pulled the automation back and ran three hands-on training sessions with the India team over Zoom. We redesigned the exception workflow together: a confidence-score threshold on every extraction so low-confidence results queued for human review instead of auto-accepting. The ops team defined the threshold. They also chose which fields were "must match exactly" versus "best effort." Second launch stuck because they owned the guardrails. Trust took longer to build than the software.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails: root cause first, research the exact error with real version numbers, evaluate each candidate for credibility and blast radius, then apply. Never retry the same error twice without research. This killed the thrash loop problem: the wasted "try X, fail, try Y, fail, try Z" pattern that costs hours.</p>
+     <p><strong>Leading the tip of AI means being wrong first.</strong> No one had done this before. The skepticism was warranted. What made it work wasn't the technology. It was iterating on the human workflow around it until trust caught up with capability.</p>
     </div>
    </div>
   </div>
@@ -798,61 +797,62 @@
    </div>
   </div>
 
-  <!-- PROJECT 3: Invoice Parser -->
+  <!-- PROJECT 3: Story Sundays -->
   <div class="project">
    <div class="project-header">
-    <h3>Invoice Parser : Intelligent Audit</h3>
+    <h3>Story Sundays</h3>
     <span class="badge badge-ai">Agentic AI</span>
-    <span class="badge badge-ship">Zero-to-One</span>
-    <span class="badge badge-fail">Failure Story</span>
+    <span class="badge badge-ship">Shipping</span>
    </div>
-   <div class="project-subtitle">The one that taught me trust matters more than technology. ChatGPT + Python in an enterprise audit in 2022.</div>
-<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I pushed a bleeding edge LLM tool live before building trust with the ops team. I traded user confidence for speed. Shipping a working tool doesn't matter if the people using it don't trust the output.</p></div>
+   <div class="project-subtitle">A full-stack storytelling platform for my son and his grandparents. Privacy-first, AI-enhanced, built from scratch.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>I chose to build a custom full-stack platform from scratch instead of relying on social media. Total data privacy for my family was non-negotiable. I also took a hard line on quality by enforcing a multi-layer testing pipeline after we realized a green mocked test suite still let real bugs slip into production.</p></div>
 
 
    <div class="case-problem">
     <div class="case-label"><strong>Challenge</strong></div>
-    <p>In 2022, our audit operation sent PDF invoices to India to be typed into Excel spreadsheets by hand. Error-prone. Auditors spent 30 hours a week reconciling mistakes. Customer feedback loop was measured in days. ChatGPT had just launched, unproven in enterprise, especially on structured financial data.</p>
+    <p>My son was born. Grandparents in Texas and Florida had no way to share stories and videos that felt personal, safe, and permanent. Social media meant data leakage, algorithm feeds, and zero ownership. What I needed most: a private space where AI could enhance family storytelling without leaking anything outside the family circle.</p>
    </div>
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Built a ChatGPT-based parser that knew the expected values for each invoice field and extracted them into audit-ready data automatically. Designed prompt/skill system so the model understood expected value ranges and could flag anomalies. One of the earliest enterprise LLM deployments, and no playbook existed.</p>
-    <p>Then I shipped it without training the ops team on the exception workflow. Within two weeks they were flagging every edge case manually. No trust in the AI output. The system was technically correct but operationally broken.</p>
+    <p>Built a full-stack platform from scratch. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for media storage. The architecture uses a gated TDD pipeline (unit, hooks, integration, e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
    </div>
 
    <div class="case-outcome">
     <div class="case-label"><strong>Outcome</strong></div>
     <div class="metrics-grid">
      <div class="metric-card">
-      <div class="num">30 hrs/wk</div>
-      <div class="label">Audit time recovered</div>
+      <div class="num">100%</div>
+      <div class="label">Gated TDD pipeline adoption</div>
      </div>
      <div class="metric-card">
-      <div class="num">Days → Hours</div>
-      <div class="label">Customer feedback loop</div>
+      <div class="num">3</div>
+      <div class="label">Test layers (unit, hooks, int, e2e)</div>
      </div>
      <div class="metric-card">
       <div class="num">Zero</div>
-      <div class="label">Manual data-entry errors (post-fix)</div>
+      <div class="label">Data leakage, fully private</div>
      </div>
     </div>
 
     <ul class="tech-list">
-     <li>ChatGPT / GPT-3.5</li>
-     <li>Python</li>
-     <li>Prompt Engineering</li>
-     <li>PDF Data Extraction</li>
-     <li>Audit Automation</li>
+     <li>React 19 + Vite 8</li>
+     <li>TypeScript</li>
+     <li>Cloudflare Workers</li>
+     <li>Supabase / Postgres + RLS</li>
+     <li>R2 Storage</li>
+     <li>Playwright E2E</li>
+     <li>TDD Pipeline</li>
     </ul>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);">Private repo. Architecture documented in the gated TDD pipeline.</p>
 
-    <div class="fail-box">
-     <div class="lesson-label">Hard Lesson. The Fix</div>
-     <p><strong>Building the right tool isn't enough. The people using it have to trust it.</strong> I had to pull the automation back, run three hands-on training sessions with the India team, and redesign the exception workflow with their input. The second launch stuck. Trust took longer to build than the software.</p>
+    <div class="lesson-box">
+     <div class="lesson-label">Lesson Learned</div>
+     <p><strong>A green test suite isn't proof a bug is fixed.</strong> We shipped bugs that slipped past a fully green mocked test suite. 6 entries in the bug ledger prove it. That's why the project now enforces multi-layer testing with hard gates. A test that passes against mocks but fails in production is worse than no test at all: it gives false confidence.</p>
     </div>
     <div class="lesson-box">
      <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Leading the tip of AI means being wrong first.</strong> No one had done this before. The skepticism was warranted. What made it work wasn't the technology. It was iterating on the human workflow around it until trust caught up with capability.</p>
+     <p><strong>Circuit breakers, not caffeinated retries.</strong> When a step fails: root cause first, research the exact error with real version numbers, evaluate each candidate for credibility and blast radius, then apply. Never retry the same error twice without research. This killed the thrash loop problem: the wasted "try X, fail, try Y, fail, try Z" pattern that costs hours.</p>
     </div>
    </div>
   </div>
@@ -875,7 +875,7 @@
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Ran a full architecture audit across four pillars: (1) tool schema refactoring that trimmed verbose descriptions to save token budget, proposed 4 new tool types; (2) context compression & memory decay, building a retention-class system (CRITICAL / DURABLE / SESSION / EPHEMERAL) that auto-decides what to keep and compress at 85% capacity; (3) pre-execution guardrails: 4 silent checks run before every tool call every tool call (shell safety, file safety, delegation integrity, sequence integrity); (4) sub-agent orchestration, which is the routing system described above.</p>
+    <p>Ran a full architecture audit across four pillars: (1) tool schema refactoring that trimmed verbose descriptions to save token budget, proposed 4 new tool types; (2) context compression and memory decay, building a retention-class system (CRITICAL, DURABLE, SESSION, EPHEMERAL) that auto-decides what to keep and compress at 85% capacity; (3) pre-execution guardrails: 4 silent checks run before every tool call (shell safety, file safety, delegation integrity, sequence integrity); (4) sub-agent orchestration, which is the routing system described above.</p>
    </div>
 
    <div class="case-outcome">
@@ -918,8 +918,8 @@
       <span class="badge badge-ai">Agentic AI</span>
       <span class="badge badge-ship">Automation</span>
     </div>
-    <div class="project-subtitle">Discovery through voice-gated generation. 120+ jobs/hour, per-company research, zero AI tells.</div>
-<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>The hardest call was slowing down the pipeline to prioritize a voice gate over raw volume. I risked speed to guarantee every application actually sounded human and bypassed AI detectors. Sending out thousands of generic resumes that just get auto rejected is a waste of time.</p></div>
+    <div class="project-subtitle">Discovery through voice-gated generation. Per-company research, zero AI tells.</div>
+<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>The hardest call was slowing down the pipeline to prioritize a voice gate over raw volume. I risked speed to guarantee every application actually sounded human and bypassed AI detectors. Sending out thousands of generic resumes that just get auto-rejected is a waste of time.</p></div>
 
 
     <!-- Pipeline flow diagram -->
@@ -969,7 +969,7 @@
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Built a multi-stage pipeline: Tavily AI Search + SearXNG for discovery, a custom scoring engine with time-decay and location penalties, research sub-agents that investigate each company's competitive gaps, and a voice-of-me gate (canonical transcript → anti-ai-detection scan) that ensures every output sounds human. Single SQLite jobs.db as source of truth. Research workers discover what the company is behind on, not just JD keywords.</p>
+    <p>Built a multi-stage pipeline: Tavily AI Search + SearXNG for discovery, a custom scoring engine with time-decay and location penalties, research sub-agents that investigate each company's competitive gaps, and a voice-of-me gate (canonical transcript to anti-ai-detection scan) that ensures every output sounds human. Single SQLite jobs.db as source of truth. Research workers discover what the company is behind on, not just JD keywords.</p>
    </div>
 
    <div class="case-outcome">
@@ -977,11 +977,11 @@
     <div class="metrics-grid">
      <div class="metric-card">
       <div class="num">120+</div>
-      <div class="label">Job alerts processed per hour</div>
+      <div class="label">Jobs processed per hour</div>
      </div>
      <div class="metric-card">
       <div class="num">2</div>
-      <div class="label">Voice gates per application (voice + anti-AI)</div>
+      <div class="label">Voice gates per application</div>
      </div>
      <div class="metric-card">
       <div class="num">Real</div>
@@ -1013,28 +1013,28 @@
  </div>
 </section>
 
-<!-- LESSONS -->
+<!-- PRINCIPLES -->
 <section id="lessons">
  <div class="container">
-  <h2>Lessons Learned Across Projects</h2>
-  <div class="section-desc">Patterns I keep seeing across every system I build. Worth knowing if you're moving into agentic AI.</div>
+  <h2>Product Principles</h2>
+  <div class="section-desc">The patterns that hold up across every project. These started as engineering lessons and turned into PM strategy.</div>
 
   <div class="lesson-cross">
    <h3>1. Trust matters more than the tech stack.</h3>
    <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
-   <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated TDD pipeline because a green mocked suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
+   <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated pipeline because a green test suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
   </div>
 
   <div class="lesson-cross">
-   <h3>2. Boundaries define the system.</h3>
+   <h3>2. What you exclude defines what you ship.</h3>
    <div class="applied-in">Sub-Agent Orchestration · Context Management</div>
-   <p>The most impactful design decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to context management: the retention class system works because it explicitly defines what <em>not</em> to keep. In agentic systems, exclusion is architecture.</p>
+   <p>The most impactful product decision in the orchestration system wasn't what each agent <em>could</em> do. It was what each agent <em>couldn't</em> do. A researcher with filesystem access will eventually overwrite something. The same rule applies to product scope: the retention-class system works because it explicitly defines what <em>not</em> to keep. Saying no to features, access, and scope creep isn't constraint. It's architecture.</p>
   </div>
 
   <div class="lesson-cross">
-   <h3>3. Never retry the same error twice without research.</h3>
+   <h3>3. Velocity requires guardrails.</h3>
    <div class="applied-in">Story Sundays · System Architecture</div>
-   <p>The thrash loop: try X, fail, try Y, fail, try Z. Is the most expensive pattern in agentic development. Story Sundays enforces a "same-error-twice" rule: if the normalized error string repeats, stop trying and go to root cause. Research the exact error with real version numbers. Score each candidate solution for credibility (official docs > SO > AI slop). Only then apply. This killed the hours-lost-to-cycling problem.</p>
+   <p>The thrash loop (try X, fail, try Y, fail, try Z) is the most expensive pattern in any build, not just code. Story Sundays enforces a "same-error-twice" rule: if the problem repeats, stop and research the root cause before trying another guess. This turned hours of wasted cycling into targeted fixes. The principle: speed without a stopping condition isn't velocity. It's chaos with a budget.</p>
   </div>
 
   <div class="lesson-cross">
@@ -1044,15 +1044,15 @@
   </div>
 
   <div class="lesson-cross">
-   <h3>5. Ship before you're ready, then iterate hard.</h3>
+   <h3>5. Ship fast enough to learn, gate hard enough to protect.</h3>
    <div class="applied-in">Invoice Parser · Story Sundays · System Architecture</div>
    <p>The Invoice Parser shipped early and broke. Story Sundays ships through a gated pipeline with circuit breakers. The architecture optimization shipped as incremental skills and cron jobs. The pattern: <strong>ship fast enough to learn, but gate hard enough to protect the user.</strong> The gating mechanisms get more sophisticated with each project, but the first-mover advantage of being early with AI has been consistently valuable.</p>
   </div>
 
   <div class="lesson-cross">
-   <h3>6. Verify everything, including your own sub-agents.</h3>
+   <h3>6. Never trust a handoff without verification.</h3>
    <div class="applied-in">Sub-Agent Orchestration · Job Pipeline</div>
-   <p>When a sub-agent says "I wrote the file," the parent must stat it and read it back. When a research worker says "I found the data," the pipeline must verify the output format. This sounds obvious but it's the most commonly skipped step, because it's overhead, because trust is faster, because the child usually works. Until it doesn't. Verification at every handoff boundary is now a hard rule in every system I build.</p>
+   <p>When a sub-agent says "I wrote the file," the parent reads it back. When a research worker says "I found the data," the pipeline checks the output. This sounds obvious but it's the most commonly skipped step, because trust is faster, because it usually works. Until it doesn't. In product work this is the same as: when engineering says "it's done," you test it yourself. Verification at every handoff boundary is the only reliable way to ship.</p>
   </div>
  </div>
 </section>
