@@ -414,6 +414,25 @@ footer a:hover { color: var(--accent); }
 <section>
  <div class="container">
 
+  <!-- ENTRY 3: Week of July 27, 2026 -->
+  <div class="entry" id="entry-2026-07-27">
+   <div class="entry-header">
+    <h3>Next Best Prompt Engine — Full Product Development Cycle</h3>
+   </div>
+   <div class="entry-date">Week of July 27, 2026</div>
+
+   <p><strong>Context:</strong> Story Sundays sends one prompt per day to each family member — "What's your favorite memory of Grandma?" The initial algorithm was basic: exclude seen prompts, balance categories. Users found it repetitive.</p>
+
+   <p><strong>What I built:</strong> Researched recommendation systems from Netflix (multi-layer personalization), Duolingo (Thompson Sampling + spaced repetition), Anki (SM-2/FSRS), and competitors (StoryWorth, Remento). Designed three algorithm candidates, presented in an interactive HTML format for stakeholder review. <a href="case-studies/next-best-prompt-engine.html" style="color:var(--accent);">View the full case study →</a></p>
+
+   <p><strong>Key decision:</strong> User rejected "pick one" and proposed running both algorithms simultaneously as a dual-track A/B test. Final architecture: Life Event Override Layer (birthdays, new members, milestones) → Dual-Track A/B (EOSRS vs Thompson Sampling, compared weekly) → MVP fallback. Zero ongoing LLM cost.</p>
+
+   <div class="takeaway">
+    <div class="label">Product Lesson</div>
+    <p>Research-backed proposals that include cited sources build stakeholder trust faster than opinion-based recommendations. Presenting options with tradeoffs lets the user be part of the decision rather than just approving a recommendation.</p>
+   </div>
+  </div>
+
   <!-- ENTRY 1: Week of June 29, 2026 -->
   <div class="entry" id="entry-2026-06-29">
    <div class="entry-header">
@@ -461,25 +480,6 @@ footer a:hover { color: var(--accent); }
    <div class="takeaway">
     <div class="label">Field Note</div>
     <p>The tools and skills I built for Story Sundays aren't specific to that app. They're a set of patterns for building any product where the cost of being wrong is high. Private family data, medical records, financial systems. If you're building in a space where errors have real consequences, the same questions apply: what can go wrong, where would we catch it, and how do we verify without trusting the system's own report? I'm publishing these patterns as reusable skills so other builders do not have to learn the same lessons the hard way.</p>
-   </div>
-  </div>
-
-  <!-- ENTRY 2: Week of July 27, 2026 -->
-  <div class="entry" id="entry-2026-07-27">
-   <div class="entry-header">
-    <h3>Next Best Prompt Engine — Full Product Development Cycle</h3>
-   </div>
-   <div class="entry-date">Week of July 27, 2026</div>
-
-   <p><strong>Context:</strong> Story Sundays sends one prompt per day to each family member — "What's your favorite memory of Grandma?" The initial algorithm was basic: exclude seen prompts, balance categories. Users found it repetitive.</p>
-
-   <p><strong>What I built:</strong> Researched recommendation systems from Netflix (multi-layer personalization), Duolingo (Thompson Sampling + spaced repetition), Anki (SM-2/FSRS), and competitors (StoryWorth, Remento). Designed three algorithm candidates, presented in an interactive HTML format for stakeholder review.</p>
-
-   <p><strong>Key decision:</strong> User rejected "pick one" and proposed running both algorithms simultaneously as a dual-track A/B test. Final architecture: Life Event Override Layer (birthdays, new members, milestones) → Dual-Track A/B (EOSRS vs Thompson Sampling, compared weekly) → MVP fallback. Zero ongoing LLM cost.</p>
-
-   <div class="takeaway">
-    <div class="label">Product Lesson</div>
-    <p>Research-backed proposals that include cited sources build stakeholder trust faster than opinion-based recommendations. Presenting options with tradeoffs lets the user be part of the decision rather than just approving a recommendation.</p>
    </div>
   </div>
 
