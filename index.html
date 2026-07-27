@@ -1034,57 +1034,56 @@
      <p><strong>A pipeline with no feedback loop is a liability.</strong> The location penalty was supposed to downrank non-Remote jobs outside Denver. But if the scraper didn't extract the real location from the JD, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring. One layer of validation is never enough.</p>
     </div>
    </div>
-   </div>
-   </div>
+  </div>
 
-   <!-- PROJECT 6: Next Best Prompt Engine -->
-   <div class="project">
+  <!-- PROJECT 6: Next Best Prompt Engine -->
+  <div class="project">
    <div class="project-header">
-   <h3>Next Best Prompt Engine</h3>
-   <span class="badge badge-ai">AI</span>
-   <span class="badge badge-ship">Product Dev</span>
-   <span class="badge badge-fail">Algorithm Design</span>
+    <h3>Next Best Prompt Engine</h3>
+    <span class="badge badge-ai">AI</span>
+    <span class="badge badge-ship">Product Dev</span>
+    <span class="badge badge-fail">Algorithm Design</span>
    </div>
    <div class="project-subtitle">Designed and iterated a recommendation algorithm for a family story-sharing app — from basic MVP through industry research to a hybrid A+B architecture, all documented with cited sources and interactive HTML stakeholder presentations.</div>
 
    <div class="case-problem">
-   <div class="case-label"><strong>Problem</strong></div>
-   <p>A daily prompt system was using a basic "exclude seen + balance categories" algorithm. Users reported prompts felt repetitive and didn't account for real life events — birthdays, new family members, milestones. Different generations also seemed to prefer different recommendation styles.</p>
+    <div class="case-label"><strong>Problem</strong></div>
+    <p>A daily prompt system was using a basic "exclude seen + balance categories" algorithm. Users reported prompts felt repetitive and didn't account for real life events — birthdays, new family members, milestones. Different generations also seemed to prefer different recommendation styles.</p>
    </div>
 
    <div class="case-process">
-   <div class="case-label"><strong>Process</strong></div>
-   <p>Researched recommendation systems from Netflix (multi-layer personalization), Duolingo (Thompson Sampling bandits + spaced repetition), Anki/SuperMemo (SM-2/FSRS algorithms), and competitors like StoryWorth and Remento. Built three algorithm candidates with different tradeoffs. Presented findings in an interactive HTML format for stakeholder review.</p>
+    <div class="case-label"><strong>Process</strong></div>
+    <p>Researched recommendation systems from Netflix (multi-layer personalization), Duolingo (Thompson Sampling bandits + spaced repetition), Anki/SuperMemo (SM-2/FSRS algorithms), and competitors like StoryWorth and Remento. Built three algorithm candidates with different tradeoffs. Presented findings in an interactive HTML format for stakeholder review.</p>
    </div>
 
    <div class="case-outcome">
-   <div class="case-label"><strong>Outcome</strong></div>
-   <p>User rejected "pick one" and proposed a hybrid approach. Final architecture: Life Event Override Layer (birthdays, anniversaries, re-engagement) → Dual-Track A/B (EOSRS vs Thompson Sampling, compared weekly) → MVP fallback. Zero ongoing LLM cost. User feedback: "This is a Great BRD to showcase the Product Development decision."</p>
+    <div class="case-label"><strong>Outcome</strong></div>
+    <p>User rejected "pick one" and proposed a hybrid approach. Final architecture: Life Event Override Layer (birthdays, anniversaries, re-engagement) → Dual-Track A/B (EOSRS vs Thompson Sampling, compared weekly) → MVP fallback. Zero ongoing LLM cost. User feedback: "Great BRD to showcase the Product Development decision."</p>
    </div>
 
    <ul class="tech-list">
-   <li>Algorithm Design</li>
-   <li>Competitive Research</li>
-   <li>A/B Architecture</li>
-   <li>Spaced Repetition</li>
-   <li>Stakeholder Communication</li>
+    <li>Algorithm Design</li>
+    <li>Competitive Research</li>
+    <li>A/B Architecture</li>
+    <li>Spaced Repetition</li>
+    <li>Stakeholder Communication</li>
    </ul>
    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="case-studies/next-best-prompt-engine.html" style="color:var(--accent);">View Case Study →</a></p>
-   </div>
-
-   </div>
-   </section>
-
-   <section id="lessons">
- <div class="container">
-  <h2>Product Principles</h2>
-  <div class="section-desc">The patterns that hold up across every project. These started as engineering lessons and turned into PM strategy.</div>
-
-  <div class="lesson-cross">
-   <h3>1. Trust matters more than the tech stack.</h3>
-   <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
-   <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated pipeline because a green test suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
   </div>
+
+ </div>
+</section>
+
+<section id="lessons">
+ <div class="container">
+  <h2>Lessons Learned Across Projects</h2>
+   <div class="section-desc">Patterns I keep seeing across every system I build. Worth knowing if you're moving into agentic AI.</div>
+
+   <div class="lesson-cross">
+    <h3>1. Trust matters more than the tech stack.</h3>
+    <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
+    <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated pipeline because a green test suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
+   </div>
 
   <div class="lesson-cross">
    <h3>2. What you exclude defines what you ship.</h3>
