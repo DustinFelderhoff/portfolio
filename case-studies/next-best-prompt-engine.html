@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Best Prompt Engine — Product Development Case Study</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #08090a; color: #e2e2e8; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .container { max-width: 1000px; width: 100%; }
+
+  .back-link { margin-bottom: 24px; font-size: 13px; }
+  .back-link a { color: #6366f1; text-decoration: none; }
+  .back-link a:hover { text-decoration: underline; }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+  .subtitle { color: #888; font-size: 15px; margin-bottom: 8px; }
+  .meta { color: #666; font-size: 13px; margin-bottom: 32px; }
+
+  .section { background: #0f1011; border: 1px solid #1a1b1e; border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+  .section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #fff; }
+
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .stat-card { background: #0f1011; border-radius: 12px; padding: 18px; text-align: center; border: 1px solid #1a1b1e; }
+  .stat-num { font-size: 28px; font-weight: 700; color: #6366f1; }
+  .stat-label { font-size: 12px; color: #888; margin-top: 4px; }
+
+  .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin: 16px 0; }
+  .flow-box { background: #0f1011; border: 1px solid #1a1b1e; border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 120px; flex: 1; }
+  .flow-box .icon { font-size: 20px; }
+  .flow-box .label { font-size: 11px; color: #a0a0b0; margin-top: 4px; }
+  .flow-arrow { color: #4ade80; font-size: 18px; }
+
+  .layer { border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .layer-1 { background: #0a1a0e; border: 1px solid #4ade80; }
+  .layer-2 { background: #0f0f1a; border: 1px solid #6366f1; }
+  .layer-3 { background: #1a140a; border: 1px solid #f59e0b; }
+  .layer-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .layer-desc { font-size: 13px; color: #a0a0b0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 14px; background: #0a0a0e; color: #888; font-weight: 500; border-bottom: 1px solid #1a1b1e; }
+  td { padding: 10px 14px; border-bottom: 1px solid #0f0f13; }
+
+  .highlight { background: #0f0f1a; border-left: 3px solid #6366f1; border-radius: 6px; padding: 14px 18px; margin: 12px 0; font-size: 13px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .source-card { background: #0f1011; border: 1px solid #1a1b1e; border-radius: 10px; padding: 14px; }
+  .source-card h4 { font-size: 14px; margin-bottom: 4px; }
+  .source-card p { font-size: 12px; color: #888; }
+
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 500; margin-right: 4px; }
+  .badge-ai { background: #1a1a3e; color: #818cf8; }
+  .badge-ship { background: #0a1a0e; color: #4ade80; }
+  .badge-research { background: #1a0e0e; color: #f87171; }
+
+  @media (max-width: 700px) {
+    .grid-3, .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-link"><a href="./">← Back to Portfolio</a></div>
+
+  <h1>Next Best Prompt Engine</h1>
+  <div class="subtitle">Full product development cycle: MVP → industry research → hybrid A/B architecture</div>
+  <div class="meta">
+    <span class="badge badge-ai">Algorithm Design</span>
+    <span class="badge badge-ship">Product Dev</span>
+    <span class="badge badge-research">Competitive Research</span>
+    July 2026
+  </div>
+
+  <!-- STATS -->
+  <div class="grid-3">
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Algorithm Candidates</div></div>
+    <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Industry Sources Researched</div></div>
+    <div class="stat-card"><div class="stat-num">$0</div><div class="stat-label">Ongoing LLM Cost</div></div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section">
+    <h2>Problem</h2>
+    <p style="font-size:14px;line-height:1.7;">A family story-sharing app sends one prompt per day to each family member. The initial MVP used a basic algorithm: exclude seen prompts, balance categories, prioritize personal prompts. Users reported prompts felt <strong>repetitive</strong> and didn't account for real life events — birthdays, new family members, anniversaries, or family milestones. Different generations also seemed to prefer different prompt styles.</p>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="section">
+    <h2>Process</h2>
+    <p style="font-size:13px;color:#888;margin-bottom:16px;">Researched how major platforms solve the "what to show next" problem:</p>
+    <div class="two-col">
+      <div class="source-card">
+        <h4>🎬 Netflix</h4>
+        <p>Multi-layer personalization — 75% of watched content from recommendations. Key insight: personalize the <em>order</em>, not just the content.</p>
+      </div>
+      <div class="source-card">
+        <h4>🦉 Duolingo</h4>
+        <p>Half-Life Regression + Thompson Sampling bandits for lesson sequencing. Key insight: optimal intervals are <em>learner-specific</em>.</p>
+      </div>
+      <div class="source-card">
+        <h4>📝 Anki/SuperMemo</h4>
+        <p>SM-2 algorithm with ease factors. FSRS: three memory states (Difficulty, Stability, Retrievability). Key insight: space reviews just before forgetting.</p>
+      </div>
+      <div class="source-card">
+        <h4>🎵 Spotify</h4>
+        <p>Collaborative filtering + audio analysis + bandit algorithms for playlist continuation. Key insight: combine explicit + implicit signals.</p>
+      </div>
+      <div class="source-card">
+        <h4>📌 Pinterest</h4>
+        <p>Pixie random-walk recommendation for 3B+ items. Key insight: graph-based discovery works for sparse data.</p>
+      </div>
+      <div class="source-card">
+        <h4>📊 Competitors</h4>
+        <p>StoryWorth (curated queue), Remento (AI-curated from family tree), 1000 Questions (static list), Life Stories (chronological arc).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALGORITHMS -->
+  <div class="section">
+    <h2>Algorithm Candidates</h2>
+    <table>
+      <tr><th>Option</th><th>Approach</th><th>Key Insight</th></tr>
+      <tr><td><strong>A: EOSRS</strong></td><td>Weighted scoring: category freshness + emotional valence + specificity + time-of-day + SRS skip cooldown</td><td>Blends Netflix personalization + Duolingo SRS + Anki skip intervals</td></tr>
+      <tr><td><strong>B: Thompson Sampling</strong></td><td>Bayesian bandit — learns per-category answer rates</td><td>Auto-explores new prompts while exploiting known winners</td></tr>
+      <tr><td><strong>C: Per-User Calibration</strong></td><td>Personalized weights adapting per user behavior</td><td>Most personalized but upfront data needed</td></tr>
+    </table>
+  </div>
+
+  <!-- USER FEEDBACK → PIVOT -->
+  <div class="section" style="border-color: #4ade80;">
+    <h2>User Feedback → Architecture Pivot</h2>
+    <div class="highlight">
+      <strong>User rejected "pick one."</strong> Proposed running both algorithms simultaneously as a dual-track A/B test. Different generations may prefer different approaches — let the data decide.
+    </div>
+
+    <p style="font-size:14px;font-weight:600;margin:16px 0 10px;">Final Architecture:</p>
+
+    <div class="layer layer-1">
+      <div class="layer-title">Layer 1: Life Event Override 🔔</div>
+      <div class="layer-desc">Checks for birthdays, new family members, milestone recordings, anniversaries, re-engagement. If any trigger fires, that prompt wins immediately. Zero LLM cost — date-based SQL queries.</div>
+    </div>
+    <div class="layer layer-2">
+      <div class="layer-title">Layer 2: Dual-Track A/B</div>
+      <div class="layer-desc">Users randomly assigned to Track A (EOSRS) or Track B (Thompson Sampling). Answer rates compared weekly. Whichever wins becomes default for that segment.</div>
+    </div>
+    <div class="layer layer-3">
+      <div class="layer-title">Layer 3: MVP Fallback</div>
+      <div class="layer-desc">Safety net: exclude seen-IDs + category round-robin. Rarely triggers.</div>
+    </div>
+  </div>
+
+  <!-- LESSONS -->
+  <div class="section">
+    <h2>Key Decisions & Lessons</h2>
+    <table>
+      <tr><th>Decision</th><th>Rationale</th></tr>
+      <tr><td>Research-backed proposals with cited sources</td><td>Builds stakeholder trust faster than opinion-based recommendations</td></tr>
+      <tr><td>Options with tradeoffs, not a single recommendation</td><td>Lets stakeholder be part of the decision, not just approve</td></tr>
+      <tr><td>Life events as override layer</td><td>Prevents algorithm from ignoring real-world signals</td></tr>
+      <tr><td>Dual-track A/B (both algorithms running)</td><td>Different users may prefer different approaches — let data decide</td></tr>
+      <tr><td>Zero ongoing LLM cost</td><td>All layers use SQL queries + in-memory scoring, no API calls</td></tr>
+      <tr><td>Interactive HTML for presentations</td><td>Visual stakeholder communication beats document-based reviews</td></tr>
+    </table>
+  </div>
+
+  <div class="back-link" style="margin-top:32px;"><a href="./">← Back to Portfolio</a></div>
+  <div style="text-align:center;font-size:12px;color:#444;margin-top:24px;">Dustin Felderhoff · dustinfelderhoff.github.io/portfolio</div>
+</div>
+</body>
+</html>
