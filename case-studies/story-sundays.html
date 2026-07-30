@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Sundays — Case Study | Dustin Felderhoff</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    a { color: #22d3ee; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; }
+
+    .back-link {
+      display: inline-block; margin-bottom: 2rem;
+      color: #888; font-size: 0.9rem;
+    }
+
+    header { margin-bottom: 3rem; }
+    .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #22d3ee; margin-bottom: 0.5rem; }
+    h1 { font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+    .subtitle { font-size: 1.15rem; color: #a0a0a0; max-width: 600px; }
+
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem; margin-bottom: 3rem;
+    }
+    .meta-card {
+      background: #111; border: 1px solid #1e1e1e;
+      border-radius: 6px; padding: 1rem;
+    }
+    .meta-card .label { font-size: 0.7rem; color: #666; margin-bottom: 0.25rem; }
+    .meta-card .value { font-size: 0.95rem; color: #e0e0e0; }
+
+    h2 { font-size: 1.4rem; font-weight: 600; color: #fff; margin: 2.5rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; color: #ccc; margin: 1.5rem 0 0.75rem; }
+    p, li { color: #b0b0b0; font-size: 1rem; }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.4rem; }
+
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem; margin: 1rem 0;
+    }
+    .feature-card {
+      background: #111; border: 1px solid #1e1e1e;
+      border-radius: 6px; padding: 1.25rem;
+    }
+    .feature-card h4 { color: #22d3ee; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.9rem; color: #888; }
+
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .stack-tag {
+      background: #1a1a1a; color: #22d3ee;
+      font-size: 0.8rem; font-family: 'SF Mono', 'Fira Code', monospace;
+      padding: 0.25rem 0.75rem; border-radius: 4px;
+      border: 1px solid #2a2a2a;
+    }
+
+    .callout {
+      background: #111; border-left: 3px solid #22d3ee;
+      padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
+    }
+    .callout p { color: #ccc; }
+
+    .live-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #22d3ee; color: #0a0a0a; font-weight: 600;
+      padding: 0.75rem 1.5rem; border-radius: 6px;
+      margin: 1.5rem 0;
+      transition: background 0.2s;
+    }
+    .live-link:hover { background: #67e8f9; text-decoration: none; }
+
+    footer {
+      margin-top: 4rem; padding-top: 2rem;
+      border-top: 1px solid #1e1e1e;
+      color: #555; font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
+
+    <header>
+      <div class="label">Case Study</div>
+      <h1>Story Sundays</h1>
+      <p class="subtitle">
+        An AI-powered family memory preservation platform that helps families
+        capture, share, and preserve the stories that matter — before they're lost.
+      </p>
+    </header>
+
+    <div class="meta-grid">
+      <div class="meta-card">
+        <div class="label">Role</div>
+        <div class="value">Founding Product Manager</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">Timeline</div>
+        <div class="value">May – July 2026</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">Status</div>
+        <div class="value">Alpha (v0.0.165)</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">Team</div>
+        <div class="value">Solo PM + AI Multi-Agent Pipeline</div>
+      </div>
+    </div>
+
+    <h2>The Problem</h2>
+    <p>
+      Family stories fade. Grandparents pass on and their voices are lost. Parents
+      forget the small moments that shaped their children. Existing tools are either
+      too public (social media), too impersonal (cloud storage), or too complex for
+      the people who need them most. Story Sundays was built to be the missing
+      middle: private, personal, and intentionally designed for intergenerational
+      storytelling.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Core insight:</strong> People don't record family stories because
+        they don't know what to ask. AI-generated prompts — personalized to each
+        family member — solve the cold-start problem.
+      </p>
+    </div>
+
+    <h2>Key Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>🎥 Record — Multi-Media Capture</h4>
+        <p>Multi-segment video recording, photo capture with Canvas compression (2048px, 80% JPEG), and file upload. MediaTypePicker for video/photo selection. AI follow-up questions in the viewfinder. Encrypted storage on Cloudflare R2.</p>
+      </div>
+      <div class="feature-card">
+        <h4>🌳 Interactive Family Tree 2.0</h4>
+        <p>3-generation lens with SVG connector lines, click-and-drag pan, add parents/children/siblings/spouses. Relationships table, invite RLS expansion, collaboration model. LCA-based relationship labels (Father, Brother-in-law, 2nd Cousin), divorce status.</p>
+      </div>
+      <div class="feature-card">
+        <h4>🤖 AI Prompt Generator &amp; Prompts Hub</h4>
+        <p>Unified Prompts grid with 4-tab ViewSelector (Available, Assigned, Sent, Completed). 10 ENUM categories (family_history → wisdom). AI-generated personalized prompts per family member. NBA (Next Best Action) widget, prompt assignment system.</p>
+      </div>
+      <div class="feature-card">
+        <h4>📖 Our Story — Family Origin Page</h4>
+        <p>Per-archive family origin page that tells the story of each family unit. Auto-generated narrative from family data with photos. A permanent record of how each family came to be.</p>
+      </div>
+      <div class="feature-card">
+        <h4>⚙️ Settings — Full Control Panel</h4>
+        <p>Accordion-page with 6 sections: Profile, Notifications, Privacy, Archive, Members, Danger Zone. Auto-save on every change. Archive member management with invite resend/remove. Danger Zone for destructive actions (leave/delete archive).</p>
+      </div>
+      <div class="feature-card">
+        <h4>📊 Smart Dashboard &amp; Life Timeline</h4>
+        <p>Time-of-day greeting, upcoming prompts with countdown, birthday tracker, Up Next context-aware widget, personal prompt inbox, Random Memory widget. Life Timeline with real data from stories table, infinite scroll pagination, loading skeleton, empty/error states.</p>
+      </div>
+      <div class="feature-card">
+        <h4>🤖 AI Family Assistant</h4>
+        <p>Phase 1 deployed: Cloudflare Worker + React panel + OpenRouter integration. AI-powered conversational assistant contextually aware of family members and stories. Extensible for future capabilities.</p>
+      </div>
+      <div class="feature-card">
+        <h4>🔒 Privacy &amp; Access Control</h4>
+        <p>Row Level Security (RLS) on every table. Archive-based sharing. Invite-only membership. COPPA 13+ age gate. Time-locked stories (reveal on future date). Family Story Reactions with 5 curated reactions and Voice Reply.</p>
+      </div>
+    </div>
+
+    <h2>Tech Stack</h2>
+    <div class="stack-tags">
+      <span class="stack-tag">React 19</span>
+      <span class="stack-tag">Vite 8</span>
+      <span class="stack-tag">TypeScript</span>
+      <span class="stack-tag">Supabase</span>
+      <span class="stack-tag">Postgres + RLS</span>
+      <span class="stack-tag">Cloudflare Workers</span>
+      <span class="stack-tag">Cloudflare R2</span>
+      <span class="stack-tag">OpenRouter</span>
+      <span class="stack-tag">Vitest</span>
+      <span class="stack-tag">Playwright</span>
+      <span class="stack-tag">DeepSeek Pro</span>
+      <span class="stack-tag">DeepSeek Flash</span>
+    </div>
+
+    <h2>PM Approach: Multi-Agent Development Pipeline</h2>
+    <p>
+      I designed and operated a kanban-based multi-agent development pipeline where
+      specialized AI agents handle different phases of the SDLC. The orchestration
+      pattern is:
+    </p>
+    <p style="margin-top: 0.75rem;">
+      <strong>Orchestrator</strong> &rarr; ingests requirements, routes to
+      <strong>Researcher</strong> (deep discovery) &rarr;
+      <strong>Planner</strong> (implementation spec) &rarr;
+      <strong>Reviewer</strong> (plan validation) &rarr;
+      <strong>Implementer</strong> (development) &rarr;
+      <strong>Tester</strong> (verification) &rarr;
+      <strong>Docs</strong> (permanent documentation).
+    </p>
+    <p style="margin-top: 0.75rem;">
+      Models used: <strong>DeepSeek Pro</strong> (architecture, planning, complex reasoning) and
+      <strong>DeepSeek Flash</strong> (deterministic verification, linting, doc sync).
+    </p>
+
+    <h2>Results</h2>
+    <ul>
+      <li><strong>600+ passing tests</strong> across 4 layers: unit, hook-integration (real Postgres), integration (RLS), and E2E (Playwright)</li>
+      <li><strong>165 versioned releases</strong> in 13 weeks — rapid iteration with circuit breakers and zero regressions on core invariants</li>
+      <li><strong>~1900 lines</strong> of edge-case documentation — every invariant enforced by a test at the observable layer</li>
+      <li><strong>20+ database migrations</strong> with full RLS coverage — no data leaks in multi-tenant archive model</li>
+      <li><strong>8 major feature areas</strong> shipped: Record, Prompts Hub, Our Story, Settings, Life Timeline, Family Tree 2.0, AI Family Assistant, Family Story Reactions</li>
+      <li>Active alpha users testing real family scenarios</li>
+    </ul>
+
+    <a href="https://story-sundays.vercel.app/" class="live-link" target="_blank" rel="noopener">
+      View Live App &rarr;
+    </a>
+
+    <footer>
+      &copy; 2026 Dustin Felderhoff. Story Sundays is a personal project built with care.
+    </footer>
+  </div>
+</body>
+</html>
