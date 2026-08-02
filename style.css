@@ -320,6 +320,23 @@
   .about-avatar { width: 60px; height: 60px; font-size: 22px; }
  }
 
+ /* ===== CURRENTLY BUILDING ===== */
+ .currently-building {
+  background: rgba(16,185,129,0.05);
+  border: 1px solid rgba(16,185,129,0.18);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+ }
+ .currently-building .case-label { margin-bottom: 10px; }
+ .currently-building p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+ }
+ .currently-building p:last-child { margin-bottom: 0; }
+ .currently-building a { color: var(--accent); }
+
  /* ===== PROJECT CARD ===== */
  .project {
   background: var(--bg-card);

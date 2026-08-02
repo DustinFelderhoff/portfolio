@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dustin Felderhoff - Building Tools That Let People Be Successful</title>
+<title>Dustin Felderhoff: Building Tools That Let People Be Successful</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -107,9 +107,26 @@
      Right now I'm deep in agentic AI. I built one of the first ChatGPT enterprise workflows in 2022, a full-stack AI storytelling platform on my own time, and a multi-agent orchestration system. The projects change, but the question stays the same.
     </p>
     <p>
+     I keep a running record of what I'm learning while I build. Mostly the gaps between what AI marketing promises and what actually happens in production: the literacy gaps that trip up PMs, the patterns that hold up when errors are costly, and the product calls that only get clearer after a real user reacts. It's written up in the <a href="pm_ai_field_notes.html" style="color:var(--accent);">PM + AI Field Notes</a>, one entry per week.
+    </p>
+    <p>
      Outside work: new dad. Midwestern family in Texas, wife's family in Florida. Story Sundays exists because I want my son to hear his grandmother's voice when he's older. Not just the words on a screen, but how she told a story.
     </p>
     </div>
+  </div>
+  </div>
+ </section>
+
+<!-- CURRENTLY BUILDING -->
+<section id="building">
+ <div class="container">
+  <h2>Currently Building</h2>
+  <div class="section-desc">The work in motion right now, not the finished list below.</div>
+  <div class="currently-building">
+   <div class="case-label"><strong>Story Sundays · Prompt System</strong></div>
+   <p>This is the build in front of me. A prompt recommendation engine for Story Sundays with life event triggers and dual-track A/B testing, and it costs nothing to run once it's up. Zero ongoing LLM spend was a hard requirement, not a nice-to-have.</p>
+   <p>Just shipped the Next Best Prompt Engine, full case study <a href="case-studies/next-best-prompt-engine.html">below</a>. Personal Prompt Submissions, the AI Curation Pipeline, and Humanizer Integration are live and in the field. Next in the queue is the Streak Engine, then a cleaner recording flow for the family side of the app.</p>
+   <p>The pattern stays the same project to project. Research the space, build the smallest honest version, put it in front of a real user, then let their reaction steer the pivot. That loop is documented in the <a href="pm_ai_field_notes.html">PM + AI Field Notes</a>.</p>
   </div>
  </div>
 </section>
@@ -521,11 +538,11 @@
     <span class="badge badge-ship">Product Dev</span>
     <span class="badge badge-fail">Algorithm Design</span>
    </div>
-   <div class="project-subtitle">Designed and iterated a recommendation algorithm for a family story-sharing app — from basic MVP through industry research to a hybrid A+B architecture, all documented with cited sources and interactive HTML stakeholder presentations.</div>
+   <div class="project-subtitle">Designed and iterated a recommendation algorithm for a family story-sharing app, from a basic MVP through industry research to a hybrid A+B architecture, all documented with cited sources and interactive HTML stakeholder presentations.</div>
 
    <div class="case-problem">
     <div class="case-label"><strong>Problem</strong></div>
-    <p>A daily prompt system was using a basic "exclude seen + balance categories" algorithm. Users reported prompts felt repetitive and didn't account for real life events — birthdays, new family members, milestones. Different generations also seemed to prefer different recommendation styles.</p>
+    <p>A daily prompt system was using a basic "exclude seen + balance categories" algorithm. Users reported prompts felt repetitive and didn't account for real life events like birthdays, new family members, and milestones. Different generations also seemed to prefer different recommendation styles.</p>
    </div>
 
    <div class="case-process">
@@ -546,6 +563,15 @@
     <li>Stakeholder Communication</li>
    </ul>
    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="case-studies/next-best-prompt-engine.html" style="color:var(--accent);">View Case Study →</a></p>
+
+   <div class="lesson-box">
+    <div class="lesson-label">Lesson Learned</div>
+    <p><strong>Bring options with tradeoffs, not a single recommendation.</strong> I walked in with three algorithm candidates and the research behind each one. The user rejected "pick one" and proposed running both as a dual-track A/B instead. That exchange shaped the whole architecture. Research that cites its sources builds trust faster than opinion, and presenting tradeoffs lets the stakeholder own the decision instead of just approving mine.</p>
+   </div>
+   <div class="lesson-box">
+    <div class="lesson-label">Lesson Learned</div>
+    <p><strong>Real life overrides the algorithm, not the other way around.</strong> The whole point of a recommendation engine is variety, but a birthday or a new family member can't wait for a recommendation to float to the top. The Life Event Override Layer checks for those first with plain SQL, so the human moments always win and the LLM never gets a bill. Context the model can't see still has to shape what it recommends.</p>
+   </div>
   </div>
 
  </div>

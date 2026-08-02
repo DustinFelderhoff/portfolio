@@ -253,14 +253,13 @@ footer a:hover {{ color: var(--accent); }}
    <a href="../ai-news/" class="active">AI News</a>
    <a href="../lessons.html">Lessons</a>
    <a href="../contact.html">Contact</a>
-   <a href="../apply.html">Apply</a>
   </div>
   <a href="../resume.pdf" class="nav-cta" download>Resume</a>
 </aside>
 <nav class="bottom-nav">
   <a href="../about.html"><span class="nav-icon">&#9883;</span>About</a>
   <a href="../projects.html"><span class="nav-icon">&#9881;</span>Projects</a>
-  <a href="../ai-news.html" class="active"><span class="nav-icon">&#128240;</span>AI News</a>
+  <a href="../ai-news/" class="active"><span class="nav-icon">&#128240;</span>AI News</a>
   <a href="../contact.html"><span class="nav-icon">&#9993;</span>Contact</a>
   <a href="../resume.pdf" download><span class="nav-icon">&#128196;</span>Resume</a>
 </nav>

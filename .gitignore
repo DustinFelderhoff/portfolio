@@ -1,0 +1,13 @@
+node_modules/
+test-results/
+playwright-report/
+__pycache__/
+*.pyc
+*.backup.html
+index_v1_backup.html
+original_backup.html
+.DS_Store
+fix_portfolio.py
+rebuild_pages.py
+split_portfolio.py
+tools/

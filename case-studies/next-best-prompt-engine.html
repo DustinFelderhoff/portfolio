@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Next Best Prompt Engine — Product Development Case Study</title>
+<title>Next Best Prompt Engine: Product Development Case Study</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,7 +62,7 @@
 </head>
 <body>
 <div class="container">
-  <div class="back-link"><a href="./">← Back to Portfolio</a></div>
+  <div class="back-link"><a href="../index.html">← Back to Portfolio</a></div>
 
   <h1>Next Best Prompt Engine</h1>
   <div class="subtitle">Full product development cycle: MVP → industry research → hybrid A/B architecture</div>
@@ -83,7 +83,7 @@
   <!-- PROBLEM -->
   <div class="section">
     <h2>Problem</h2>
-    <p style="font-size:14px;line-height:1.7;">A family story-sharing app sends one prompt per day to each family member. The initial MVP used a basic algorithm: exclude seen prompts, balance categories, prioritize personal prompts. Users reported prompts felt <strong>repetitive</strong> and didn't account for real life events — birthdays, new family members, anniversaries, or family milestones. Different generations also seemed to prefer different prompt styles.</p>
+    <p style="font-size:14px;line-height:1.7;">A family story-sharing app sends one prompt per day to each family member. The initial MVP used a basic algorithm: exclude seen prompts, balance categories, prioritize personal prompts. Users reported prompts felt <strong>repetitive</strong> and didn't account for real life events like birthdays, new family members, anniversaries, or family milestones. Different generations also seemed to prefer different prompt styles.</p>
   </div>
 
   <!-- PROCESS -->
@@ -93,7 +93,7 @@
     <div class="two-col">
       <div class="source-card">
         <h4>🎬 Netflix</h4>
-        <p>Multi-layer personalization — 75% of watched content from recommendations. Key insight: personalize the <em>order</em>, not just the content.</p>
+        <p>Multi-layer personalization. 75% of watched content comes from recommendations. Key insight: personalize the <em>order</em>, not just the content.</p>
       </div>
       <div class="source-card">
         <h4>🦉 Duolingo</h4>
@@ -124,7 +124,7 @@
     <table>
       <tr><th>Option</th><th>Approach</th><th>Key Insight</th></tr>
       <tr><td><strong>A: EOSRS</strong></td><td>Weighted scoring: category freshness + emotional valence + specificity + time-of-day + SRS skip cooldown</td><td>Blends Netflix personalization + Duolingo SRS + Anki skip intervals</td></tr>
-      <tr><td><strong>B: Thompson Sampling</strong></td><td>Bayesian bandit — learns per-category answer rates</td><td>Auto-explores new prompts while exploiting known winners</td></tr>
+      <tr><td><strong>B: Thompson Sampling</strong></td><td>Bayesian bandit that learns per-category answer rates</td><td>Auto-explores new prompts while exploiting known winners</td></tr>
       <tr><td><strong>C: Per-User Calibration</strong></td><td>Personalized weights adapting per user behavior</td><td>Most personalized but upfront data needed</td></tr>
     </table>
   </div>
@@ -133,14 +133,14 @@
   <div class="section" style="border-color: #4ade80;">
     <h2>User Feedback → Architecture Pivot</h2>
     <div class="highlight">
-      <strong>User rejected "pick one."</strong> Proposed running both algorithms simultaneously as a dual-track A/B test. Different generations may prefer different approaches — let the data decide.
+      <strong>User rejected "pick one."</strong> Proposed running both algorithms simultaneously as a dual-track A/B test. Different generations may prefer different approaches, so let the data decide.
     </div>
 
     <p style="font-size:14px;font-weight:600;margin:16px 0 10px;">Final Architecture:</p>
 
     <div class="layer layer-1">
       <div class="layer-title">Layer 1: Life Event Override 🔔</div>
-      <div class="layer-desc">Checks for birthdays, new family members, milestone recordings, anniversaries, re-engagement. If any trigger fires, that prompt wins immediately. Zero LLM cost — date-based SQL queries.</div>
+      <div class="layer-desc">Checks for birthdays, new family members, milestone recordings, anniversaries, re-engagement. If any trigger fires, that prompt wins immediately. Zero LLM cost. Just date-based SQL queries.</div>
     </div>
     <div class="layer layer-2">
       <div class="layer-title">Layer 2: Dual-Track A/B</div>
@@ -160,13 +160,13 @@
       <tr><td>Research-backed proposals with cited sources</td><td>Builds stakeholder trust faster than opinion-based recommendations</td></tr>
       <tr><td>Options with tradeoffs, not a single recommendation</td><td>Lets stakeholder be part of the decision, not just approve</td></tr>
       <tr><td>Life events as override layer</td><td>Prevents algorithm from ignoring real-world signals</td></tr>
-      <tr><td>Dual-track A/B (both algorithms running)</td><td>Different users may prefer different approaches — let data decide</td></tr>
+      <tr><td>Dual-track A/B (both algorithms running)</td><td>Different users may prefer different approaches, so let data decide</td></tr>
       <tr><td>Zero ongoing LLM cost</td><td>All layers use SQL queries + in-memory scoring, no API calls</td></tr>
       <tr><td>Interactive HTML for presentations</td><td>Visual stakeholder communication beats document-based reviews</td></tr>
     </table>
   </div>
 
-  <div class="back-link" style="margin-top:32px;"><a href="./">← Back to Portfolio</a></div>
+  <div class="back-link" style="margin-top:32px;"><a href="../index.html">← Back to Portfolio</a></div>
   <div style="text-align:center;font-size:12px;color:#444;margin-top:24px;">Dustin Felderhoff · dustinfelderhoff.github.io/portfolio</div>
 </div>
 </body>
