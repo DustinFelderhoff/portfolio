@@ -333,19 +333,20 @@
 
    <div class="case-process">
     <div class="case-label"><strong>Process</strong></div>
-    <p>Built a full-stack platform from scratch. React 19 frontend, Cloudflare Workers API layer, Supabase Postgres with row-level security, R2 for media storage. The architecture uses a gated TDD pipeline (unit, hooks, integration, e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
+    <p>Built a full-stack platform from scratch across 8 feature areas. <strong>Record</strong>: multi-segment video and photo capture with Canvas compression. <strong>Prompts Hub</strong>: unified grid with 4-tab view selector and NBA widget. <strong>Our Story</strong>: per-archive family origin pages. <strong>Settings</strong>: accordion control panel with 6 sections and auto-save. <strong>Life Timeline</strong>: real data from stories table with infinite scroll. <strong>Family Tree 2.0</strong>: relationships table with invite RLS expansion. <strong>AI Family Assistant</strong>: Cloudflare Worker + React panel + OpenRouter. <strong>Family Story Reactions</strong>: 5 curated reactions with Voice Reply.</p>
+    <p>The architecture uses a gated TDD pipeline (unit → hooks → integration → e2e:prod) with circuit breakers: if the same error repeats twice, the system stops, researches root cause, and escalates. Three test layers catch what mocks miss. AI transcribes and organizes memories but never exposes them outside the family's contacts window.</p>
    </div>
 
    <div class="case-outcome">
     <div class="case-label"><strong>Outcome</strong></div>
     <div class="metrics-grid">
      <div class="metric-card">
-      <div class="num">100%</div>
-      <div class="label">Gated TDD pipeline adoption</div>
+      <div class="num">165</div>
+      <div class="label">Versioned releases in 13 weeks</div>
      </div>
      <div class="metric-card">
-      <div class="num">3</div>
-      <div class="label">Test layers (unit, hooks, int, e2e)</div>
+      <div class="num">8</div>
+      <div class="label">Major feature areas shipped</div>
      </div>
      <div class="metric-card">
       <div class="num">Zero</div>
@@ -358,11 +359,12 @@
      <li>TypeScript</li>
      <li>Cloudflare Workers</li>
      <li>Supabase / Postgres + RLS</li>
-     <li>R2 Storage</li>
+     <li>R2 + OpenRouter</li>
      <li>Playwright E2E</li>
-     <li>TDD Pipeline</li>
+     <li>Gated TDD Pipeline</li>
+     <li>DeepSeek Pro + Flash</li>
     </ul>
-    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);">Private repo. Architecture documented in the gated TDD pipeline.</p>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="case-studies/story-sundays.html" style="color:var(--accent);">Full case study →</a></p>
     <p style="margin-top:6px;font-size:13px;color:var(--text-tertiary);"><a href="pm_ai_field_notes.html" style="color:var(--accent);">📓 Product lessons learned while building this →</a></p>
 
     <div class="lesson-box">
