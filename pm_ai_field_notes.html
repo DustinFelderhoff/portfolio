@@ -66,6 +66,27 @@
 <section>
  <div class="container">
 
+  <!-- ENTRY 4: Week of September 5, 2026 -->
+  <div class="entry" id="entry-2026-09-05">
+   <div class="entry-header">
+    <h3>Model Behavior: Picking Models and Building Evals Like a Product Decision</h3>
+    <span class="skill-badge pm">PM Practice</span>
+    <span class="skill-badge ai">Model Behavior</span>
+   </div>
+   <div class="entry-date">Week of September 5, 2026</div>
+
+   <p><strong>Context:</strong> Choosing a model isn't a settings screen. It's a product decision, because it changes what the user experiences. That's the lens The Browser Company applies to its Model Behavior work, and it's the lens my own build pipeline forced on me.</p>
+
+   <p><strong>What I learned:</strong> For weeks my pipeline shipped code that passed every test and still misbehaved in production. The reason was structural. The agent that wrote the code also wrote the tests, and both were graded on whether the tests passed. A model grading its own homework isn't verification. The fix was to separate who builds from who verifies, hand each role a fresh context, and certify only when the real system, not a mock, produces the change.</p>
+
+   <p><strong>Second lesson, on models:</strong> A cheap fast model checks whether something is true. A strong reasoning model decides what is worth building. Let the cheap one decide and it cuts corners. Let the big one check and it's slow and still grades its own work. Splitting the roles by what each does well stopped the thrash. <a href="case-studies/model-behavior.html" style="color:var(--accent);">View the full case study →</a></p>
+
+   <div class="takeaway">
+    <div class="label">Field Note</div>
+    <p>The biggest decision in an AI product is rarely the feature. It's which model does which job and how you prove the result is good. Build the eval at the layer that can actually observe the behavior, and never let the thing being measured grade itself.</p>
+   </div>
+  </div>
+
   <!-- ENTRY 3: Week of July 27, 2026 -->
   <div class="entry" id="entry-2026-07-27">
    <div class="entry-header">
@@ -142,6 +163,10 @@
 <section class="archive-section">
  <div class="container">
   <h2>Past Weeks</h2>
+  <div class="archive-item">
+   <span class="date">2026-09-05</span>
+   <span class="title"><a href="#entry-2026-09-05">Model Behavior: Picking Models and Building Evals Like a Product Decision</a></span>
+  </div>
   <div class="archive-item">
    <span class="date">2026-06-29</span>
    <span class="title"><a href="#entry-2026-06-29">Three AI Literacy Gaps Every PM Should Address</a></span>

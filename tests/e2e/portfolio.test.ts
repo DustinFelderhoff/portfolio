@@ -8,7 +8,7 @@ test.describe('Portfolio — Navigation', () => {
     
     // Just verify the links exist with correct hrefs
     const links = page.locator('.nav-links a');
-    await expect(links).toHaveCount(7);
+    await expect(links).toHaveCount(6);
     
     // Check each link's href attribute
     await expect(links.nth(0)).toHaveAttribute('href', '#about');
@@ -21,7 +21,6 @@ test.describe('Portfolio — Navigation', () => {
     
     await expect(links.nth(4)).toHaveAttribute('href', '#lessons');
     await expect(links.nth(5)).toHaveAttribute('href', '#contact');
-    await expect(links.nth(6)).toHaveAttribute('href', 'apply/');
   });
 
   test('hash nav scrolls to correct sections', async ({ page }) => {
@@ -135,11 +134,6 @@ test.describe('Portfolio — Mobile', () => {
     await page.locator('.bottom-nav a').filter({ hasText: 'Principles' }).click();
     await page.waitForTimeout(500);
     await expect(page.locator('#lessons')).toBeInViewport();
-  });
-
-  test('bottom nav Apply link uses apply/', async ({ page }) => {
-    await page.goto('https://dustinfelderhoff.github.io/portfolio/');
-    await expect(page.locator('.bottom-nav a').filter({ hasText: 'Apply' })).toHaveAttribute('href', 'apply/');
   });
 });
 
