@@ -166,9 +166,20 @@
 
     <h2>Model Choice Was the Real Product Decision</h2>
     <p>
-      Most people pick one model and stop. I kept changing the stack on purpose, and I kept notes
-      on why. The pipeline that builds Story Sundays has been through three architectures in four
-      months, and each change came from a measurable pain, not novelty.
+      Most people pick one model and stop. I treat a model like I treat any tool: it earns its spot
+      per task, or it leaves. I run a whole ladder of them, and I keep notes on why each one is
+      there.
+    </p>
+    <p>
+      At the bottom of the ladder are models I run locally, on my own machine, because for the
+      cheap, high-volume jobs they are fast enough and cost nothing per call. For the work that
+      needs real reasoning, architecture, or a wide view of a messy problem, I bring in the larger
+      hosted models, because their cost buys judgment I cannot fake. Everything in between is a
+      judgment call I make every day: what is this task actually asking for, how much does a wrong
+      answer cost, and which model is the cheapest thing that can still get it right.
+    </p>
+    <p>
+      So the stack shifts all the time, and each shift came from a measurable pain, not novelty.
     </p>
     <div class="timeline">
       <div class="timeline-item">
@@ -191,15 +202,78 @@
         <div class="what">
           DeepSeek Pro for architecture, planning, and complex reasoning. DeepSeek Flash for the
           mechanical work: verification, linting, doc sync. A five-role cycler where each role runs
-          in a fresh context.
+          in a fresh context, plus local models for the cheapest work and a large-context model
+          when a problem needs the whole codebase in view.
         </div>
       </div>
     </div>
     <p>
       The lesson I carry from this: a model is not a brand. It's a cost and behavior tradeoff you
       make per task. You want the cheap, deterministic model doing the checks you can define, and
-      the strong model doing the thinking you can't. When a tool stops earning its place, you cut
+      the strong model doing the thinking you can't. When a model stops earning its place, you cut
       it. That reasoning, not any single vendor, is the skill.
+    </p>
+    <h3>The gated process that makes changes safe</h3>
+    <p>
+      Re-deciding models and harnesses every week sounds chaotic, so I wrap it in a process that
+      keeps it honest. I run AWS's open-source AI-Driven Development Life Cycle (AI-DLC) inside my
+      main coding harness. It drives a roster of specialist agents through the phases of a build
+      and stops at an approval gate before every stage, so no change reaches users until a gate has
+      checked it. AI-DLC is harness-neutral by design, and I built a hybrid around it: I layer my
+      own orchestration, role separation, and eval gates on top, and I tune its ceremony to the
+      risk of the job. A one-line fix does not need a thirty-stage lifecycle. A schema change that
+      touches every family's data does.
+    </p>
+    <div class="callout">
+      <p>
+        <strong>Why this matters for Model Behavior work:</strong> choosing a model and changing a
+        harness is exactly the kind of high-stakes, hard-to-verify change that needs a gate, not a
+        hope. I do not just pick models. I build the process that makes picking them safe, then I
+        prove the change with evals before it ships.
+      </p>
+    </div>
+
+    <h2>Different Harnesses for Different Jobs</h2>
+    <p>
+      A harness is not a brand loyalty. It is a set of strengths and weaknesses, and I pick the one
+      whose weakness matters least for the task in front of me. I work inside four every week, and
+      I can tell you why each one is there.
+    </p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>Hermes (my orchestrator)</h4>
+        <p>Holds the memory, the routing, and the gates. It decomposes work, dispatches specialized
+        sub-agents, runs the crons, and owns the eval and humanizer checks. Its job is judgment, not
+        typing every line. Weakness: heavy orchestration is overkill for a one-line fix, so I keep
+        ceremony matched to risk.</p>
+      </div>
+      <div class="feature-card">
+        <h4>opencode</h4>
+        <p>My main coding harness. Features, PRs, and the AI-DLC gated workflow run here, with model
+        routing through opencode-go so each task gets a model sized to it. Weakness: driving its
+        interactive UI can strand a prompt, so I prefer scripted runs and verify with git, never the
+        render.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Codex</h4>
+        <p>OpenAI's coding agent. I reach for it when its model is the right fit for a feature or a
+        pull request. Weakness: it leans on one vendor's models, so it is one tool in the rotation,
+        not the whole shop.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Claude Code</h4>
+        <p>The reasoning-heavy harness. Architecture, planning, code review, and writing
+        specs. It reads the codebase itself and thinks about the messy part, then I hand execution
+        to a cheaper agent. Weakness: it is the most expensive in the stack, so I reserve it for
+        thinking and cut it the moment it stops earning the price.</p>
+      </div>
+    </div>
+    <p>
+      The pattern across all four is the same one I use for models. I route each task to the tool
+      whose weakness costs least, I test new harnesses as they ship, and I keep the ones that earn
+      their place. If that reasoning sounds like the core of a Model Behavior job, that is because
+      it is the same muscle: matching the right tool and model to the behavior you want, then
+      proving it works.
     </p>
 
     <h2>Evals Are How I Steer</h2>
