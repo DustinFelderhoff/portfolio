@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Story Sundays — Case Study | Dustin Felderhoff</title>
+  <title>Story Sundays Case Study | Dustin Felderhoff</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
@@ -45,6 +45,7 @@
     p, li { color: #b0b0b0; font-size: 1rem; }
     ul { padding-left: 1.5rem; }
     li { margin-bottom: 0.4rem; }
+    strong { color: #ddd; }
 
     .feature-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -95,8 +96,10 @@
       <div class="label">Case Study</div>
       <h1>Story Sundays</h1>
       <p class="subtitle">
-        An AI-powered family memory preservation platform that helps families
-        capture, share, and preserve the stories that matter — before they're lost.
+        An AI-powered family memory platform that helps families capture, share,
+        and preserve the stories that matter before they're lost. It's also the
+        product a multi-agent pipeline built, and the place where I decide how
+        its AI behaves with the people who trust it.
       </p>
     </header>
 
@@ -107,7 +110,7 @@
       </div>
       <div class="meta-card">
         <div class="label">Timeline</div>
-        <div class="value">May – July 2026</div>
+        <div class="value">May to July 2026</div>
       </div>
       <div class="meta-card">
         <div class="label">Status</div>
@@ -132,15 +135,15 @@
     <div class="callout">
       <p>
         <strong>Core insight:</strong> People don't record family stories because
-        they don't know what to ask. AI-generated prompts — personalized to each
-        family member — solve the cold-start problem.
+        they don't know what to ask. AI-generated prompts, personalized to each
+        family member, solve the cold-start problem.
       </p>
     </div>
 
     <h2>Key Features</h2>
     <div class="feature-grid">
       <div class="feature-card">
-        <h4>🎥 Record — Multi-Media Capture</h4>
+        <h4>🎥 Record · Multi-Media Capture</h4>
         <p>Multi-segment video recording, photo capture with Canvas compression (2048px, 80% JPEG), and file upload. MediaTypePicker for video/photo selection. AI follow-up questions in the viewfinder. Encrypted storage on Cloudflare R2.</p>
       </div>
       <div class="feature-card">
@@ -152,11 +155,11 @@
         <p>Unified Prompts grid with 4-tab ViewSelector (Available, Assigned, Sent, Completed). 10 ENUM categories (family_history → wisdom). AI-generated personalized prompts per family member. NBA (Next Best Action) widget, prompt assignment system.</p>
       </div>
       <div class="feature-card">
-        <h4>📖 Our Story — Family Origin Page</h4>
+        <h4>📖 Our Story · Family Origin Page</h4>
         <p>Per-archive family origin page that tells the story of each family unit. Auto-generated narrative from family data with photos. A permanent record of how each family came to be.</p>
       </div>
       <div class="feature-card">
-        <h4>⚙️ Settings — Full Control Panel</h4>
+        <h4>⚙️ Settings · Full Control Panel</h4>
         <p>Accordion-page with 6 sections: Profile, Notifications, Privacy, Archive, Members, Danger Zone. Auto-save on every change. Archive member management with invite resend/remove. Danger Zone for destructive actions (leave/delete archive).</p>
       </div>
       <div class="feature-card">
@@ -189,32 +192,69 @@
       <span class="stack-tag">DeepSeek Flash</span>
     </div>
 
-    <h2>PM Approach: Multi-Agent Development Pipeline</h2>
+    <h2>The Multi-Agent Pipeline That Built It</h2>
     <p>
-      I designed and operated a kanban-based multi-agent development pipeline where
-      specialized AI agents handle different phases of the SDLC. The orchestration
-      pattern is:
+      Story Sundays is the product people meet. Underneath it sits a second system
+      I designed and ran: a kanban-based pipeline of specialized AI agents that take
+      a requirement and carry it through research, planning, review, implementation,
+      verification, and documentation. An orchestrator reads the requirement and
+      routes it. Each step is its own agent with its own fresh context, so no single
+      agent sees the whole job from one angle.
     </p>
     <p style="margin-top: 0.75rem;">
-      <strong>Orchestrator</strong> &rarr; ingests requirements, routes to
-      <strong>Researcher</strong> (deep discovery) &rarr;
-      <strong>Planner</strong> (implementation spec) &rarr;
-      <strong>Reviewer</strong> (plan validation) &rarr;
-      <strong>Implementer</strong> (development) &rarr;
-      <strong>Tester</strong> (verification) &rarr;
-      <strong>Docs</strong> (permanent documentation).
+      The model mix behind those roles changed three times in a few months, and each
+      change came from a pain I could measure, not from novelty.
+    </p>
+    <ul>
+      <li>I started with an eight-agent Claude Code CrewAI setup. It was powerful and it burned money. I canceled the Claude subscription in early July when the cost stopped earning the behavior.</li>
+      <li>I moved to GLM-5.2 plus DeepSeek Flash, one strong reasoning model paired with a cheap, deterministic worker. Better cost, but the thinking and the verifying still sat too close together.</li>
+      <li>Now DeepSeek Pro runs the reasoning roles, like architecture and planning, and DeepSeek Flash runs the mechanical ones, like verification and doc sync. They work as a five-role cycler.</li>
+    </ul>
+    <p style="margin-top: 0.75rem;">
+      Splitting them that hard is not style. It solves a specific failure. When one
+      agent writes a feature and then tests that same feature, it can write a test
+      that passes no matter what. It asserts what it wants to be true, mocks the seam
+      it should really exercise, and goes green while the product is broken. I have
+      watched that happen, logged it, and built the pipeline so it cannot.
     </p>
     <p style="margin-top: 0.75rem;">
-      Models used: <strong>DeepSeek Pro</strong> (architecture, planning, complex reasoning) and
-      <strong>DeepSeek Flash</strong> (deterministic verification, linting, doc sync).
+      The guardrails are mechanical. The implementer never sees how the tester will
+      verify. For risky changes, a separate worker writes the tests first and locks
+      them, then the tester checks the finished code against that lock with a
+      byte-level diff. You cannot argue with a diff. I would rather spend a little
+      more compute than trust an agent to grade its own homework.
     </p>
+
+    <h2>How I Keep the AI Honest</h2>
+    <p>
+      The AI users actually meet in Story Sundays is real. It writes prompts
+      personalized to each family member so a grandparent knows what to say, and an
+      AI family assistant answers with context about who is in the family and what
+      was already recorded. That is agent behavior, and I steer it with tests.
+    </p>
+    <p style="margin-top: 0.75rem;">
+      The product runs tests at four layers, from unit checks up to a real browser
+      driving the full click-to-database flow. The rule on top is the one I apply
+      everywhere: a green test suite is not proof a bug is fixed. Each layer may only
+      claim what it can actually observe, and nothing is allowed to mock the seam it
+      claims to verify. That doctrine is what kept about 1,900 lines of edge-case
+      rules from regressing and kept twenty-plus database migrations leak-free.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Read the companion case study:</strong> how I shape how an AI agent
+        behaves, choose and change models on purpose, and use evals to steer quality.
+        <a href="model-behavior.html">Shaping how an AI agent behaves, end to end &rarr;</a>
+      </p>
+    </div>
 
     <h2>Results</h2>
     <ul>
       <li><strong>600+ passing tests</strong> across 4 layers: unit, hook-integration (real Postgres), integration (RLS), and E2E (Playwright)</li>
-      <li><strong>165 versioned releases</strong> in 13 weeks — rapid iteration with circuit breakers and zero regressions on core invariants</li>
-      <li><strong>~1900 lines</strong> of edge-case documentation — every invariant enforced by a test at the observable layer</li>
-      <li><strong>20+ database migrations</strong> with full RLS coverage — no data leaks in multi-tenant archive model</li>
+      <li><strong>165 versioned releases</strong> in 13 weeks, rapid iteration with circuit breakers and zero regressions on core invariants</li>
+      <li><strong>~1900 lines</strong> of edge-case documentation, every invariant enforced by a test at the observable layer</li>
+      <li><strong>20+ database migrations</strong> with full RLS coverage, no data leaks in multi-tenant archive model</li>
       <li><strong>8 major feature areas</strong> shipped: Record, Prompts Hub, Our Story, Settings, Life Timeline, Family Tree 2.0, AI Family Assistant, Family Story Reactions</li>
       <li>Active alpha users testing real family scenarios</li>
     </ul>
