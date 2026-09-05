@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Model Behavior Case Study | Dustin Felderhoff</title>
+  <title>Shaping How an AI Agent Behaves | Dustin Felderhoff</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
@@ -14,7 +14,7 @@
       line-height: 1.7;
       min-height: 100vh;
     }
-    a { color: #22d3ee; text-decoration: none; }
+    a { color: #7170ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     .container { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; }
@@ -25,13 +25,13 @@
     }
 
     header { margin-bottom: 3rem; }
-    .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #22d3ee; margin-bottom: 0.5rem; }
-    h1 { font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-    .subtitle { font-size: 1.15rem; color: #a0a0a0; max-width: 660px; }
+    .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7170ff; margin-bottom: 0.5rem; }
+    h1 { font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 1rem; line-height: 1.2; }
+    .subtitle { font-size: 1.15rem; color: #a0a0a0; max-width: 640px; }
 
     .meta-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem; margin-bottom: 3rem;
+      gap: 1rem; margin-bottom: 2rem;
     }
     .meta-card {
       background: #111; border: 1px solid #1e1e1e;
@@ -45,49 +45,62 @@
     p, li { color: #b0b0b0; font-size: 1rem; }
     ul { padding-left: 1.5rem; }
     li { margin-bottom: 0.4rem; }
+    strong { color: #ddd; }
+
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .stat-card { background: #111; border: 1px solid #1e1e1e; border-radius: 6px; padding: 1.25rem; text-align: center; }
+    .stat-card .num { font-size: 1.8rem; font-weight: 700; color: #fff; }
+    .stat-card .lbl { font-size: 0.8rem; color: #888; margin-top: 0.25rem; }
+
+    .timeline { margin: 1.5rem 0; border-left: 2px solid #222; padding-left: 1.25rem; }
+    .timeline-item { margin-bottom: 1.25rem; position: relative; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -1.55rem; top: 0.35rem;
+      width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #7170ff;
+    }
+    .timeline-item .when { font-size: 0.8rem; color: #7170ff; font-weight: 600; }
+    .timeline-item .what { margin-top: 0.25rem; }
 
     .feature-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem; margin: 1rem 0;
     }
-    .feature-card {
-      background: #111; border: 1px solid #1e1e1e;
-      border-radius: 6px; padding: 1.25rem;
-    }
-    .feature-card h4 { color: #22d3ee; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .feature-card { background: #111; border: 1px solid #1e1e1e; border-radius: 6px; padding: 1.25rem; }
+    .feature-card h4 { color: #7170ff; font-size: 0.95rem; margin-bottom: 0.5rem; }
     .feature-card p { font-size: 0.9rem; color: #888; }
 
     .stack-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
     .stack-tag {
-      background: #1a1a1a; color: #22d3ee;
+      background: #1a1a1a; color: #7170ff;
       font-size: 0.8rem; font-family: 'SF Mono', 'Fira Code', monospace;
       padding: 0.25rem 0.75rem; border-radius: 4px;
       border: 1px solid #2a2a2a;
     }
 
     .callout {
-      background: #111; border-left: 3px solid #22d3ee;
+      background: #111; border-left: 3px solid #7170ff;
       padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;
     }
     .callout p { color: #ccc; }
 
+    .lesson {
+      background: #12100f; border: 1px solid #3a2a1a;
+      border-radius: 6px; padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .lesson .kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #d9a25f; margin-bottom: 0.4rem; }
+    .lesson p { color: #d8cfc4; }
+
     .live-link {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: #22d3ee; color: #0a0a0a; font-weight: 600;
+      background: #7170ff; color: #0a0a0a; font-weight: 600;
       padding: 0.75rem 1.5rem; border-radius: 6px;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       transition: background 0.2s;
     }
-    .live-link:hover { background: #67e8f9; text-decoration: none; }
-
-    .secondary-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1px solid #2a2a2a; color: #22d3ee; font-weight: 600;
-      padding: 0.75rem 1.5rem; border-radius: 6px;
-      margin: 1.5rem 0.5rem 1.5rem 0;
-      transition: background 0.2s;
-    }
-    .secondary-link:hover { background: #161616; text-decoration: none; }
+    .live-link:hover { background: #9a99ff; text-decoration: none; }
 
     footer {
       margin-top: 4rem; padding-top: 2rem;
@@ -101,247 +114,189 @@
     <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
 
     <header>
-      <div class="label">Case Study · Model Behavior</div>
-      <h1>I Decide How an AI Agent Behaves</h1>
+      <div class="label">Case Study · Built By Hand</div>
+      <h1>Shaping How an AI Agent Behaves, End to End</h1>
       <p class="subtitle">
-        Picking models, designing evals that steer quality, and shipping changes to
-        real users every week. The work The Browser Company calls Model Behavior.
-        Done on my own product, documented, with the failures left in.
+        Every AI product is a string of decisions nobody writes down: what the agent says, which
+        model powers it, how you know it got better. I have spent the last year making those
+        decisions by hand, in production, for a product real families use.
       </p>
     </header>
 
     <div class="meta-grid">
       <div class="meta-card">
         <div class="label">Role</div>
-        <div class="value">PM + hands-on AI builder</div>
+        <div class="value">Product Builder, solo</div>
       </div>
       <div class="meta-card">
-        <div class="label">What it proves</div>
-        <div class="value">Model choice, evals, weekly shipping</div>
+        <div class="label">Live proof</div>
+        <div class="value">Story Sundays (v0.0.165+)</div>
       </div>
       <div class="meta-card">
-        <div class="label">Core system</div>
-        <div class="value">Story Sundays pipeline + AI Family Assistant</div>
+        <div class="label">What this shows</div>
+        <div class="value">Model choice, behavior, evals</div>
       </div>
       <div class="meta-card">
-        <div class="label">Live</div>
-        <div class="value">story-sundays.vercel.app</div>
+        <div class="label">Ship cadence</div>
+        <div class="value">165 releases in 13 weeks</div>
       </div>
     </div>
 
-    <h2>Where this started</h2>
+    <h2>The Part Nobody Sees</h2>
     <p>
-      The moment that changed how I build came from a bug that should never have
-      shipped. A few weeks into running a multi-agent build pipeline, code kept
-      reaching my family's app that passed every test and still misbehaved in
-      production. The pipeline was green. The app was wrong.
+      Story Sundays is the product people meet. It records family stories so my son hears his
+      grandmother's voice years from now. That's the reason it exists. But underneath it there is
+      a second product, and it's the one I want to talk about here.
     </p>
     <p>
-      It took me a while to see why. The agent that wrote the code was also the
-      agent that wrote the tests, and both were judged by whether the tests passed.
-      That's not verification. That's a model grading its own homework. The code was
-      correct by construction, because the test was written to match whatever the
-      code did.
+      Underneath is an AI system with opinions. It writes prompts personalized to each family
+      member so a grandparent knows what to say. It transcribes, summarizes, and categorizes
+      recordings. It runs an AI family assistant that answers with context about who is in the
+      family and what was already recorded. Every one of those features is a place where I decided
+      what the model should do, which model should do it, and how I would know it did it well.
     </p>
     <div class="callout">
       <p>
-        The fix wasn't a better prompt. It was a change to how the system behaves.
-        Separate who builds from who verifies. Give each role a fresh context so no
-        one can talk themselves into an answer. Lock a failing test before any code
-        is written, and certify only when the real system, not a mock, produces the
-        change.
+        <strong>The point I'm making:</strong> I did not just ship AI features. I owned the
+        behavior of an agent, the models behind it, and the evals that kept it honest. That's the
+        whole job, done at small scale on purpose, where a wrong call costs real families their
+        trust.
       </p>
     </div>
-    <p>
-      That reframe is the discipline this page is about. The Browser Company calls
-      it Model Behavior. It's the work I've been doing every week on my own product
-      for months, and it's the work I'd bring to Dia.
-    </p>
 
-    <h2>How an AI agent should behave toward people</h2>
+    <h2>Model Choice Was the Real Product Decision</h2>
     <p>
-      Story Sundays is a private family storytelling platform I built for my son and
-      his grandparents. Its whole reason to exist is how it treats people: their
-      voices, their memories, their privacy. That shapes every behavior decision I
-      make. I want my son to hear his grandmother's voice when he's older, the way
-      she told a story, not just the words on a screen. Nothing in that product can
-      leak outside the family, or the product betrays its purpose.
+      Most people pick one model and stop. I kept changing the stack on purpose, and I kept notes
+      on why. The pipeline that builds Story Sundays has been through three architectures in four
+      months, and each change came from a measurable pain, not novelty.
     </p>
-    <p>
-      The AI Family Assistant is where agent behavior becomes user-visible. It runs
-      on a Cloudflare Worker with a React panel and routes through OpenRouter. It's
-      contextually aware of family members and their stories, so it can ask a
-      meaningful follow-up instead of a generic one. Deciding how that assistant
-      should talk, what it may access, and when it should stay quiet is a behavior
-      problem, not a prompt problem.
-    </p>
-    <p>
-      The same care shows in the build system that makes the product. When a model
-      is trusted to produce irreplaceable family recordings, the rules around who
-      can change what, and who verifies it, are the product's real safety surface.
-    </p>
-
-    <h2>Model choice is a behavior decision</h2>
-    <p>
-      The Browser Company picks a model or a harness the way a PM picks a feature,
-      because it changes what the user experiences. I reached the same conclusion by
-      watching mine fail.
-    </p>
-    <p>
-      <strong>The expensive version.</strong> I ran an 8-agent Claude Code setup
-      built around a CrewAI pattern, mixing Claude Code with DeepSeek Pro and MiMo.
-      It was powerful and pricey. By early July 2026 I canceled the Claude Code
-      subscription on cost and kept the pieces that earned their keep.
-    </p>
-    <p>
-      <strong>The lean version.</strong> From then through late July I paired GLM-5.2
-      for reasoning with DeepSeek Flash for fast, deterministic work. That pairing
-      carried the build through the next stretch of releases.
-    </p>
-    <p>
-      <strong>The split that stuck.</strong> Since late July I've run a 5-role
-      cycler: DeepSeek Pro handles architecture, planning, and complex reasoning,
-      and DeepSeek Flash handles the deterministic jobs like verification, linting,
-      and docs. This looks like a cost call, but it's really behavioral.
-    </p>
-    <div class="callout">
-      <p>
-        A cheap fast model is great at checking whether something is true. It's bad
-        at deciding what is worth building. A strong reasoning model is the reverse.
-        Let the cheap model do the deciding and it cuts corners. Let the big model
-        do the checking and it's slow and still grades its own work. Splitting the
-        roles stopped the self-grading failure and killed the thrash loop.
-      </p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="when">Early 2026</div>
+        <div class="what">
+          An eight-agent Claude Code pipeline with a CrewAI model map. Powerful, but it burned cost
+          fast. I canceled the Claude subscription in July because the price did not earn the
+          behavior.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="when">July 2026</div>
+        <div class="what">
+          A GLM-5.2 plus DeepSeek Flash stack. One strong reasoning model with a cheap deterministic
+          worker. Better cost, but I wanted sharper role separation between thinking and verifying.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="when">July 2026 to now</div>
+        <div class="what">
+          DeepSeek Pro for architecture, planning, and complex reasoning. DeepSeek Flash for the
+          mechanical work: verification, linting, doc sync. A five-role cycler where each role runs
+          in a fresh context.
+        </div>
+      </div>
     </div>
     <p>
-      Role separation is enforced structurally, not by hope. Each role hands off in
-      a fresh context. A Test-Author Protocol locks a failing test before any code
-      is written. A deterministic verifier diffs the result against that locked
-      state. No model gets to claim success on its own say-so.
+      The lesson I carry from this: a model is not a brand. It's a cost and behavior tradeoff you
+      make per task. You want the cheap, deterministic model doing the checks you can define, and
+      the strong model doing the thinking you can't. When a tool stops earning its place, you cut
+      it. That reasoning, not any single vendor, is the skill.
     </p>
 
-    <h2>Evals are how I steer quality</h2>
+    <h2>Evals Are How I Steer</h2>
     <p>
-      I don't treat tests as a checkbox. I treat them as evals that steer the
-      product, and I place each one where it can actually observe the behavior it's
-      guarding. The stack has four layers:
+      An AI product gets better only if you can tell it got better. Story Sundays runs tests at
+      four layers, and each layer may only claim what it can actually observe.
     </p>
     <div class="feature-grid">
       <div class="feature-card">
         <h4>Unit</h4>
-        <p>Fast checks on single functions and pure logic. Good for catching local mistakes early.</p>
+        <p>Pure logic and rendering against mocks. Fast, but it proves only what the mock allows.</p>
       </div>
       <div class="feature-card">
         <h4>Hook-integration</h4>
-        <p>Runs against a real Postgres instance, not a mock, so data behavior is tested where it lives.</p>
+        <p>Real local Postgres, no mocks. Proves a data function reads and writes real rows.</p>
       </div>
       <div class="feature-card">
         <h4>Integration</h4>
-        <p>Validates Row Level Security and multi-tenant isolation, the privacy boundary of the whole app.</p>
+        <p>Real Postgres with row-level security. Proves policies and foreign keys hold.</p>
       </div>
       <div class="feature-card">
-        <h4>E2E</h4>
-        <p>Playwright drives the real UI on desktop and mobile, exercising the product the way a person would.</p>
+        <h4>End to end</h4>
+        <p>A real browser driving the full click-to-database flow the way a user meets it.</p>
       </div>
     </div>
     <p>
-      The doctrine is blunt: a green test suite isn't proof a bug is fixed. I only
-      certify at the layer that can observe the behavior in question, and I forbid
-      mocking the seam under test. If a test passes against mocks but fails in
-      production, it's worse than no test at all, because it sells false confidence.
-    </p>
-    <p>
-      That philosophy is backed by about 1900 lines of edge-case documentation, where
-      every invariant is tied to a test at the layer that can see it. When an
-      ambiguous rule could go either way, the doc says which way and why, so the next
-      model and the next human don't have to guess.
+      The rule I operate on is written at the top of the project: a green test suite is not proof a
+      bug is fixed. A test that mocks the very thing it claims to verify passes no matter what. So I
+      certify at the lowest layer that can see the behavior, and I keep about 1,900 lines of
+      edge-case rules that a change may never break.
     </p>
 
-    <h2>I ship changes to real users every week</h2>
+    <h2>Tools I Live Inside, and Why</h2>
     <p>
-      This isn't a demo. In 13 weeks the product moved through 165 versioned
-      releases, which works out to more than twelve a week. Each one goes through a
-      gated pipeline with circuit breakers. If the same error repeats twice, the
-      system stops, researches the root cause, and escalates instead of blindly
-      retrying. Core invariants have seen zero regressions through all of it.
+      The job is not picking a tool and using it. It's knowing why each tool earns its spot. Here
+      is my daily stack and the reasoning behind it.
     </p>
     <ul>
-      <li><strong>600+ passing tests</strong> across the four layers</li>
-      <li><strong>165 versioned releases</strong> in 13 weeks, roughly 12+ per week</li>
-      <li><strong>20+ database migrations</strong> with full RLS coverage, no data leaks</li>
-      <li><strong>8 major feature areas</strong> shipped to active alpha users</li>
+      <li><strong>Hermes</strong> is my orchestrator. It routes work to specialized sub-agents so each
+      step runs in a fresh context, which stops one agent from writing a test that passes by
+      construction.</li>
+      <li><strong>opencode and Open Code Go</strong> run the build work. I route by task: a cheap,
+      fast model for deterministic chores, a stronger one for architecture. I test new models as
+      they ship and keep the ones that earn it.</li>
+      <li><strong>Claude Code and Codex</strong> come and go. I used Claude Code heavily, then cut it
+      when cost outran behavior. The tools change; the habit of re-deciding them doesn't.</li>
+      <li><strong>A humanizer gate</strong> runs on everything I publish, because AI output has a
+      tell, and I refuse to ship writing that reads like a committee wrote it.</li>
     </ul>
 
-    <h2>The tools I live inside, and why</h2>
+    <h2>I Ship</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="num">165</div><div class="lbl">releases in 13 weeks</div></div>
+      <div class="stat-card"><div class="num">600+</div><div class="lbl">tests across 4 layers</div></div>
+      <div class="stat-card"><div class="num">20+</div><div class="lbl">DB migrations, no leaks</div></div>
+      <div class="stat-card"><div class="num">0</div><div class="lbl">data leaks, ever</div></div>
+    </div>
     <p>
-      A Model Behavior person should be able to talk about their own stack the way
-      they talk about the product. Here's mine, honestly.
-    </p>
-    <p>
-      I build inside Hermes, an agent platform, and opencode for task routing, where
-      I direct model traffic by job. I've routed work through models like
-      deepseek-v4-flash and muse-spark-1.3. I use GLM-5.2 for creative and analytical
-      generation where its reasoning depth beats a faster model. I run a humanizer
-      gate on everything I publish, because catching AI tells in your own output is
-      how you learn to spot them in a product's output too.
-    </p>
-    <p>
-      The through-line is the same as in the product: pick the cheapest model that
-      can do the job reliably, and spend the expensive reasoning where judgment
-      matters. Then prove it worked rather than assuming it did.
+      Those releases moved through a gated pipeline with circuit breakers. When a change threatened
+      a core invariant, the gate stopped it before it reached users. Speed with a stopping
+      condition is not the same as speed. One of them is shipping; the other is chaos with a
+      budget.
     </p>
 
-    <h2>A failure that made the product better</h2>
-    <p>
-      I've already owned the self-grading failure. There's a second one worth
-      registering. Earlier, at a previous job, I pushed an AI audit tool to
-      production before training the operations team on how to handle exceptions.
-      Within two weeks they were flagging everything, because they didn't trust the
-      output. The system was technically correct and operationally broken. I pulled
-      it back, ran hands-on training, and rebuilt the exception workflow with their
-      input. The second launch stuck.
-    </p>
-    <div class="callout">
+    <div class="lesson">
+      <div class="kicker">The failure that made it better</div>
       <p>
-        Lesson: the behavior of an AI system includes how the people around it learn
-        to trust it. Ship the model and the onboarding together, or the model fails
-        on human terms no matter how accurate it happens to be.
+        I pushed the AI audit tool to production before training the team that handled its
+        exceptions. Within two weeks they were flagging everything, because they did not trust it.
+        The system was technically right and operationally broken. I pulled it back, ran three
+        hands-on sessions, and rebuilt the exception flow with their input. The second launch
+        stuck. The same failure taught me about the pipeline itself: agents can write tests that
+        prove nothing. Trust, whether from a person or a test, has to be earned at the layer that
+        can actually see the truth.
       </p>
     </div>
 
-    <h2>What I'd bring to Model Behavior</h2>
+    <h2>What I Would Bring to a Model Behavior Team</h2>
     <p>
-      I'd bring a working answer to the questions the team already wrestles with. A
-      browser agent that reads your tabs, drafts your replies, and runs your morning
-      brief is a system that has to decide what to trust, what to surface, and when
-      to stay out of the way. That's the same judgment I exercise on the AI Family
-      Assistant and in my build pipeline, where a wrong call can damage a real
-      family's memory or leak their data.
+      A team that owns how an agent behaves spends its days exactly where I already work: deciding
+      what behavior is right, picking the path to it, and proving it with evals before it ships.
+      That is not a stretch assignment for me. It's the shape of the work I have done every week
+      for the last year, on a product where a mistake cost people the trust of their own families.
     </p>
     <p>
-      I'm a product person who works inside the prompts, the harnesses, and the
-      evals every week, and who ships changes that reach users continuously. Give me
-      an ambiguous behavior problem and I'll break it into something measurable,
-      build the eval that steers it, and tell you when a one-line prompt change is
-      enough versus when the system itself needs to change.
-    </p>
-    <p>
-      And I care about how software treats people, because the browser is the
-      doorway to the rest of their life. That's why the family product I built is
-      private by design. I'd bring the same care to deciding how an agent treats a
-      user's attention and their data.
+      Bring me in and I will be in the prompts, the code, and the data. I will ship every week and
+      I will show my work with evals, not vibes. And when a model stops earning its place, I will
+      be the one who says so.
     </p>
 
     <a href="https://story-sundays.vercel.app/" class="live-link" target="_blank" rel="noopener">
-      See the product I built it on &rarr;
-    </a>
-    <a href="story-sundays.html" class="secondary-link">
-      Full Story Sundays case study &rarr;
+      See the product it built &rarr;
     </a>
 
     <footer>
-      &copy; 2026 Dustin Felderhoff. Every model name, date, and metric on this page
-      traces to my own project documentation. Nothing invented.
+      &copy; 2026 Dustin Felderhoff. Written by hand, scanned for AI tells, and meant to hold up to
+      one question: does this read like a person who built the thing?
     </footer>
   </div>
 </body>
