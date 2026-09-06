@@ -119,7 +119,8 @@
       <p class="subtitle">
         Every AI product is a string of decisions nobody writes down: what the agent says, which
         model powers it, how you know it got better. I have spent the last year making those
-        decisions by hand, in production, for a product real families use.
+        decisions by hand, on a product my own family uses in private alpha, where a behavior
+        mistake is visible to me the same day.
       </p>
     </header>
 
@@ -350,6 +351,21 @@
         can actually see the truth.
       </p>
     </div>
+
+    <h2>How I'd Start on a Browser Agent's Behavior</h2>
+    <p>
+      A browser agent is a different surface than a chat assistant. It can act in the world, and
+      acting means it can do real damage if it guesses wrong. So the behavior work starts with
+      boundaries, not features.
+    </p>
+    <p>
+      The first questions I would want answered are the ones that define the whole product: when
+      does the agent act on its own and when does it stop and confirm? How do you tell a tool call
+      that actually worked from one that only looked like it did? How do you gate cost so an
+      ambitious agent does not burn a day's budget on one stubborn task? Those are behavior
+      questions before they are engineering questions, and they are the ones I would want to be
+      shaping.
+    </p>
 
     <h2>What I Would Bring to a Model Behavior Team</h2>
     <p>
