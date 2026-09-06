@@ -307,6 +307,18 @@
       edge-case rules that a change may never break.
     </p>
 
+    <h3>The eval I would build first for what an agent says</h3>
+    <p>
+      For the AI that talks to a family member, the test that matters is not whether the code runs.
+      It is whether the answer was right for that person in that moment. So the eval I reach for is
+      a small, hand-curated set of real scenarios, each scored against a rubric: does it get the
+      family context right, is it warm without turning saccharine, does it refuse gracefully when
+      it should, and how fast did it answer. You score it, you watch the number move when you
+      change a prompt or swap a model, and you know whether you actually improved the behavior or
+      just shipped something new. That same habit is what I would bring to any agent's output,
+      including one that acts in a browser.
+    </p>
+
     <h2>Tools I Live Inside, and Why</h2>
     <p>
       The job is not picking a tool and using it. It's knowing why each tool earns its spot. Here
