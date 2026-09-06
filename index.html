@@ -442,106 +442,6 @@
    </div>
   </div>
 
-  <!-- PROJECT 5: Job Application Engine -->
-  <div class="project">
-    <div class="project-header">
-      <h3>Autonomous Job Application Pipeline</h3>
-      <span class="badge badge-ai">Agentic AI</span>
-      <span class="badge badge-ship">Automation</span>
-    </div>
-    <div class="project-subtitle">Discovery through voice-gated generation. Per-company research, zero AI tells.</div>
-<div class="case-decision"><div class="case-label"><strong>The Call</strong></div><p>The hardest call was slowing down the pipeline to prioritize a voice gate over raw volume. I risked speed to guarantee every application actually sounded human and bypassed AI detectors. Sending out thousands of generic resumes that just get auto-rejected is a waste of time.</p></div>
-
-
-    <!-- Pipeline flow diagram -->
-    <div class="case-visual">
-      <svg viewBox="0 0 720 80" style="width:100%;max-width:720px;display:block;margin:16px 0;" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M0,0 L10,5 L0,10" fill="#7170ff"/>
-          </marker>
-        </defs>
-        <!-- Stage 1: Discovery -->
-        <rect x="0" y="20" width="120" height="40" rx="6" fill="rgba(113,112,255,0.15)" stroke="#7170ff" stroke-width="1.5"/>
-        <text x="60" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Discovery</text>
-        <text x="60" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Tavily + SearXNG</text>
-        <!-- Arrow -->
-        <line x1="125" y1="40" x2="155" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 2: Score -->
-        <rect x="160" y="20" width="110" height="40" rx="6" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="1.5"/>
-        <text x="215" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Score + Filter</text>
-        <text x="215" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Custom engine</text>
-        <!-- Arrow -->
-        <line x1="275" y1="40" x2="305" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 3: Research -->
-        <rect x="310" y="20" width="120" height="40" rx="6" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="370" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Deep Research</text>
-        <text x="370" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Competitive gaps</text>
-        <!-- Arrow -->
-        <line x1="435" y1="40" x2="465" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 4: Voice Gate -->
-        <rect x="470" y="12" width="120" height="56" rx="6" fill="rgba(251,113,133,0.12)" stroke="#fb7185" stroke-width="1.5"/>
-        <text x="530" y="35" text-anchor="middle" fill="#f7f8f8" font-size="12" font-family="Inter,sans-serif" font-weight="600">Voice Gate</text>
-        <text x="530" y="48" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Voice → Humanizer</text>
-        <text x="530" y="60" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">2-pass check</text>
-        <!-- Arrow -->
-        <line x1="595" y1="40" x2="625" y2="40" stroke="#7170ff" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <!-- Stage 5: Submit -->
-        <rect x="630" y="20" width="90" height="40" rx="6" fill="rgba(34,211,238,0.12)" stroke="#22d3ee" stroke-width="1.5"/>
-        <text x="675" y="45" text-anchor="middle" fill="#d0d6e0" font-size="12" font-family="Inter,sans-serif">Submit</text>
-        <text x="675" y="55" text-anchor="middle" fill="#8a8f98" font-size="10" font-family="Inter,sans-serif">Gmail + Ashby</text>
-      </svg>
-    </div>
-
-   <div class="case-problem">
-    <div class="case-label"><strong>Challenge</strong></div>
-    <p>Job hunting is a data problem: hundreds of roles, scattered sources, variable quality, and every application needs to sound like a human. Generic applications don't work. What I built: a system that discovers roles, evaluates fit, researches each company's actual pain points, and generates materials that sound like one specific person.</p>
-   </div>
-
-   <div class="case-process">
-    <div class="case-label"><strong>Process</strong></div>
-    <p>Built a multi-stage pipeline: Tavily AI Search + SearXNG for discovery, a custom scoring engine with time-decay and location penalties, research sub-agents that investigate each company's competitive gaps, and a voice-of-me gate (canonical transcript to anti-ai-detection scan) that ensures every output sounds human. Single SQLite jobs.db as source of truth. Research workers discover what the company is behind on, not just JD keywords.</p>
-   </div>
-
-   <div class="case-outcome">
-    <div class="case-label"><strong>Outcome</strong></div>
-    <div class="metrics-grid">
-     <div class="metric-card">
-      <div class="num">120+</div>
-      <div class="label">Jobs processed per hour</div>
-     </div>
-     <div class="metric-card">
-      <div class="num">2</div>
-      <div class="label">Voice gates per application</div>
-     </div>
-     <div class="metric-card">
-      <div class="num">Real</div>
-      <div class="label">Per-company gap research, not JD mirrors</div>
-     </div>
-    </div>
-
-    <ul class="tech-list">
-     <li>Tavily AI Search</li>
-     <li>SearXNG</li>
-     <li>SQLite / jobs.db</li>
-     <li>Research Sub-agents</li>
-     <li>Voice-of-Me Gate</li>
-     <li>Anti-AI Detection</li>
-     <li>Gmail API</li>
-    </ul>
-    <p style="margin-top:12px;font-size:13px;color:var(--text-tertiary);"><a href="https://career-ops.org" target="_blank" style="color:var(--accent);">Live: career-ops.org →</a> · <a href="https://github.com/DustinFelderhoff/career-ops" target="_blank" style="color:var(--accent);">GitHub →</a></p>
-
-    <div class="lesson-box">
-     <div class="lesson-label">Lesson Learned</div>
-     <p><strong>Voice is the hardest thing to automate, and it's the most important thing to get right.</strong> The pipeline can generate a technically perfect letter that still reads like AI. The voice-of-me skill (built from a canonical transcript of how I actually talk) plus anti-ai-detection (catches structural tells like space-dash-space, balanced paragraphs) turned out to be the most valuable components, not the scoring engine. Every piece of copy must pass both gates, in order, or it doesn't ship.</p>
-    </div>
-    <div class="lesson-box">
-     <div class="lesson-label">Lesson Learned</div>
-     <p><strong>A pipeline with no feedback loop is a liability.</strong> The location penalty was supposed to downrank non-Remote jobs outside Denver. But if the scraper didn't extract the real location from the JD, the penalty didn't fire. Now every research worker verifies location as a hard gate before scoring. One layer of validation is never enough.</p>
-    </div>
-   </div>
-  </div>
-
   <!-- PROJECT 6: Next Best Prompt Engine -->
   <div class="project">
    <div class="project-header">
@@ -776,7 +676,7 @@
 
    <div class="lesson-cross">
     <h3>1. Trust matters more than the tech stack.</h3>
-    <div class="applied-in">Invoice Parser · Story Sundays · Job Pipeline</div>
+    <div class="applied-in">Invoice Parser · Story Sundays</div>
     <p>The Invoice Parser was technically sound the day it shipped. It didn't stick until the ops team trusted it. Story Sundays enforces a gated pipeline because a green test suite gave false confidence. In every project, the hardest problem was the same: <strong>how do I build something people actually trust, not something that technically works?</strong> The answer is always iteration, training, and transparency, never just better code.</p>
    </div>
 
@@ -806,7 +706,7 @@
 
   <div class="lesson-cross">
    <h3>6. Never trust a handoff without verification.</h3>
-   <div class="applied-in">Sub-Agent Orchestration · Job Pipeline</div>
+   <div class="applied-in">Sub-Agent Orchestration</div>
    <p>When a sub-agent says "I wrote the file," the parent reads it back. When a research worker says "I found the data," the pipeline checks the output. This sounds obvious but it's the most commonly skipped step, because trust is faster, because it usually works. Until it doesn't. In product work this is the same as: when engineering says "it's done," you test it yourself. Verification at every handoff boundary is the only reliable way to ship.</p>
   </div>
  </div>
